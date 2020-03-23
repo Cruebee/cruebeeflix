@@ -25,5 +25,8 @@ http
         }
       }
     );
+    response.end("WHY?\n");
   })
   .listen(8080);
+
+console.log("This should be running on port 8080");
