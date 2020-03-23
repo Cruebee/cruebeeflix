@@ -1,14 +1,15 @@
 const http = require("http"),
-  url = require("url"),
-  fs = require("fs");
+  fs = require("fs"),
+  url = require("url");
 
 http
   .createServer((request, response) => {
     var addr = request.url,
       q = url.parse(addr, true),
       filePath = "";
+
     if (q.pathname.includes("documentation")) {
-      filePath = __dirname + "/documentation.html";
+      filePath = __dirname + "documentation.html";
     } else {
       filePath = "index.html";
     }
@@ -20,11 +21,9 @@ http
         if (err) {
           console.log(err);
         } else {
-          console.log("Sucessfully added to log!");
+          console.log("Added to log!");
         }
       }
     );
   })
   .listen(8080);
-
-console.log("My first Node test server is running on Port 8080.");
