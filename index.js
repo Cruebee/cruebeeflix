@@ -1,13 +1,9 @@
 const express = require('express'),
+  morgan = require('morgan'),
   app = express();
 
 var myLogger = function (req, res, next) {
-  console.log(req.url);
-  next();
-};
-
-var requestTime = function (req, res, next) {
-  req.requestTime = Date.now();
+  console.log(req.url + 'URL has been logged.');
   next();
 };
 
@@ -49,16 +45,13 @@ let topMovies = [ {
 // by invoking the app.use(); function on the myLogger(); middleware function before specifying the routes for the root path ("/") and the sub-URLs ("/movies", "/documentation"), you're designating that myLogger(); should ve called with every request--all requests to the root URl and "/movies" and "/documentation".
 // By using middleware to apply the same logic to all requests, you eliminate the need for each route to boast it's own separate consol.log statements
 app.use(myLogger);
-app.use(requestTime);
+app.use(morgan('common'));
 
 app.get('/', function(req, res) {
-  var responseText = 'Welcome to my-Flix!';
-  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
-  res.send(responseText);
+  res.send('Welcome to my-Flix club!')
 });
 app.get('/documentation', function(req, res) {
   res.sendFile('public/documentation.html', { root : __dirname });
-  res.sendFile += '<small>Requested at: ' + req.requestTime + '</small>';
 });
 app.get('/movies', function(req, res) {
   res.json(topMovies)
