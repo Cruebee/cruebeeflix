@@ -40,3 +40,12 @@ Timestamp: Mon Mar 23 2020 12:18:48 GMT-0600 (Mountain Daylight Time)
 ::1 - - [31/Mar/2020:16:53:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"
 ::1 - - [31/Mar/2020:23:28:11 +0000] "GET / HTTP/1.1" 200 803
 ::1 - - [31/Mar/2020:23:31:57 +0000] "GET /movies HTTP/1.1" 200 1906
+::1 - - [01/Apr/2020:16:33:10 +0000] "GET / HTTP/1.1" 304 -
+::1 - - [01/Apr/2020:16:33:15 +0000] "GET /movies HTTP/1.1" 304 -
+::1 - - [01/Apr/2020:16:33:30 +0000] "GET /genres HTTP/1.1" 404 145
+::1 - - [01/Apr/2020:16:33:34 +0000] "GET /genre HTTP/1.1" 404 144
+::1 - - [01/Apr/2020:16:33:42 +0000] "GET /user HTTP/1.1" 404 143
+::1 - - [01/Apr/2020:16:33:54 +0000] "GET /users HTTP/1.1" 200 101
+::1 - - [01/Apr/2020:16:34:08 +0000] "GET /user/crue HTTP/1.1" 404 148
+::1 - - [01/Apr/2020:16:34:19 +0000] "GET /user/0 HTTP/1.1" 404 145
+::1 - - [01/Apr/2020:16:34:25 +0000] "GET /users HTTP/1.1" 304 -
