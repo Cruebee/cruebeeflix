@@ -1,11 +1,20 @@
 const express = require('express'),
   morgan = require('morgan'),
   app = express(),
-  fs = require('fs'),
-  path = require('path'),
-  accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
   bodyParser = require('body-parser');
   uuid = require('uuid');
+
+let users = [
+  {
+    id: '0',
+    name: 'Crue',
+    username: 'cruebee',
+    password: '',
+    email: '',
+    birthday: '',
+    favorites: ['6']
+  }
+];
 
 let movies = [ {
   id: '0',
@@ -185,25 +194,151 @@ let genres = [
   }
 ]
 
-// GET requests and use (myLogger)
-// by invoking the app.use(); function on the myLogger(); middleware function before specifying the routes for the root path ("/") and the sub-URLs ("/movies", "/documentation"), you're designating that myLogger(); should ve called with every request--all requests to the root URl and "/movies" and "/documentation".
-// By using middleware to apply the same logic to all requests, you eliminate the need for each route to boast it's own separate consol.log statements
-app.use(morgan('common', {stream: accessLogStream}));
+// use morgan to log URL access
+app.use(morgan('common'));
+
+// use express.static to return all static files within 'public' folder
 app.use(express.static('public'));
+
+// initialize the body-parser module
+app.use(bodyParser.json());
+
+// add in error handler:
 app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something Broke!');
 });
 
+// add in the GET requests
+
+
 app.get('/', function(req, res) {
   res.send('Welcome to my-Flix club!')
 });
+
+// ------ Movies ------
+// get a JSON list of ALL movies:
 app.get('/movies', function(req, res) {
   res.json(movies)
+});
+
+// get data about a single movie, by its title:
+app.get('/movies/:title', (req, res) => {
+  res.json(movies.find( (movie) => { return movie.title.toLowerCase().includes(req.params.title.toLowerCase()); }));
+});
+
+// ------ Genres ------
+// Get a list of genres:
+app.get('/genres', function(req, res) {
+  res.json(genres)
+});
+
+// Get data from a specific genre by name:
+app.get('/genres/:name', (req, res) => {
+  res.json(genres.find( (genre) => {return genre.name.toLowerCase() === req.params.name.toLowerCase(); }));
+});
+
+// ------ Directors ------
+// Get a list of ALL directors:
+app.get('/directors', (req, res) => {
+  res.json(directors);
+})
+// Get the data about a Director by name:
+app.get('/directors/:name', (req, res) => {
+  res.json(directors.find( (director) => {return director.name.toLowerCase() === req.params.name.toLowerCase(); }));
+});
+
+// ------ Users ------
+//get a list of All users:
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+// allow adding of new users:
+app.post('/users', (req, res) => {
+  let newUser = req.body;
+
+  if (!newUser.name) {
+    const message = 'Missing name in request body.';
+    res.status(400).send(message);
+  } else {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).send(newUser);
+  }
+});
+
+// allow users to delete account by ID:
+app.delete('/users/:id', (req, res) => {
+  let user = users.find( (user) => {return user.id === req.params.id; });
+
+  if (user) {
+    users = users.filter(function(obj) {return obj.id !== req.params.id; });
+    res.status(201).send('User ' + user.id + ' with ID ' + req.params.id + ' was deleted.');
+  }
+});
+
+// get user from list by username:
+app.get('/users/:username', (req, res) => {
+  res.json(users.find( (user) => {return user.username === req.params.username; }));
+});
+
+
+// Update info of a user by ID:
+app.put('/users/:id', (req, res) => {
+  let user = users.find( (user) => {return user.id === req.params.id; });
+  let newUserInfo = req.body;
+
+  if (user && newUserInfo) {
+    //keep existing user ID:
+    newUserInfo.id = user.id;
+    //keep existing user favorites:
+    newUserInfo.favorites = user.favorites;
+    //merges old ifo with new info:
+    Object.assign(user, newUserInfo);
+    //merge updated info into the existing list of users:
+    users = users.map((user) => (user.id === newUserInfo.id) ? newUserInfo : user);
+    res.status(201).send(user);
+  } else if (!newUserInfo.name) {
+    const message = 'Missing name in request body';
+    res.status(400).send(message);
+  } else {
+    res.status(404).send('User with id ' + req.params.id + ' was not found.');
+  }
+});
+
+// allow users to add favorite movies to their account:
+app.post('/users/:id/:movie_id', (req, res) => {
+  let user = users.find( (user) => {return user.id === req.params.id; });
+  let movie = movies.find( (movie) => {return movie.id === req.params.movie_id; });
+
+  if (user && movie) {
+    user.favorites = [...new Set([...user.favorites, req.params.movie_id])];
+    res.status(201).send('Movie has been added to favorites!');
+  } else if (!movie) {
+    res.status(404).send('Movie with the id: ' + req.params.movie_id + ' was not found.');
+  } else {
+    res.status(404).send('User with id: ' + req.params.id + ' was not found.');
+  }
+});
+
+// Remove movie from favorites list:
+app.delete('/users/:id/:movie_id', (req, res) => {
+  let user = users.find( (user) => {return user.id === req.params.id; });
+  let movie = movies.find( (movie) => {return movie.id === req.params.movie_id; });
+
+  if (user && movie) {
+    user.favorites = user.favorites.filter( (movie_id) => {return movie.id !== req.params.movie_id; });
+    res.status(201).send('Movie has been removed from favorites!');
+  } else if (!movie) {
+    res.status(404).send('Movie with id: ' + req.params.movie_id + ' was not found.');
+  } else {
+    res.status(404).send('User with id: ' + req.params.id + ' was not found.');
+  }
 });
 
 
 // listen for requests
 app.listen(8080, () =>
-  console.log('Your app is listening on port 8080.')
+  console.log('My-Flix is listening on port 8080.')
 );
