@@ -18,6 +18,157 @@
       create a list of their favorite movies.
     </p>
 
+    <table class="documentation-table">
+      <thead>
+        <tr>
+          <th>Request</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request Body Data Format</th>
+          <th>Response Body Data Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Get a list of ALL movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about all movies with the following format:
+            <p>{
+              'id': '9',
+              'title': 'The Boondock Saints',
+              'author': 'Troy Duffy',
+              'screenwriter': 'Troy Duffy',
+              'year': '1999',
+              'description': '',
+              'genre': 'Action',
+              'director': 'Troy Duffy'
+            }
+          </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a single movie by its title</td>
+          <td>/movies/[title]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object containing information about a single movie, including the title, author, screenwriter, year, description, genre, and director.
+            <p>Example:
+            {
+              'id': '9',
+              'title': 'The Boondock Saints',
+              'author': 'Troy Duffy',
+              'screenwriter': 'Troy Duffy',
+              'year': '1999',
+              'description': '',
+              'genre': 'Action',
+              'director': 'Troy Duffy'
+            }
+          </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about ALL genres</td>
+          <td>/genres</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A list of JSON objects holding genre names, and a description about the genre.
+            <p>{
+              'name': 'Comedy',
+              'description': 'Comedy films are associated with the type of work that is amusing and satirical. Comedies are mostly having a cheerful ending. Tragedy is the opposite to a comedy, as tragedy deals with sorrowful and tragic events in a story.'
+            }
+          </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a specific genre by name</td>
+          <td>/genres/:name</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding a genre name and a description about the genre same format as loading the genre list</td>
+        </tr>
+        <tr>
+          <td>Get data about a director by name</td>
+          <td>/directors/:name</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding information about a director in the following format:
+            <p>Example:
+            {
+              'name': 'George Lucas',
+              'bio': '',
+              'age': ''
+            }
+          </p>
+          </td>
+        </tr>
+        <tr>
+          <td>Add new user</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>A JSON object holding data about the user being added, with the following format:
+            <p>{
+              'name': 'user name here',
+              'username': 'usernameGoesHere',
+              'password': 'userpassword123',
+              'email': 'example@email.com',
+              'birthday': '01/02/1003'
+            }
+          </p>
+          </td>
+          <td>A JSON object holding the data about the new user, including an ID:
+            <p>{
+              'id': '#',
+              'name': 'user name',
+              'username': 'user username',
+              'password': 'userPassword123',
+              'email': 'emailexample@email.com',
+              'birthday': '01/02/1003',
+              'favorites': []
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Allow users to update their information with their ID</td>
+        <td>/users/[id]</td>
+        <td>PUT</td>
+        <td>A JSON object holding the data to be updated with the format:
+          <p>{
+            'id': '#',
+            'name': 'updated name',
+            'username': 'updated username',
+            'email': 'updated email',
+            'birthday': 'updated birthday'
+          }
+        </p>
+        </td>
+        <td>A JSON object containing the updated information.</td>
+      </tr>
+      <tr>
+        <td>Allow users to add movies to a list of favorites using their ID to add a movie by title</td>
+        <td>/users/[id]/[title]</td>
+        <td>POST</td>
+        <td>None</td>
+        <td>A message indicating the movie has been added to favorites</td>
+      </tr>
+      <tr>
+        <td>Allow users to remove movies from favorites list</td>
+        <td>/users/[id]/[title]</td>
+        <td>DELETE</td>
+        <td>A message indicating the movie was removed from favorites.</td>
+      </tr>
+      <tr>
+        <td>Allow users to delete their account by ID</td>
+        <td>/users/[id]</td>
+        <td>DELETE</td>
+        <td>A message indicating the user account has been removed</td>
+      </tr>
+
+    </tbody>
+  </table>
+
     <footer>
       <div class="footer-wrapper"></div>
     </footer>
