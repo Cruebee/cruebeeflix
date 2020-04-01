@@ -216,10 +216,6 @@ app.get('/', function(req, res) {
   res.send('Welcome to My-Flix!');
 });
 
-app.get('//documentation', function(req, res) {
-  res.send(documentation);
-});
-
 // ------ Movies ------
 // get a JSON list of ALL movies:
 app.get('/movies', function(req, res) {
