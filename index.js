@@ -274,7 +274,7 @@ app.delete('/users/:id', (req, res) => {
 
   if (user) {
     users = users.filter(function(obj) {return obj.id !== req.params.id; });
-    res.status(201).send('User ' + user.id + ' with ID ' + req.params.id + ' was deleted.');
+    res.status(200).send('User ' + user.id + ' with ID ' + req.params.id + ' was deleted.');
   }
 });
 
@@ -329,7 +329,7 @@ app.delete('/users/:id/:movie_id', (req, res) => {
 
   if (user && movie) {
     user.favorites = user.favorites.filter( (movie_id) => {return movie.id !== req.params.movie_id; });
-    res.status(201).send('Movie has been removed from favorites!');
+    res.status(200).send('Movie has been removed from favorites!');
   } else if (!movie) {
     res.status(404).send('Movie with id: ' + req.params.movie_id + ' was not found.');
   } else {
