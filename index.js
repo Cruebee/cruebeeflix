@@ -213,7 +213,11 @@ app.use(function (err, req, res, next) {
 
 
 app.get('/', function(req, res) {
-  res.send('Welcome to my-Flix club!')
+  res.send('Welcome to My-Flix!');
+});
+
+app.get('//documentation', function(req, res) {
+  res.send(documentation);
 });
 
 // ------ Movies ------
