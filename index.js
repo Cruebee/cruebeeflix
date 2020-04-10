@@ -74,7 +74,7 @@ app.get('/genres', function(req, res) {
 });
 
 // Get data from a specific genre by name:
-app.get('genres/:Name', function(req, res) {
+app.get('/genres/:Name', function(req, res) {
   Genres.findOne({ Name : req.params.Name })
   .then(function(genre) {
     res.json(genre);
