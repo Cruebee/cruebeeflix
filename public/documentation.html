@@ -1,167 +1,225 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My-Flix Documentation</title>
-  </head>
-  <body>
-    <header>
-      <div class="navigation-wrapper"></div>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My-Flix Documentation</title>
+</head>
+<body>
+  <header>
+    <div class="navigation-wrapper"></div>
+  </header>
 
-    <h1>Documentation</h1>
-    <p>
-      This application will provide users with access to information about
-      different movies, directors, and genres. <br />
-      Users will be able to sign up, update their personal information, and
-      create a list of their favorite movies.
-    </p>
+  <h1>Documentation</h1>
+  <p>
+    This application will provide users with access to information about
+    different movies, directors, and genres. <br />
+    Users will be able to sign up, update their personal information, and
+    create a list of their favorite movies.
+  </p>
 
-    <table class="documentation-table">
-      <thead>
-        <tr>
-          <th>Request</th>
-          <th>URL</th>
-          <th>HTTP Method</th>
-          <th>Request Body Data Format</th>
-          <th>Response Body Data Format</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Get a list of ALL movies</td>
-          <td>/movies</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object holding data about all movies with the following format:
-            <p>{
-              'id': '9',
-              'title': 'The Boondock Saints',
-              'author': 'Troy Duffy',
-              'screenwriter': 'Troy Duffy',
-              'year': '1999',
-              'description': '',
-              'genre': 'Action',
-              'director': 'Troy Duffy'
-            }
-          </p>
-          </td>
-        </tr>
-        <tr>
-          <td>Get data about a single movie by its title</td>
-          <td>/movies/[title]</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object containing information about a single movie, including the title, author, screenwriter, year, description, genre, and director.
-            <p>Example:
+  <table class="documentation-table">
+    <thead>
+      <tr>
+        <th>Request</th>
+        <th>URL</th>
+        <th>HTTP Method</th>
+        <th>Request Body Data Format</th>
+        <th>Response Body Data Format</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Get a list of ALL movies</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about all movies with the following format:
+          <p>Example:
             {
-              'id': '9',
-              'title': 'The Boondock Saints',
-              'author': 'Troy Duffy',
-              'screenwriter': 'Troy Duffy',
-              'year': '1999',
-              'description': '',
-              'genre': 'Action',
-              'director': 'Troy Duffy'
-            }
-          </p>
-          </td>
-        </tr>
-        <tr>
-          <td>Get data about ALL genres</td>
-          <td>/genres</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A list of JSON objects holding genre names, and a description about the genre.
-            <p>{
-              'name': 'Comedy',
-              'description': 'Comedy films are associated with the type of work that is amusing and satirical. Comedies are mostly having a cheerful ending. Tragedy is the opposite to a comedy, as tragedy deals with sorrowful and tragic events in a story.'
-            }
-          </p>
-          </td>
-        </tr>
-        <tr>
-          <td>Get data about a specific genre by name</td>
-          <td>/genres/:name</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object holding a genre name and a description about the genre same format as loading the genre list</td>
-        </tr>
-        <tr>
-          <td>Get data about a director by name</td>
-          <td>/directors/:name</td>
-          <td>GET</td>
-          <td>None</td>
-          <td>A JSON object holding information about a director in the following format:
-            <p>Example:
-            {
-              'name': 'George Lucas',
-              'bio': '',
-              'age': ''
-            }
-          </p>
-          </td>
-        </tr>
-        <tr>
-          <td>Add new user</td>
-          <td>/users</td>
-          <td>POST</td>
-          <td>A JSON object holding data about the user being added, with the following format:
-            <p>{
-              'name': 'user name here',
-              'username': 'usernameGoesHere',
-              'password': 'userpassword123',
-              'email': 'example@email.com',
-              'birthday': '01/02/1003'
-            }
-          </p>
-          </td>
-          <td>A JSON object holding the data about the new user, including an ID:
-            <p>{
-              'id': '#',
-              'name': 'user name',
-              'username': 'user username',
-              'password': 'userPassword123',
-              'email': 'emailexample@email.com',
-              'birthday': '01/02/1003',
-              'favorites': []
+              "Genre": [
+                "5162df6df5a1d6f5sdf"
+              ],
+              "Director": [
+                "56656651658df651asdf8"
+              ],
+              "_id": "562s1df651s6d2a65df9",
+              "Title": "The Boondock Saints",
+              "Description": "The Saints are not going to sit around while crime runs ramptant in their city.",
+              "ImagePath": "boondocksaints.svg",
+              "Featured": true
             }
           </p>
         </td>
       </tr>
       <tr>
-        <td>Allow users to update their information with their ID</td>
-        <td>/users/[id]</td>
+        <td>Get data about a single movie by its title</td>
+        <td>/movies/:Title</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object containing information about a single movie, including the title, author, screenwriter, year, description, genre, and director.
+          <p>Example:
+            {
+              "Genre": [
+                "55ad6f51df651sd651"
+              ],
+              "Director": [
+                "565sdf169s51f9a8s5df"
+              ],
+              "_id": "5sd65sdf54656df1sdf9",
+              "Title": "The Boondock Saints",
+              "Description": "The Saints are not going to sit around while crime runs ramptant in their city.",
+              "ImagePath": "boondocksaints.jpg",
+              "Featured: true"
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Get data about ALL genres</td>
+        <td>/genres</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A list of JSON objects holding genre names, and a description about the genre.
+          <p>Example:
+            {
+              "_id": "5sdfs65d1fas65f1a6s51",
+              "Name": "Comedy",
+              "Description": "Comedy films are associated with the type of work that is amusing and satirical. Comedies are mostly having a cheerful ending. Tragedy is the opposite to a comedy, as tragedy deals with sorrowful and tragic events in a story."
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Get data about a specific genre by name</td>
+        <td>/genres/:Name</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding a genre name and a description about the genre:
+          <p>Example:
+            {
+              "_id": "5df621df65we165fg65",
+              "Name": "Thriller",
+              "Description": "Thriller is a broad genre."
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Get data about all directors</td>
+        <td>/directors</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A list of JSON objects holding information about directors each of which will be in the following format:
+          <p>Example:
+            {
+              "_id":
+              "Name": "George Lucas",
+              "Bio": "George is best known for creating the 'Star Wars' and 'Indiana Jones' franchises.",
+              "Birth": "1944-05-14",
+              "Death": "(if applicable)"
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Get data about a director by name</td>
+        <td>/directors/:Name</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding information about a director in the following format:
+          <p>Example:
+            {
+              "_id": "5df521651fa65df6s51f85",
+              "Name": "George Lucas",
+              "Bio": "George Lucas is best known for creating the 'Star Wars' and 'Indiana Jones' franchises.",
+              "Birth": "1944-05-14",
+              "Death": "(if applicable)"
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Add new user</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>A JSON object holding data about the user being added, with the following format:
+          <p>Example:
+            {
+              "Username": "johnnydoe23",
+              "Password": "userpassword123",
+              "Email": "example@email.com",
+              "Birthday": "1989-08-12"
+            }
+          </p>
+        </td>
+        <td>A JSON object holding the data about the new user, including a new ID and an empty FavoriteMovies array:
+          <p>Example:
+            {
+              "FavoriteMovies" : [],
+              "_id": "5d50550d054dga505ssdf",
+              "Username": "johnnydoe23",
+              "Password": "userPassword123",
+              "Email": "emailexample@email.com",
+              "Birthday": "1989-11-12",
+              "__v": 0
+            }
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Allow users to update their information by Username</td>
+        <td>/users/:Username</td>
         <td>PUT</td>
         <td>A JSON object holding the data to be updated with the format:
-          <p>{
-            'id': '#',
-            'name': 'updated name',
-            'username': 'updated username',
-            'email': 'updated email',
-            'birthday': 'updated birthday'
-          }
-        </p>
+          <p>Example:
+            {
+              "FavoriteMovies": [
+              {
+                "5465d2fs65fa6s5dfdsf5"
+              }
+              ],
+              "_id": '5d15d6ad51gas6d5sdf4',
+              "Username": "updated username",
+              "Email": "updated email",
+              "Birthday": "updated birthday",
+              "__v": 0
+            }
+          </p>
         </td>
         <td>A JSON object containing the updated information.</td>
       </tr>
       <tr>
-        <td>Allow users to add movies to a list of favorites using their ID to add a movie by title</td>
-        <td>/users/[id]/[title]</td>
+        <td>Allow users to add movies to a list of favorites using their ID to add a movie by MovieID</td>
+        <td>/users/:Username/movies/:MovieID</td>
         <td>POST</td>
         <td>None</td>
         <td>A message indicating the movie has been added to favorites</td>
       </tr>
       <tr>
         <td>Allow users to remove movies from favorites list</td>
-        <td>/users/[id]/[title]</td>
+        <td>/users/:Username/movies/:MovieID</td>
         <td>DELETE</td>
-        <td>A message indicating the movie was removed from favorites.</td>
+        <td>A JSON object containing the updated information:
+          <p>Example:
+            {
+              "FavoriteMovies": [
+              "655d55958d21f6sd5f1a6",
+              "450sdf206sdf2asdf06sd"
+              ],
+              "_id": "65df65df5sd98sd9f8ss3",
+              "Username": "bobber",
+              "Password": "password",
+              "Email": "email@email.com",
+              "Birthday": "1999-11-11T00:00:00:.00z",
+              "__v": 0
+            }
+          </p>
+        </td>
       </tr>
       <tr>
-        <td>Allow users to delete their account by ID</td>
-        <td>/users/[id]</td>
+        <td>Allow users to delete their account by Username</td>
+        <td>/users/:Username</td>
         <td>DELETE</td>
         <td>A message indicating the user account has been removed</td>
       </tr>
@@ -169,8 +227,8 @@
     </tbody>
   </table>
 
-    <footer>
-      <div class="footer-wrapper"></div>
-    </footer>
-  </body>
+  <footer>
+    <div class="footer-wrapper"></div>
+  </footer>
+</body>
 </html>
