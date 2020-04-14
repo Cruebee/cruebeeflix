@@ -6,6 +6,7 @@ uuid = require('uuid'),
 mongoose = require('mongoose'),
 passport = require('passport'),
 require('./passport'),
+cors = require('cors'),
 Models = require('./models.js'),
 Movies = Models.Movie,
 Users = Models.User,
@@ -14,6 +15,19 @@ Genres = Models.Genre;
 
 mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
+var allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+
+// use CORS:
+app.use(cors({
+  origin: function(origin, callback){
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){// If a specific origin isn't found on the list of allowed Origins
+      var message = 'The CORS policy for this application doesn\'t allow acces from origin ' + origin;
+      return callback(new Error(message), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // use morgan to log URL access
 app.use(morgan('common'));
@@ -149,24 +163,29 @@ Email : String,
 Birthday: Date
 }*/
 app.post('/users', function(req, res) {
-  Users.findOne({ Username : req.body.Username })
+  var hashedPassword = Users.hashPassword(req.body.Password);
+  Users.findOne({Username: req.body.Username }) // search to see if user with requested username already exists
   .then(function(user) {
     if (user) {
+      //if the user is found, send a response that it already exists.
       return res.status(400).send(req.body.Username + " already exists");
     } else {
       Users
       .create({
         Username: req.body.Username,
-        Password: req.body.Password,
+        Password: hashedPassword,
         Email: req.body.Email,
         Birthday: req.body.Birthday
       })
-      .then(function(user) {res.status(201).json(user); })
-      .catch(function(err) {
-        console.error(err);
+      .then(function(user) { res.status(201).json(user); })
+      .catch(function(error) {
+        console.error(error);
         res.status(500).send("Error: " + err);
-      })
+      });
     }
+  }).catch(function(error) {
+    console.error(error);
+    res.status(500).send("Error: " + err);
   });
 });
 
