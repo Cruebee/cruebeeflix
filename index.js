@@ -1,17 +1,20 @@
 const express = require('express'),
-morgan = require('morgan'),
-app = express(),
-bodyParser = require('body-parser');
-uuid = require('uuid'),
-mongoose = require('mongoose'),
-passport = require('passport'),
-require('./passport'),
-cors = require('cors'),
-Models = require('./models.js'),
-Movies = Models.Movie,
-Users = Models.User,
-Directors = Models.Director,
-Genres = Models.Genre;
+  morgan = require('morgan'),
+  app = express(),
+  bodyParser = require('body-parser');
+  uuid = require('uuid'),
+  mongoose = require('mongoose'),
+  passport = require('passport'),
+  require('./passport'),
+  cors = require('cors'),
+  Models = require('./models.js'),
+  Movies = Models.Movie,
+  Users = Models.User,
+  Directors = Models.Director,
+  Genres = Models.Genre;
+
+const { check, validationResult } = require('express-validator');
+
 
 mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -162,7 +165,11 @@ Password : String,
 Email : String,
 Birthday: Date
 }*/
-app.post('/users', function(req, res) {
+app.post('/users',
+  [check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required.').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid.').isEmail()], (req, res) => {
   var hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({Username: req.body.Username }) // search to see if user with requested username already exists
   .then(function(user) {
