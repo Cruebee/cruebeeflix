@@ -1,0 +1,1 @@
+mongoimport --host CruebeeCluster-shard-0/cruebeecluster-shard-00-00-aketz.mongodb.net:27017,cruebeecluster-shard-00-01-aketz.mongodb.net:27017,cruebeecluster-shard-00-02-aketz.mongodb.net:27017 --ssl --username Cruebee --password MissAlycatterson420 --authenticationDatabase admin --db myFlixDB --collection users --type json --file ../exported_collections/users_collection.json
