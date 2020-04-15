@@ -1,17 +1,17 @@
 const express = require('express'),
-  morgan = require('morgan'),
-  app = express(),
-  bodyParser = require('body-parser');
-  uuid = require('uuid'),
-  mongoose = require('mongoose'),
-  passport = require('passport'),
-  require('./passport'),
-  cors = require('cors'),
-  Models = require('./models.js'),
-  Movies = Models.Movie,
-  Users = Models.User,
-  Directors = Models.Director,
-  Genres = Models.Genre;
+morgan = require('morgan'),
+app = express(),
+bodyParser = require('body-parser');
+uuid = require('uuid'),
+mongoose = require('mongoose'),
+passport = require('passport'),
+require('./passport'),
+cors = require('cors'),
+Models = require('./models.js'),
+Movies = Models.Movie,
+Users = Models.User,
+Directors = Models.Director,
+Genres = Models.Genre;
 
 const { check, validationResult } = require('express-validator');
 
@@ -166,10 +166,18 @@ Email : String,
 Birthday: Date
 }*/
 app.post('/users',
-  [check('Username', 'Username is required').isLength({min: 5}),
-  check('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
-  check('Password', 'Password is required.').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid.').isEmail()], (req, res) => {
+[check('Username', 'Username is required').isLength({min: 5}),
+check('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
+check('Password', 'Password is required.').not().isEmpty(),
+check('Email', 'Email does not appear to be valid.').isEmail()], (req, res) => {
+
+  // Check the Validation object for errors.
+  var errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({errors: errors.array() });
+  }
+
   var hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({Username: req.body.Username }) // search to see if user with requested username already exists
   .then(function(user) {
@@ -197,29 +205,25 @@ app.post('/users',
 });
 
 
-// allow users to delete account by Username:
-app.delete('/users/:Username', passport.authenticate('jwt', { session : false }), function(req,res) {
-  Users.findOneAndRemove({ Username : req.params.Username })
-  .then(function(user) {
-    if (!user) {
-      res.status(400).send(req.params.Username + " was not found!");
-    } else {
-      res.status(200).send(req.params.Username + " was deleted.");
-    }
-  })
-  .catch(function(err) {
-    console.error(err);
-    res.status(500).send("Error: " + err);
-  });
-});
+// Update info of a user by Username:
+app.put('/users/:Username', passport.authenticate('jwt', { session : false }),
+[check('Username', 'Username is required.').isLength({min: 5}),
+check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+check('Password', 'Password is required').not().isEmpty(),
+check('Email', 'Email doesn\'t appear to be valid.').isEmail()], (req, res) => {
 
+  // check validation of object for errors:
+  var errors = validationResult(req);
 
-// Update info of a user by ID:
-app.put('/users/:Username', passport.authenticate('jwt', { session : false }), function(req, res) {
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+  var hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate({ Username : req.params.Username }, {$set :
     {
       Username : req.body.Username,
-      Password : req.body.Password,
+      Password : hashedPassword,
       Email : req.body.Email,
       Birthday : req.body.Birthday
     }},
@@ -233,6 +237,8 @@ app.put('/users/:Username', passport.authenticate('jwt', { session : false }), f
       }
     });
   });
+
+
   // allow users to add favorite movies to their account:
   app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session : false }), function(req, res) {
     Users.findOneAndUpdate({ Username : req.params.Username },
@@ -248,23 +254,42 @@ app.put('/users/:Username', passport.authenticate('jwt', { session : false }), f
       });
     });
 
+
     // Remove movie from favorites list:
     app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session : false }), function(req, res) {
       Users.findOneAndUpdate({ Username : req.params.Username },
-      {$pull : { FavoriteMovies : req.params.MovieID }},
-      {new : true},
-      function(err, updatedUser) {
-        if (err) {
+        {$pull : { FavoriteMovies : req.params.MovieID }},
+        {new : true},
+        function(err, updatedUser) {
+          if (err) {
+            console.error(err);
+            res.status(500).send("Error: " + err);
+          } else {
+            res.json(updatedUser);
+          }
+        });
+      });
+
+
+      // allow users to delete account by Username:
+      app.delete('/users/:Username', passport.authenticate('jwt', { session : false }), function(req,res) {
+        Users.findOneAndRemove({ Username : req.params.Username })
+        .then(function(user) {
+          if (!user) {
+            res.status(400).send(req.params.Username + " was not found!");
+          } else {
+            res.status(200).send(req.params.Username + " was deleted.");
+          }
+        })
+        .catch(function(err) {
           console.error(err);
           res.status(500).send("Error: " + err);
-        } else {
-          res.json(updatedUser);
-        }
+        });
       });
-    });
 
 
-    // listen for requests
-    app.listen(8080, () =>
-    console.log('My-Flix is listening on port 8080.')
-  );
+      // Setup listening port:
+      var port = process.env.PORT || 3000;
+      app.listen(port, "0.0.0.0", function() {
+        console.log('Listening on Port ${port}');
+      });
