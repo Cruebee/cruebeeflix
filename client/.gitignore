@@ -44,3 +44,7 @@ node_modules
 ################
 .cache 
 client/.cache
+client/src/.cache
+client/src/dist/.cache
+movie_api/.cache
+cache
