@@ -30097,12 +30097,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   _createClass(MainView, [{
     key: "componentDidMount",
-    // One of the "hooks" available in a React Component
     value: function componentDidMount() {
       var _this = this;
 
       _axios.default.get("<my-api-endpoint/movies>").then(function (response) {
-        // Assign the result to the state
         _this.setState({
           movies: response.data
         });
@@ -30113,9 +30111,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // If the state isn't initialized, this will throw on runtime before the data is initially loaded
-      var movies = this.state.movies; // Before the movies have been loaded
-
+      var movies = this.state.movies;
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
@@ -30295,7 +30291,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53943" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54278" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
