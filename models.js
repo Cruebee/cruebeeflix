@@ -42,6 +42,11 @@ userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.Password);
 };
 
+var Movie = mongoose.model("Movie", movieSchema);
+var Director = mongoose.model("Director", directorSchema);
+var Genre = mongoose.model("Genre", genreSchema);
+var User = mongoose.model("User", userSchema);
+
 Movie.findOne({ Title: req.params.Title })
   .populate("Director")
   .exec(function (err, Movie) {
@@ -55,11 +60,6 @@ Movie.findOne({ Title: req.params.Title })
     if (err) return handleError(err);
     console.log(Movie.Genre.Name);
   });
-
-var Movie = mongoose.model("Movie", movieSchema);
-var Director = mongoose.model("Director", directorSchema);
-var Genre = mongoose.model("Genre", genreSchema);
-var User = mongoose.model("User", userSchema);
 
 module.exports.Movie = Movie;
 module.exports.Director = Director;
