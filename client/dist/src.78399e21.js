@@ -30198,7 +30198,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Name)), _react.default.createElement("button", {
+      }, movie.Director)), _react.default.createElement("button", {
         onClick: function onClick() {
           return window.open("self", "main-view");
         }
