@@ -1,4 +1,5 @@
 import React from "react";
+import { Director } from "../../../../models";
 
 export class MovieView extends React.Component {
   constructor() {
