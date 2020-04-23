@@ -78,10 +78,6 @@ app.get("/movies", function (req, res) {
     .exec(function (err, movie) {
       if (err) return console.error(err);
       res.status(201).json(movie);
-    })
-    .catch(function (err) {
-      console.error(err);
-      res.status(500).send("Error: " + err);
     });
 });
 
