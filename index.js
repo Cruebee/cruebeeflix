@@ -73,6 +73,9 @@ app.get("/", function (req, res) {
 // get a JSON list of ALL movies:
 app.get("/movies", function (req, res) {
   Movies.find()
+    .populate({ path: "Director", select: "Name" })
+    .populate({ path: "Genre", select: "Name" })
+    .exec();
     .then(function (movies) {
       res.status(201).json(movies);
     })
