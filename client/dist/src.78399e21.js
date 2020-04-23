@@ -30192,13 +30192,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Genre: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Genre)), _react.default.createElement("div", {
+      }, movie.Genre.Name)), _react.default.createElement("div", {
         className: "movie-director"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director)), _react.default.createElement("button", {
+      }, movie.Director.Name)), _react.default.createElement("button", {
         onClick: function onClick() {
           return window.open("self", "main-view");
         }
