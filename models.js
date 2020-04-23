@@ -47,19 +47,15 @@ var Director = mongoose.model("Director", directorSchema);
 var Genre = mongoose.model("Genre", genreSchema);
 var User = mongoose.model("User", userSchema);
 
-Movie.findOne({ Title: req.params.Title })
-  .populate("Director")
-  .exec(function (err, Movie) {
-    if (err) return handleError(err);
-    console.log(Movie.Director.Name);
-  });
+Movie.populate("Director").exec(function (err, Movie) {
+  if (err) return handleError(err);
+  console.log(Movie.Director.Name);
+});
 
-Movie.findOne({ Title: req.params.Title })
-  .populate("Genre")
-  .exec(function (err, Movie) {
-    if (err) return handleError(err);
-    console.log(Movie.Genre.Name);
-  });
+Movie.populate("Genre").exec(function (err, Movie) {
+  if (err) return handleError(err);
+  console.log(Movie.Genre.Name);
+});
 
 module.exports.Movie = Movie;
 module.exports.Director = Director;
