@@ -11,16 +11,6 @@ var movieSchema = mongoose.Schema({
   Featured: Boolean,
 });
 
-Movie.populate("director").exec(function (err, movie) {
-  if (err) return handleError(err);
-  console.log("The Director is ", movie.director.name);
-});
-
-Movie.populate("genre").exec(function (err, movie) {
-  if (err) return handleError(err);
-  console.log("The Genre is ", movie.genre.name);
-});
-
 // Directors Schema
 var directorSchema = mongoose.Schema({
   Name: { type: String, required: true },
@@ -51,6 +41,20 @@ userSchema.statics.hashPassword = function (password) {
 userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.Password);
 };
+
+Movie.findOne({ Title: req.params.Title })
+  .populate("Director")
+  .exec(function (err, Movie) {
+    if (err) return handleError(err);
+    console.log("The director is ", Movie.Director.Name);
+  });
+
+Movie.findOne({ Title: req.params.Title })
+  .populate("Genre")
+  .exec(function (err, movie) {
+    if (err) return handleError(err);
+    console.log("The genre is ", Movie.Genre.Name);
+  });
 
 var Movie = mongoose.model("Movie", movieSchema);
 var Director = mongoose.model("Director", directorSchema);
