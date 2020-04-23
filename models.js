@@ -48,8 +48,8 @@ var Genre = mongoose.model("Genre", genreSchema);
 var User = mongoose.model("User", userSchema);
 
 Movie.find()
-  .populate({ path: "Director", select: "Name" })
-  .populate({ path: "Genre", select: "Name" });
+  .populate({ "Director" })
+  .populate({ "Genre"});
 
 module.exports.Movie = Movie;
 module.exports.Director = Director;
