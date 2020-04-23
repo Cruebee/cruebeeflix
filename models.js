@@ -47,11 +47,6 @@ var Director = mongoose.model("Director", directorSchema);
 var Genre = mongoose.model("Genre", genreSchema);
 var User = mongoose.model("User", userSchema);
 
-Movie.find()
-  .populate({ "Director" })
-  .populate({ "Genre"})
-  .exec();
-
 module.exports.Movie = Movie;
 module.exports.Director = Director;
 module.exports.Genre = Genre;
