@@ -73,11 +73,17 @@ app.get("/", function (req, res) {
 // get a JSON list of ALL movies:
 app.get("/movies", function (req, res) {
   Movies.find({})
-    .populate("Director")
-    .populate("Genre")
+    .populate("director")
+    .populate("genre")
     .exec(function (err, movie) {
       if (err) return console.error(err);
-      res.status(201).json(movie);
+    })
+    .then(function (movies) {
+      res.status(201).json(movies);
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.status(500).send("Error: " + err);
     });
 });
 
