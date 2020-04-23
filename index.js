@@ -79,9 +79,6 @@ app.get("/movies", function (req, res) {
       if (err) return console.error(err);
       res.status(201).json(movie);
     })
-    .then(function (movies) {
-      res.status(201).json(movies);
-    })
     .catch(function (err) {
       console.error(err);
       res.status(500).send("Error: " + err);
