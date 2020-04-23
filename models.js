@@ -47,8 +47,9 @@ var Director = mongoose.model("Director", directorSchema);
 var Genre = mongoose.model("Genre", genreSchema);
 var User = mongoose.model("User", userSchema);
 
-var Movie = await Movie.findOne({ Title: req.params.Title }).populate("Genre");
-Movie.Genre;
+Movie.find()
+  .populate({ path: "Director", select: "Name" })
+  .populate({ path: "Genre", select: "Name" });
 
 module.exports.Movie = Movie;
 module.exports.Director = Director;
