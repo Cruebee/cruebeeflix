@@ -1,7 +1,7 @@
-import React from "react";
-import axios from "axios";
-import { MovieCard } from "../movie-card/movie-card";
-import { MovieView } from "../movie-view/movie-view";
+import React from 'react';
+import axios from 'axios';
+import { MovieCard } from '../movie-card/movie-card';
+import { MovieView } from '../movie-view/movie-view';
 
 export class MainView extends React.Component {
   constructor() {
@@ -16,7 +16,7 @@ export class MainView extends React.Component {
   // One of the "hooks" available in a React Component
   componentDidMount() {
     axios
-      .get("https://cruebeeflix.herokuapp.com/movies")
+      .get('https://cruebeeflix.herokuapp.com/movies')
       .then((response) => {
         this.setState({
           movies: response.data,
@@ -37,21 +37,21 @@ export class MainView extends React.Component {
     const { movies, selectedMovie } = this.state;
 
     // Before the movies have been loaded
-    if (!movies) return <div className="main-view" />;
+    if (!movies) return <div className='main-view' />;
 
     return (
-      <div className="main-view">
+      <div className='main-view'>
         {selectedMovie ? (
           <MovieView movie={selectedMovie} />
         ) : (
-          movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onClick={(movie) => this.onMovieClick(movie)}
-            />
-          ))
-        )}
+            movies.map((movie) => (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                onClick={(movie) => this.onMovieClick(movie)}
+              />
+            ))
+          )}
       </div>
     );
   }

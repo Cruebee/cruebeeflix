@@ -30200,7 +30200,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement("button", {
         onClick: function onClick() {
-          return window.open("self", "main-view");
+          return window.open('self', 'main-view');
         }
       }, "Back"));
     }
@@ -30274,7 +30274,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get("https://cruebeeflix.herokuapp.com/movies").then(function (response) {
+      _axios.default.get('https://cruebeeflix.herokuapp.com/movies').then(function (response) {
         _this2.setState({
           movies: response.data
         });
@@ -30453,7 +30453,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component); // Finds the root of your App:
 
 
-var container = document.getElementsByClassName("app-container")[0]; // Tells React to render your app in the root DOM element:
+var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element:
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./index.scss":"index.scss"}],"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -30484,7 +30484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53489" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
