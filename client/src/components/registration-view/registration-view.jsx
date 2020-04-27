@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 export function RegistrationView(props) {
@@ -14,8 +12,10 @@ export function RegistrationView(props) {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    console.log('Registered');
+
     axios
-      .post('https://cruebeeflix.herokuapp.com/movies', {
+      .post('https://cruebeeflix.herokuapp.com/users', {
         Username: username,
         Password: password,
         Email: email,
@@ -23,11 +23,12 @@ export function RegistrationView(props) {
       })
       .then((response) => {
         const data = response.data;
+        alert('Your account has been created. Please login.');
         console.log(data);
-        window.open("/", "_self");
+        window.open('/client', '_self');
       })
       .catch((e) => {
-        console.log("error registering user.");
+        console.log('error registering user.');
       });
   };
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -15,7 +16,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: null,
       selectedMovie: null,
-      user: null
+      user: null,
+      register: false
     };
   }
 
@@ -45,10 +47,36 @@ export class MainView extends React.Component {
     });
   }
 
-  render() {
-    const { movies, selectedMovie, user } = this.state;
+  // test
+  onSignedIn(user) {
+    this.setState({
+      user: user,
+      register: false
+    });
+  }
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+  register() {
+    this.setState({ register: true });
+  }
+
+  render() {
+    const { movies, selectedMovie, user, register } = this.state;
+
+    if (!user && register === false)
+      return (
+        <LoginView
+          onClick={() => this.onRegistered()}
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+        />
+      );
+
+    if (register)
+      return (
+        <RegistrationView
+          onClick={() => this.alreadyMember()}
+          onSignedIn={(user) => this.onSignedIn(user)}
+        />
+      );
 
     // Before the movies have been loaded
     if (!movies) return <div className='main-view' />;
@@ -58,9 +86,9 @@ export class MainView extends React.Component {
         <Row>
           {selectedMovie
             ? <MovieView movie={selectedMovie} />
-            : movies.map(movie => (
+            : movies.map((movie) => (
               <Col>
-                <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
               </Col>
             ))
           }
