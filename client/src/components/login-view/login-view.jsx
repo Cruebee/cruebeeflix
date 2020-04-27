@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ export function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication then call props.onLoggedIn(username) */
-    // props.onLoggedIn(username);
+    props.onLoggedIn(username);
   };
 
   return (
@@ -21,7 +22,7 @@ export function LoginView(props) {
         Password:
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
-      <button type="button" onClick={handleSubmit}>Submit</button>
+      <Button variant="primary" type="button" onClick={handleSubmit}>Submit</Button>
     </form>
   );
 }

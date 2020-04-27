@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export class MovieCard extends React.Component {
+
   render() {
     // This is given to the <MovieCard/> component by the outer world
     // Which in this case, is the "MainView", as "MainView" is what's connected to your DB
@@ -17,7 +18,7 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onClick(movie)} variant="link">Open</Button>
+          <Button onClick={() => onClick(movie)} variant="primary">Open</Button>
         </Card.Body>
       </Card>
     );

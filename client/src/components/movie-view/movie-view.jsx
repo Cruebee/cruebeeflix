@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
 
 export class MovieView extends React.Component {
   constructor() {
@@ -32,7 +33,7 @@ export class MovieView extends React.Component {
           <span className='label'>Director: </span>
           <span className='value'>{movie.Director[0].Name}</span>
         </div>
-        <button onClick={() => window.open('self', 'main-view')}>Back</button>
+        <Button onClick={() => window.open('main-view', 'self')} variant="primary">Back</Button>
       </div>
     );
   }
