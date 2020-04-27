@@ -30508,9 +30508,9 @@ function LoginView(props) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
-    variant: "primary",
     type: "button",
-    onClick: handleSubmit
+    onClick: handleSubmit,
+    variant: "primary"
   }, "Submit"));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"../node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
