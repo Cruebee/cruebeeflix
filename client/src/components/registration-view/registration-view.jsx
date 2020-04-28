@@ -67,9 +67,18 @@ export function RegistrationView(props) {
             value={birthday}
             onChange={(e) => createBirthday(e.target.value)} />
         </Form.Group>
-        <Button type='submit' onClick={handleRegister}>
-          Register
+        <Button
+          type='submit'
+          onClick={handleRegister}
+          variant='success'
+        >Register
       </Button>
+        <Button
+          className='back-button'
+          onClick={() => window.open('main-view', '_self')}
+          variant='primary'
+        >Back
+        </Button>
       </Form>
     </div>
   );

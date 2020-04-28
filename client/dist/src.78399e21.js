@@ -34805,8 +34805,15 @@ function RegistrationView(props) {
     }
   })), _react.default.createElement(_Button.default, {
     type: "submit",
-    onClick: handleRegister
-  }, "Register")));
+    onClick: handleRegister,
+    variant: "success"
+  }, "Register"), _react.default.createElement(_Button.default, {
+    className: "back-button",
+    onClick: function onClick() {
+      return window.open('main-view', '_self');
+    },
+    variant: "primary"
+  }, "Back")));
 }
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
