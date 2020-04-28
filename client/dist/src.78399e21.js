@@ -32615,6 +32615,7 @@ function RegistrationView(props) {
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
     console.log('Registered');
+    props.onRegister(false);
 
     _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
       Username: username,
@@ -32725,6 +32726,10 @@ function LoginView(props) {
     props.onLoggedIn(username);
   };
 
+  var handleRegister = function handleRegister() {
+    props.onRegister(true);
+  };
+
   return _react.default.createElement(_Form.default, null, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Control, {
@@ -32747,7 +32752,15 @@ function LoginView(props) {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"));
+  }, "Submit"), _react.default.createElement(_Form.default.Group, {
+    className: "registration-group",
+    controlId: "formRegistration"
+  }, _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, "Need an account?"), _react.default.createElement(_Button.default, {
+    className: "register-link",
+    onClick: handleRegister
+  }, "Register Here")));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
@@ -33186,7 +33199,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       movies: null,
       selectedMovie: null,
       user: null,
-      register: false
+      register: null
     };
     return _this;
   } // One of the "hooks" available in a React Component
@@ -33218,29 +33231,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         user: user
       });
-    } // Button to return to see all movies:
-
-  }, {
-    key: "onButtonClick",
-    value: function onButtonClick() {
-      this.setState({
-        selectedMovie: null
-      });
-    } // test
-
-  }, {
-    key: "onSignedIn",
-    value: function onSignedIn(user) {
-      this.setState({
-        user: user,
-        register: false
-      });
     }
   }, {
-    key: "register",
-    value: function register() {
+    key: "onRegister",
+    value: function onRegister(register) {
       this.setState({
-        register: true
+        register: register
       });
     }
   }, {
@@ -33253,20 +33249,17 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user,
           register = _this$state.register;
-      if (!user && register === false) return _react.default.createElement(_loginView.LoginView, {
-        onClick: function onClick() {
-          return _this3.onRegistered();
-        },
-        onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
+      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
+        onRegister: function onRegister(register) {
+          return _this3.onRegister(register);
         }
       });
-      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
-        onClick: function onClick() {
-          return _this3.alreadyMember();
+      if (!user) return _react.default.createElement(_loginView.LoginView, {
+        onLoggedIn: function onLoggedIn(user) {
+          return _this3.onLoggedIn(user);
         },
-        onSignedIn: function onSignedIn(user) {
-          return _this3.onSignedIn(user);
+        onRegister: function onRegister(register) {
+          return _this3.onRegister(register);
         }
       }); // Before the movies have been loaded
 

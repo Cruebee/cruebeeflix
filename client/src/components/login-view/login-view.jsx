@@ -13,6 +13,10 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
+  const handleRegister = () => {
+    props.onRegister(true);
+  };
+
   return (
     <Form>
       <Form.Group controlId='formBasicUsername'>
@@ -37,6 +41,11 @@ export function LoginView(props) {
         onClick={handleSubmit}>
         Submit
         </Button>
+
+      <Form.Group className='registration-group' controlId='formRegistration'>
+        <Form.Text className='text-muted'>Need an account?</Form.Text>
+        <Button className='register-link' onClick={handleRegister}>Register Here</Button>
+      </Form.Group>
     </Form>
   );
 }

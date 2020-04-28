@@ -17,7 +17,7 @@ export class MainView extends React.Component {
       movies: null,
       selectedMovie: null,
       user: null,
-      register: false
+      register: null
     };
   }
 
@@ -47,43 +47,17 @@ export class MainView extends React.Component {
     });
   }
 
-  // Button to return to see all movies:
-  onButtonClick() {
+  onRegister(register) {
     this.setState({
-      selectedMovie: null,
+      register
     });
-  }
-
-  // test
-  onSignedIn(user) {
-    this.setState({
-      user: user,
-      register: false
-    });
-  }
-
-  register() {
-    this.setState({ register: true });
   }
 
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (!user && register === false)
-      return (
-        <LoginView
-          onClick={() => this.onRegistered()}
-          onLoggedIn={(user) => this.onLoggedIn(user)}
-        />
-      );
-
-    if (register)
-      return (
-        <RegistrationView
-          onClick={() => this.alreadyMember()}
-          onSignedIn={(user) => this.onSignedIn(user)}
-        />
-      );
+    if (register) return <RegistrationView onRegister={register => this.onRegister(register)} />;
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />
 
     // Before the movies have been loaded
     if (!movies) return <div className='main-view' />;
