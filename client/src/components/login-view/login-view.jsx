@@ -29,7 +29,6 @@ export function LoginView(props) {
           value={username}
           onChange={(e) => setUsername(e.target.value)} />
       </Form.Group>
-
       <Form.Group controlId='formBasicPassword'>
         <Form.Control
           type='text'
@@ -37,17 +36,19 @@ export function LoginView(props) {
           value={password}
           onChange={(e) => setPassword(e.target.value)} />
       </Form.Group>
-
       <Button
         variant='primary'
         type='submit'
-        onClick={handleSubmit}>
-        Submit
+        onClick={handleSubmit}
+      >Submit
         </Button>
-
       <Form.Group className='registration-group' controlId='formRegistration'>
         <Form.Text className='text-muted'>Need an account?</Form.Text>
-        <Button className='register-link' onClick={handleRegister}>Register Here</Button>
+        <Button
+          className='register-link'
+          onClick={handleRegister}
+        >Register Here
+          </Button>
       </Form.Group>
     </Form>
   );
