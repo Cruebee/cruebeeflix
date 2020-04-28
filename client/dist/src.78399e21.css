@@ -1,3 +1,19 @@
+.login-form {
+  margin: 8rem auto;
+  width: 30%;
+  color: #829079;
+}
+
+.myflix-title {
+  margin: 8rem auto;
+  width: 30%;
+  color: #b9925e;
+  text-align: center;
+}
+
+.submit-button {
+  background-color: #829079;
+}
 .my-flix {
   color: black;
 }

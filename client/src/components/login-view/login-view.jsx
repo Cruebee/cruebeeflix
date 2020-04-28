@@ -21,35 +21,39 @@ export function LoginView(props) {
   };
 
   return (
-    <Form>
-      <Form.Group controlId='formBasicUsername'>
-        <Form.Control
-          type='text'
-          placeholder='Enter Username'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)} />
-      </Form.Group>
-      <Form.Group controlId='formBasicPassword'>
-        <Form.Control
-          type='text'
-          placeholder='Enter password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} />
-      </Form.Group>
-      <Button
-        variant='primary'
-        type='submit'
-        onClick={handleSubmit}
-      >Submit
-        </Button>
-      <Form.Group className='registration-group' controlId='formRegistration'>
-        <Form.Text className='text-muted'>Need an account?</Form.Text>
+    <div>
+      <h1 className='myflix-title'>Login</h1>
+      <Form className='login-form'>
+        <Form.Group controlId='formUsername'>
+          <Form.Control
+            type='text'
+            placeholder='Enter Username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} />
+        </Form.Group>
+        <Form.Group controlId='formPassword'>
+          <Form.Control
+            type='text'
+            placeholder='Enter password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
         <Button
-          className='register-link'
-          onClick={handleRegister}
-        >Register Here
+          className='submit-button'
+          variant='primary'
+          type='submit'
+          onClick={handleSubmit}
+        >Submit
+        </Button>
+        <Form.Group className='registration-group' controlId='formRegistration'>
+          <Form.Text className='text-muted'>Need an account?</Form.Text>
+          <Button
+            className='register-link'
+            onClick={handleRegister}
+          >Register Here
           </Button>
-      </Form.Group>
-    </Form>
+        </Form.Group>
+      </Form>
+    </div>
   );
 }

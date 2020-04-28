@@ -60,6 +60,7 @@ export class MovieView extends React.Component {
               </div>
 
               <Button
+                className='back-button'
                 onClick={() => window.open('main-view', '_self')}
                 variant='primary'
               >Back

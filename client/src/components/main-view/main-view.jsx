@@ -3,6 +3,7 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -65,18 +66,24 @@ export class MainView extends React.Component {
     if (!movies) return <div className='main-view' />;
 
     return (
-      <Container className="main-view">
-        <Row>
-          {selectedMovie
-            ? <MovieView movie={selectedMovie} />
-            : movies.map(movie => (
-              <Col>
-                <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-              </Col>
-            ))
-          }
-        </Row>
-      </Container>
+      <div className='main-view'>
+        <Navbar className='navbar navbar-dark'>
+          <h1 className='myflix-movies'>myFlix Movies</h1>
+        </Navbar>
+
+        <Container className="main-view">
+          <Row>
+            {selectedMovie
+              ? <MovieView movie={selectedMovie} />
+              : movies.map(movie => (
+                <Col>
+                  <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                </Col>
+              ))
+            }
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
