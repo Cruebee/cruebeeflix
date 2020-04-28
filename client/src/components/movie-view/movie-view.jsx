@@ -23,7 +23,7 @@ export class MovieView extends React.Component {
           <Col>
             <div className='movie-view'>
 
-              <img classname='movie-poster' src={movie.ImagePath} />
+              <img className='movie-poster' src={movie.ImagePath} />
 
               <div className='movie-title'>
                 <span className='label'>Title:</span>
@@ -38,11 +38,21 @@ export class MovieView extends React.Component {
               <div className='movie-genre'>
                 <span className='label'>Genre:</span>
                 <span className='value'>{movie.Genre[0].Name}</span>
+                <Button
+                  onClick={() => onClick(genre)}
+                  variant='primary'
+                >Genre
+                  </Button>
               </div>
 
               <div className='movie-director'>
                 <span className='label'>Director:</span>
                 <span className='value'>{movie.Director[0].Name}</span>
+                <Button
+                  onClick={() => onClick(director)}
+                  variant='primary'
+                >Director
+                  </Button>
               </div>
 
               <Button

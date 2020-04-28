@@ -33089,7 +33089,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("img", {
-        classname: "movie-poster",
+        className: "movie-poster",
         src: movie.ImagePath
       }), _react.default.createElement("div", {
         className: "movie-title"
@@ -33109,13 +33109,43 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Genre:"), _react.default.createElement("span", {
         className: "value"
-      }, movie.Genre[0].Name)), _react.default.createElement("div", {
+      }, movie.Genre[0].Name), _react.default.createElement(_Button.default, {
+        onClick: function (_onClick) {
+          function onClick() {
+            return _onClick.apply(this, arguments);
+          }
+
+          onClick.toString = function () {
+            return _onClick.toString();
+          };
+
+          return onClick;
+        }(function () {
+          return onClick(genre);
+        }),
+        variant: "primary"
+      }, "Genre")), _react.default.createElement("div", {
         className: "movie-director"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Director:"), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director[0].Name)), _react.default.createElement(_Button.default, {
+      }, movie.Director[0].Name), _react.default.createElement(_Button.default, {
+        onClick: function (_onClick2) {
+          function onClick() {
+            return _onClick2.apply(this, arguments);
+          }
+
+          onClick.toString = function () {
+            return _onClick2.toString();
+          };
+
+          return onClick;
+        }(function () {
+          return onClick(director);
+        }),
+        variant: "primary"
+      }, "Director")), _react.default.createElement(_Button.default, {
         onClick: function onClick() {
           return window.open('main-view', '_self');
         },
