@@ -33034,6 +33034,12 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -33078,41 +33084,43 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var movie = this.props.movie;
       if (!movie) return null;
-      return _react.default.createElement("div", {
+      return _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, {
+        className: "justify-content-center"
+      }, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("img", {
-        className: "movie-poster",
+        classname: "movie-poster",
         src: movie.ImagePath
       }), _react.default.createElement("div", {
         className: "movie-title"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Title: "), _react.default.createElement("span", {
+      }, "Title:"), _react.default.createElement("span", {
         className: "value"
       }, movie.Title)), _react.default.createElement("div", {
         className: "movie-description"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Description: "), _react.default.createElement("span", {
+      }, "Description:"), _react.default.createElement("span", {
         className: "value"
       }, movie.Description)), _react.default.createElement("div", {
         className: "movie-genre"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Genre: "), _react.default.createElement("span", {
+      }, "Genre:"), _react.default.createElement("span", {
         className: "value"
       }, movie.Genre[0].Name)), _react.default.createElement("div", {
         className: "movie-director"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Director: "), _react.default.createElement("span", {
+      }, "Director:"), _react.default.createElement("span", {
         className: "value"
       }, movie.Director[0].Name)), _react.default.createElement(_Button.default, {
         onClick: function onClick() {
           return window.open('main-view', 'self');
         },
         variant: "primary"
-      }, "Back"));
+      }, "Back")))));
     }
   }]);
 
@@ -33134,7 +33142,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
