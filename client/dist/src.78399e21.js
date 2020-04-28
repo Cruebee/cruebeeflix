@@ -34894,7 +34894,7 @@ function LoginView(props) {
     }
   })), _react.default.createElement(_Button.default, {
     className: "submit-button",
-    variant: "primary",
+    variant: "success",
     type: "submit",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement(_Form.default.Group, {
@@ -34903,7 +34903,8 @@ function LoginView(props) {
   }, _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
   }, "Need an account?"), _react.default.createElement(_Button.default, {
-    className: "register-link",
+    variant: "info",
+    className: "registration-button",
     onClick: handleRegister
   }, "Register Here"))));
 }

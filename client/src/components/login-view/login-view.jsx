@@ -40,7 +40,7 @@ export function LoginView(props) {
         </Form.Group>
         <Button
           className='submit-button'
-          variant='primary'
+          variant='success'
           type='submit'
           onClick={handleSubmit}
         >Submit
@@ -48,7 +48,8 @@ export function LoginView(props) {
         <Form.Group className='registration-group' controlId='formRegistration'>
           <Form.Text className='text-muted'>Need an account?</Form.Text>
           <Button
-            className='register-link'
+            variant='info'
+            className='registration-button'
             onClick={handleRegister}
           >Register Here
           </Button>

@@ -1,6 +1,12 @@
-$olive: #829079;
-$tan: #ede6b9;
-$brown: #b9925e;
+$blue: #007bff;
+$green: #28a745;
+$grey: #6c757d;
+$yellow: #ffc106;
+$red: #dc3545;
+$teal: #17a2b8;
+$white: #fff;
+$black: #343a40;
+
 
 .login-form {
   margin: 8rem auto;
@@ -13,8 +19,4 @@ $brown: #b9925e;
   width: 30%;
   color: $brown;
   text-align: center;
-}
-
-.submit-button {
-  background-color: $olive;
 }
