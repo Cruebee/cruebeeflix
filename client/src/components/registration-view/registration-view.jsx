@@ -37,7 +37,7 @@ export function RegistrationView(props) {
 
   return (
     <div>
-      <h1 className='app-title'>myFlix API Registration</h1>
+      <h1 className='register-title'>myFlix Registration</h1>
       <Form className='registration-form'>
         <Form.Group controlId='formUsername'>
           <Form.Control
@@ -79,8 +79,8 @@ export function RegistrationView(props) {
           <Button
             className='back-button'
             onClick={() => window.open('main-view', '_self')}
-            variant='primary'
-          >Login Page
+            variant='info'
+          >Login
         </Button>
         </Form.Group>
       </Form>

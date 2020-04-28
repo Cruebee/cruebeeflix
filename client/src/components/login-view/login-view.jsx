@@ -22,7 +22,7 @@ export function LoginView(props) {
 
   return (
     <div>
-      <h1 className='app-title'>Login</h1>
+      <h1 className='login-title'>Login</h1>
       <Form className='login-form'>
         <Form.Group controlId='formUsername'>
           <Form.Control
