@@ -33117,7 +33117,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "value"
       }, movie.Director[0].Name)), _react.default.createElement(_Button.default, {
         onClick: function onClick() {
-          return window.open('main-view', 'self');
+          return window.open('main-view', '_self');
         },
         variant: "primary"
       }, "Back")))));
