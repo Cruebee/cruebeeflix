@@ -34804,16 +34804,22 @@ function RegistrationView(props) {
       return createBirthday(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
+    className: "submit-button",
     type: "submit",
     onClick: handleRegister,
     variant: "success"
-  }, "Register"), _react.default.createElement(_Button.default, {
+  }, "Register"), _react.default.createElement(_Form.default.Group, {
+    className: "login-group",
+    controlId: "formLogin"
+  }, _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, "Already have an account?"), _react.default.createElement(_Button.default, {
     className: "back-button",
     onClick: function onClick() {
       return window.open('main-view', '_self');
     },
     variant: "primary"
-  }, "Back")));
+  }, "Login Page"))));
 }
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -34878,7 +34884,7 @@ function LoginView(props) {
   };
 
   return _react.default.createElement("div", null, _react.default.createElement("h1", {
-    className: "myflix-title"
+    className: "app-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {

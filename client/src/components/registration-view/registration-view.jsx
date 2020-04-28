@@ -68,17 +68,21 @@ export function RegistrationView(props) {
             onChange={(e) => createBirthday(e.target.value)} />
         </Form.Group>
         <Button
+          className='submit-button'
           type='submit'
           onClick={handleRegister}
           variant='success'
         >Register
       </Button>
-        <Button
-          className='back-button'
-          onClick={() => window.open('main-view', '_self')}
-          variant='primary'
-        >Back
+        <Form.Group className='login-group' controlId='formLogin'>
+          <Form.Text className='text-muted'>Already have an account?</Form.Text>
+          <Button
+            className='back-button'
+            onClick={() => window.open('main-view', '_self')}
+            variant='primary'
+          >Login Page
         </Button>
+        </Form.Group>
       </Form>
     </div>
   );
