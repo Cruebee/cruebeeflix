@@ -36,7 +36,15 @@ export class DirectorView extends React.Component {
 
         </Card.Body>
       </Card>
-    )
+    );
 
   }
 }
+
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Bio: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired
+  }).isRequired
+};
