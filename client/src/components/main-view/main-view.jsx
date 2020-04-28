@@ -47,6 +47,13 @@ export class MainView extends React.Component {
     });
   }
 
+  // Button to return to see all movies:
+  onButtonClick() {
+    this.setState({
+      selectedMovie: null,
+    });
+  }
+
   // test
   onSignedIn(user) {
     this.setState({
@@ -86,9 +93,9 @@ export class MainView extends React.Component {
         <Row>
           {selectedMovie
             ? <MovieView movie={selectedMovie} />
-            : movies.map((movie) => (
+            : movies.map(movie => (
               <Col>
-                <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
+                <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
               </Col>
             ))
           }

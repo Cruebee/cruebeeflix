@@ -33218,6 +33218,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         user: user
       });
+    } // Button to return to see all movies:
+
+  }, {
+    key: "onButtonClick",
+    value: function onButtonClick() {
+      this.setState({
+        selectedMovie: null
+      });
     } // test
 
   }, {
