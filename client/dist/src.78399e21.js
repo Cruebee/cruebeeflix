@@ -34875,6 +34875,7 @@ function LoginView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(username, password);
     /* Send a request to the server for authentication */
 
     _axios.default.post("https://cruebeeflix.herokuapp.com/login", {
