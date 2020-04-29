@@ -10,25 +10,9 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    /* Send a request to server for authentication */
-    axios
-      .post("https://cruebeeflix.herokuapp.com/login", {
-        Username: username,
-        Password: password,
-      })
-      .then((response) => {
-        const data = response.data;
-        props.onLoggedIn(data);
-      })
-      .catch((e) => {
-        console.log("user does not exist");
-      });
-=======
     console.log(username, password);
     /* Send a request to the server for authentication then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
->>>>>>> parent of 13156db... implement POST method on Login-view
   };
 
   const handleRegister = () => {
@@ -39,19 +23,7 @@ export function LoginView(props) {
     <div>
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Form.Group controlId="formBasicUsername">
-=======
         <Form.Group controlId="formUsername">
->>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
-=======
-        <Form.Group controlId="formBasicUsername">
->>>>>>> parent of 2ea955d... authentication is not working won't allow login
-=======
-        <Form.Group controlId="formUsername">
->>>>>>> parent of 13156db... implement POST method on Login-view
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -59,19 +31,7 @@ export function LoginView(props) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Form.Group controlId="formBasicPassword">
-=======
         <Form.Group controlId="formPassword">
->>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
-=======
-        <Form.Group controlId="formBasicPassword">
->>>>>>> parent of 2ea955d... authentication is not working won't allow login
-=======
-        <Form.Group controlId="formPassword">
->>>>>>> parent of 13156db... implement POST method on Login-view
           <Form.Control
             type="text"
             placeholder="Enter password"
