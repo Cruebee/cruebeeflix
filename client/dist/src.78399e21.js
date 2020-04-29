@@ -34877,7 +34877,7 @@ function LoginView(props) {
     e.preventDefault();
     /* Send a request to server for authentication */
 
-    _axios.default.post("https://cruebeeflix.herokuapp.com/users", {
+    _axios.default.post("https://cruebeeflix.herokuapp.com/login", {
       Username: username,
       Password: password
     }).then(function (response) {

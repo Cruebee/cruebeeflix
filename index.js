@@ -2,16 +2,16 @@ const express = require('express'),
   morgan = require('morgan'),
   app = express(),
   bodyParser = require('body-parser');
-(uuid = require('uuid')),
-  (mongoose = require('mongoose')),
-  (passport = require('passport')),
+  uuid = require('uuid'),
+  mongoose = require('mongoose'),
+  passport = require('passport'),
   require('./passport'),
-  (cors = require('cors')),
-  (Models = require('./models.js')),
-  (Movies = Models.Movie),
-  (Users = Models.User),
-  (Directors = Models.Director),
-  (Genres = Models.Genre);
+  cors = require('cors'),
+  Models = require('./models.js'),
+  Movies = Models.Movie,
+  Users = Models.User,
+  Directors = Models.Director,
+  Genres = Models.Genre;
 
 const { check, validationResult } = require('express-validator');
 
@@ -27,6 +27,22 @@ var allowedOrigins = [
   'http://testsite.com',
   'http://localhost:1234',
 ];
+
+
+// use morgan to log URL access
+app.use(morgan('common'));
+
+// use express.static to return all static files within 'public' folder
+app.use(express.static('public'));
+
+// initialize the body-parser module
+app.use(bodyParser.json());
+
+// use cors
+app.use(cors());
+
+// import "auth.js" file.
+var auth = require('./auth')(app);
 
 // use CORS:
 app.use(
@@ -44,18 +60,6 @@ app.use(
     },
   })
 );
-
-// use morgan to log URL access
-app.use(morgan('common'));
-
-// use express.static to return all static files within 'public' folder
-app.use(express.static('public'));
-
-// initialize the body-parser module
-app.use(bodyParser.json());
-
-// import "auth.js" file.
-var auth = require('./auth')(app);
 
 // add in error handler: (figure out how to make the error handler communicate the cause of error i.e., username/password/email are required.)
 app.use(function (err, req, res, next) {
@@ -175,18 +179,15 @@ app.get('/users',
 
 // GET a user by Username:
 app.get('/users/:Username',
-  passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    Users.findOne({ Username: req.params.Username })
-      .then(function (user) {
-        res.json(user);
-      })
-      .catch(function (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
+  passport.authenticate('jwt', {session: false}),
+  function(req, res) {
+    Users.findOne({ Username: req.params.Username})
+      .populate('FavoriteMovies')
+      .exec(function(err, user) {
+        if (err) return console.error(err);
+        res.status(201).json(user);
       });
-  }
-);
+  });
 
 // Add a user:
 /* We'll expect JSON in this format

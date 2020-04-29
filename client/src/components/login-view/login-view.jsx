@@ -13,7 +13,7 @@ export function LoginView(props) {
     e.preventDefault();
     /* Send a request to server for authentication */
     axios
-      .post("https://cruebeeflix.herokuapp.com/users", {
+      .post("https://cruebeeflix.herokuapp.com/login", {
         Username: username,
         Password: password,
       })
