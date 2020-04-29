@@ -20,6 +20,19 @@
   color: #343a40;
   text-align: center;
 }
+.movie-view {
+  margin: 2rem auto;
+  text-align: center;
+  width: 25rem;
+}
+.navbar,
+.navbar-dark {
+  justify-content: center;
+}
+
+.main-view-title {
+  color: #343a40;
+}
 .my-flix {
   color: #343a40;
 }

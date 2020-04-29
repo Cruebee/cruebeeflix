@@ -6,3 +6,12 @@ $red: #dc3545;
 $teal: #17a2b8;
 $white: #fff;
 $black: #343a40;
+
+.navbar,
+.navbar-dark {
+  justify-content: center;
+}
+
+.main-view-title {
+  color: $black;
+}

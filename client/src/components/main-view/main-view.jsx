@@ -68,7 +68,7 @@ export class MainView extends React.Component {
     return (
       <div className='main-view'>
         <Navbar className='navbar navbar-dark'>
-          <h1 className='myflix-movies'>myFlix Movies</h1>
+          <h1 className='main-view-title'>myFlix Movies</h1>
         </Navbar>
 
         <Container className="main-view">

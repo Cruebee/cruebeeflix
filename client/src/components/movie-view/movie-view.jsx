@@ -21,7 +21,7 @@ export class MovieView extends React.Component {
 
     return (
       <Container>
-        <Row className='justify-content-center'>
+        <Row>
           <Col>
             <div className='movie-view'>
 
@@ -62,7 +62,7 @@ export class MovieView extends React.Component {
               <Button
                 className='back-button'
                 onClick={() => window.open('main-view', '_self')}
-                variant='primary'
+                variant='info'
               >Back
                 </Button>
 

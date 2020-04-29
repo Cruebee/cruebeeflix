@@ -78,7 +78,7 @@ export function RegistrationView(props) {
           <Form.Text className='text-muted'>Already have an account?</Form.Text>
           <Button
             className='back-button'
-            onClick={() => window.open('main-view', '_self')}
+            onClick={() => window.open('login-view', '_self')}
             variant='info'
           >Login
         </Button>

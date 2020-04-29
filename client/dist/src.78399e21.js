@@ -34816,7 +34816,7 @@ function RegistrationView(props) {
   }, "Already have an account?"), _react.default.createElement(_Button.default, {
     className: "back-button",
     onClick: function onClick() {
-      return window.open('main-view', '_self');
+      return window.open('login-view', '_self');
     },
     variant: "info"
   }, "Login"))));
@@ -35259,9 +35259,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           movie = _this$props.movie,
           _onClick = _this$props.onClick;
       if (!movie) return null;
-      return _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, {
-        className: "justify-content-center"
-      }, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      return _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("img", {
         className: "movie-poster",
@@ -35307,7 +35305,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return window.open('main-view', '_self');
         },
-        variant: "primary"
+        variant: "info"
       }, "Back")))));
     }
   }]);
@@ -35476,7 +35474,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Navbar.default, {
         className: "navbar navbar-dark"
       }, _react.default.createElement("h1", {
-        className: "myflix-movies"
+        className: "main-view-title"
       }, "myFlix Movies")), _react.default.createElement(_Container.default, {
         className: "main-view"
       }, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
