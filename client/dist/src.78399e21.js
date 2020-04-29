@@ -34746,7 +34746,7 @@ function RegistrationView(props) {
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
     console.log("Registered");
-    props.onRegister(false);
+    props.onNeedRegistration(false);
 
     _axios.default.post("https://cruebeeflix.herokuapp.com/users", {
       Username: username,
@@ -34888,11 +34888,13 @@ function LoginView(props) {
     });
   };
 
-  var handleRegister = function handleRegister() {
+  var handleRegistration = function handleRegistration() {
     props.onNeedRegistration(true);
   };
 
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+  return _react.default.createElement("div", {
+    className: "login-view"
+  }, _react.default.createElement("h1", {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
@@ -34908,7 +34910,7 @@ function LoginView(props) {
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formPassword"
   }, _react.default.createElement(_Form.default.Control, {
-    type: "text",
+    type: "password",
     placeholder: "Enter password",
     value: password,
     onChange: function onChange(e) {
@@ -34927,7 +34929,7 @@ function LoginView(props) {
   }, "Need an account?"), _react.default.createElement(_Button.default, {
     variant: "info",
     className: "registration-button",
-    onClick: handleRegister
+    onClick: handleRegistration
   }, "Register Here"))));
 }
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {

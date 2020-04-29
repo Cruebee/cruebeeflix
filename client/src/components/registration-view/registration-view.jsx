@@ -14,7 +14,7 @@ export function RegistrationView(props) {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log("Registered");
-    props.onRegister(false);
+    props.onNeedRegistration(false);
 
     axios
       .post("https://cruebeeflix.herokuapp.com/users", {

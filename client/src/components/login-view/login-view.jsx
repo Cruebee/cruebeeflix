@@ -26,12 +26,12 @@ export function LoginView(props) {
       });
   };
 
-  const handleRegister = () => {
+  const handleRegistration = () => {
     props.onNeedRegistration(true);
   };
 
   return (
-    <div>
+    <div className="login-view">
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
         <Form.Group controlId="formUsername">
@@ -44,7 +44,7 @@ export function LoginView(props) {
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -63,7 +63,7 @@ export function LoginView(props) {
           <Button
             variant="info"
             className="registration-button"
-            onClick={handleRegister}
+            onClick={handleRegistration}
           >
             Register Here
           </Button>
