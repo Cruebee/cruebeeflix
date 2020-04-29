@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -10,9 +11,19 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    /* Send a request to server for authentication */
+    axios
+      .post("https://cruebeeflix.herokuapp.com/users", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch((e) => {
+        console.log("user does not exist");
+      });
   };
 
   const handleRegister = () => {
@@ -23,7 +34,7 @@ export function LoginView(props) {
     <div>
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
-        <Form.Group controlId="formUsername">
+        <Form.Group controlId="formBasicUsername">
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -31,9 +42,9 @@ export function LoginView(props) {
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formPassword">
+        <Form.Group controlId="formBasicPassword">
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

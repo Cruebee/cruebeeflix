@@ -34723,43 +34723,43 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function RegistrationView(props) {
-  var _useState = (0, _react.useState)(''),
+  var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
       createUsername = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       createPassword = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = (0, _react.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       email = _useState6[0],
       createEmail = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(''),
+  var _useState7 = (0, _react.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       birthday = _useState8[0],
       createBirthday = _useState8[1];
 
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
-    console.log('Registered');
+    console.log("Registered");
     props.onRegister(false);
 
-    _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
+    _axios.default.post("https://cruebeeflix.herokuapp.com/users", {
       Username: username,
       Password: password,
       Email: email,
       Birthday: birthday
     }).then(function (response) {
       var data = response.data;
-      alert('Your account has been created. Please login.');
+      alert("Your account has been created. Please login.");
       console.log(data);
-      window.open('/client', '_self');
+      window.open("/client", "_self");
     }).catch(function (e) {
-      console.log('error registering user.');
+      console.log("error registering user.");
     });
   };
 
@@ -34816,7 +34816,7 @@ function RegistrationView(props) {
   }, "Already have an account?"), _react.default.createElement(_Button.default, {
     className: "back-button",
     onClick: function onClick() {
-      return window.open('login-view', '_self');
+      return window.open("login-view", "_self");
     },
     variant: "info"
   }, "Login"))));
@@ -34835,6 +34835,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.LoginView = LoginView;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
@@ -34861,22 +34863,29 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function LoginView(props) {
-  var _useState = (0, _react.useState)(''),
+  var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
       setUsername = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication then call props.onLoggedIn(username) */
+    /* Send a request to server for authentication */
 
-    props.onLoggedIn(username);
+    _axios.default.post("https://cruebeeflix.herokuapp.com/users", {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data);
+    }).catch(function (e) {
+      console.log("user does not exist");
+    });
   };
 
   var handleRegister = function handleRegister() {
@@ -34888,7 +34897,7 @@ function LoginView(props) {
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
-    controlId: "formUsername"
+    controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
@@ -34897,9 +34906,9 @@ function LoginView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formPassword"
+    controlId: "formBasicPassword"
   }, _react.default.createElement(_Form.default.Control, {
-    type: "text",
+    type: "password",
     placeholder: "Enter password",
     value: password,
     onChange: function onChange(e) {
@@ -34921,7 +34930,7 @@ function LoginView(props) {
     onClick: handleRegister
   }, "Register Here"))));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35160,7 +35169,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
           _onClick = _this$props.onClick;
       return _react.default.createElement(_Card.default, {
         style: {
-          width: '16rem'
+          width: "16rem"
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -35305,7 +35314,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director")), _react.default.createElement(_Button.default, {
         className: "back-button",
         onClick: function onClick() {
-          return window.open('main-view', '_self');
+          return window.open("main-view", "_self");
         },
         variant: "info"
       }, "Back")))));
@@ -35415,7 +35424,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://cruebeeflix.herokuapp.com/movies').then(function (response) {
+      _axios.default.get("https://cruebeeflix.herokuapp.com/movies").then(function (response) {
         _this2.setState({
           movies: response.data
         });
@@ -35562,7 +35571,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component); // Finds the root of your App:
 
 
-var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element:
+var container = document.getElementsByClassName("app-container")[0]; // Tells React to render your app in the root DOM element:
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./index.scss":"index.scss"}],"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -35593,7 +35602,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56133" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56610" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
