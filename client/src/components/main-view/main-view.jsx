@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -23,42 +24,12 @@ export class MainView extends React.Component {
     };
   }
 
-  // One of the "hooks" available in a React Component
-  componentDidMount() {
-    axios
-      .get("https://cruebeeflix.herokuapp.com/movies")
-      .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // Authentication
 
   onMovieClick(movie) {
     this.setState({
       selectedMovie: movie,
     });
-  }
-
-  // Authentication
-
-  getMovies(token) {
-    axios
-      .get("https://cruebeeflix.herokuapp.com/movies", {
-        headers: { Authorization: "Bearer ${token}" },
-      })
-      .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   onLoggedIn(authData) {
@@ -77,6 +48,22 @@ export class MainView extends React.Component {
     this.setState({
       registration,
     });
+  }
+
+  getMovies(token) {
+    axios
+      .get("https://cruebeeflix.herokuapp.com/movies", {
+        headers: { Authorization: "Bearer ${token}" },
+      })
+      .then((response) => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -134,12 +121,3 @@ export class MainView extends React.Component {
     );
   }
 }
-
-MainView.propTypes = {
-  movies: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Descrtiption: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Featured: PropTypes.boolean.isRequired,
-  }),
-};
