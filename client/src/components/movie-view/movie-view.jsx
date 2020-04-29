@@ -20,7 +20,7 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <Container>
+      <Container className='movie-container'>
         <Row>
           <Col>
             <div className='movie-view'>

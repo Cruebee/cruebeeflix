@@ -35259,7 +35259,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           movie = _this$props.movie,
           _onClick = _this$props.onClick;
       if (!movie) return null;
-      return _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      return _react.default.createElement(_Container.default, {
+        className: "movie-container"
+      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
       }, _react.default.createElement("img", {
         className: "movie-poster",
