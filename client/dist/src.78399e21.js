@@ -34897,7 +34897,11 @@ function LoginView(props) {
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
+<<<<<<< HEAD
     controlId: "formBasicUsername"
+=======
+    controlId: "formUsername"
+>>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
@@ -34906,7 +34910,11 @@ function LoginView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
+<<<<<<< HEAD
     controlId: "formBasicPassword"
+=======
+    controlId: "formPassword"
+>>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
   }, _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
@@ -34917,7 +34925,7 @@ function LoginView(props) {
   })), _react.default.createElement(_Button.default, {
     className: "submit-button",
     variant: "success",
-    type: "submit",
+    type: "button",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement(_Form.default.Group, {
     className: "registration-group",
