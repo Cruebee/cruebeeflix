@@ -35,10 +35,14 @@ export function LoginView(props) {
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Form.Group controlId="formBasicUsername">
 =======
         <Form.Group controlId="formUsername">
 >>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
+=======
+        <Form.Group controlId="formBasicUsername">
+>>>>>>> parent of 2ea955d... authentication is not working won't allow login
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -47,10 +51,14 @@ export function LoginView(props) {
           />
         </Form.Group>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Form.Group controlId="formBasicPassword">
 =======
         <Form.Group controlId="formPassword">
 >>>>>>> parent of 984d455... revert to before jwt auth enabled on server-side
+=======
+        <Form.Group controlId="formBasicPassword">
+>>>>>>> parent of 2ea955d... authentication is not working won't allow login
           <Form.Control
             type="password"
             placeholder="Enter password"
@@ -61,7 +69,7 @@ export function LoginView(props) {
         <Button
           className="submit-button"
           variant="success"
-          type="button"
+          type="submit"
           onClick={handleSubmit}
         >
           Submit
