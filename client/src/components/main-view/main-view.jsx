@@ -1,18 +1,17 @@
-import React from 'react';
-import axios from 'axios';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import { RegistrationView } from '../registration-view/registration-view';
-import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import React from "react";
+import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { RegistrationView } from "../registration-view/registration-view";
+import { LoginView } from "../login-view/login-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
 
-import './main-view.scss';
+import "./main-view.scss";
 
 export class MainView extends React.Component {
-
   constructor() {
     super();
 
@@ -20,14 +19,14 @@ export class MainView extends React.Component {
       movies: null,
       selectedMovie: null,
       user: null,
-      register: null
+      register: null,
     };
   }
 
   // One of the "hooks" available in a React Component
   componentDidMount() {
     axios
-      .get('https://cruebeeflix.herokuapp.com/movies')
+      .get("https://cruebeeflix.herokuapp.com/movies")
       .then((response) => {
         this.setState({
           movies: response.data,
@@ -46,41 +45,57 @@ export class MainView extends React.Component {
 
   onLoggedIn(user) {
     this.setState({
-      user
+      user,
     });
   }
 
   onRegister(register) {
     this.setState({
-      register
+      register,
     });
   }
 
   render() {
     const { movies, selectedMovie, user, register } = this.state;
 
-    if (register) return <RegistrationView onRegister={register => this.onRegister(register)} />;
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onRegister={register => this.onRegister(register)} />
+    if (register)
+      return (
+        <RegistrationView
+          onRegister={(register) => this.onRegister(register)}
+        />
+      );
+    if (!user)
+      return (
+        <LoginView
+          onLoggedIn={(user) => this.onLoggedIn(user)}
+          onRegister={(register) => this.onRegister(register)}
+        />
+      );
 
     // Before the movies have been loaded
-    if (!movies) return <div className='main-view' />;
+    if (!movies) return <div className="main-view" />;
 
     return (
-      <div className='main-view'>
-        <Navbar className='navbar navbar-dark'>
-          <h1 className='main-view-title'>myFlix Movies</h1>
+      <div className="main-view">
+        <Navbar className="navbar navbar-dark">
+          <h1 className="main-view-title">myFlix Movies</h1>
         </Navbar>
 
         <Container className="main-view-movies">
           <Row>
-            {selectedMovie
-              ? <MovieView movie={selectedMovie} />
-              : movies.map(movie => (
+            {selectedMovie ? (
+              <MovieView movie={selectedMovie} />
+            ) : (
+              movies.map((movie) => (
                 <Col>
-                  <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
+                  <MovieCard
+                    key={movie._id}
+                    movie={movie}
+                    onClick={(movie) => this.onMovieClick(movie)}
+                  />
                 </Col>
               ))
-            }
+            )}
           </Row>
         </Container>
       </div>

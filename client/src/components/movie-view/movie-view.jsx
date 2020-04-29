@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import './movie-view.scss';
+import "./movie-view.scss";
 
 export class MovieView extends React.Component {
   constructor() {
@@ -20,52 +20,53 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <Container className='movie-container'>
+      <Container className="movie-container">
         <Row>
           <Col>
-            <div className='movie-view'>
+            <div className="movie-view">
+              <img className="movie-poster" src={movie.ImagePath} />
 
-              <img className='movie-poster' src={movie.ImagePath} />
-
-              <div className='movie-title'>
-                <span className='label'>Title:</span>
-                <span className='value'>{movie.Title}</span>
+              <div className="movie-title">
+                <span className="label">Title:</span>
+                <span className="value">{movie.Title}</span>
               </div>
 
-              <div className='movie-description'>
-                <span className='label'>Description:</span>
-                <span className='value'>{movie.Description}</span>
+              <div className="movie-description">
+                <span className="label">Description:</span>
+                <span className="value">{movie.Description}</span>
               </div>
 
-              <div className='movie-genre'>
-                <span className='label'>Genre:</span>
-                <span className='value'>{movie.Genre[0].Name}</span>
+              <div className="movie-genre">
+                <span className="label">Genre:</span>
+                <span className="value">{movie.Genre[0].Name}</span>
                 <Button
                   onClick={() => onClick(genre)}
-                  variant='primary'
+                  variant="primary"
                   disabled
-                >Genre
-                  </Button>
+                >
+                  Genre
+                </Button>
               </div>
 
-              <div className='movie-director'>
-                <span className='label'>Director:</span>
-                <span className='value'>{movie.Director[0].Name}</span>
+              <div className="movie-director">
+                <span className="label">Director:</span>
+                <span className="value">{movie.Director[0].Name}</span>
                 <Button
                   onClick={() => onClick(director)}
-                  variant='primary'
+                  variant="primary"
                   disabled
-                >Director
-                  </Button>
+                >
+                  Director
+                </Button>
               </div>
 
               <Button
-                className='back-button'
-                onClick={() => window.open('main-view', '_self')}
-                variant='info'
-              >Back
-                </Button>
-
+                className="back-button"
+                onClick={() => window.open("main-view", "_self")}
+                variant="info"
+              >
+                Back
+              </Button>
             </div>
           </Col>
         </Row>
@@ -80,11 +81,11 @@ MovieView.propTypes = {
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired
+      Name: PropTypes.string.isRequired,
     }),
     Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    })
+      Name: PropTypes.string.isRequired,
+    }),
   }).isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };

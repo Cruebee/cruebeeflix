@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-import './login-view.scss';
-
+import "./login-view.scss";
 
 export function LoginView(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,36 +21,40 @@ export function LoginView(props) {
 
   return (
     <div>
-      <h1 className='login-title'>Login</h1>
-      <Form className='login-form'>
-        <Form.Group controlId='formUsername'>
+      <h1 className="login-title">Login</h1>
+      <Form className="login-form">
+        <Form.Group controlId="formUsername">
           <Form.Control
-            type='text'
-            placeholder='Enter Username'
+            type="text"
+            placeholder="Enter Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} />
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Form.Group>
-        <Form.Group controlId='formPassword'>
+        <Form.Group controlId="formPassword">
           <Form.Control
-            type='text'
-            placeholder='Enter password'
+            type="text"
+            placeholder="Enter password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} />
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form.Group>
         <Button
-          className='submit-button'
-          variant='success'
-          type='submit'
+          className="submit-button"
+          variant="success"
+          type="submit"
           onClick={handleSubmit}
-        >Submit
+        >
+          Submit
         </Button>
-        <Form.Group className='registration-group' controlId='formRegistration'>
-          <Form.Text className='text-muted'>Need an account?</Form.Text>
+        <Form.Group className="registration-group" controlId="formRegistration">
+          <Form.Text className="text-muted">Need an account?</Form.Text>
           <Button
-            variant='info'
-            className='registration-button'
+            variant="info"
+            className="registration-button"
             onClick={handleRegister}
-          >Register Here
+          >
+            Register Here
           </Button>
         </Form.Group>
       </Form>
