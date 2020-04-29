@@ -24,6 +24,18 @@ export class MainView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios
+      .get("https://cruebeeflix.herokuapp.com/movies")
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   // Authentication
 
   onMovieClick(movie) {
@@ -75,13 +87,6 @@ export class MainView extends React.Component {
       <div className="main-view">
         <Navbar className="navbar navbar-dark">
           <h1 className="main-view-title">myFlix Movies</h1>
-          <a
-            href=""
-            className="app-logout"
-            onClick={(user) => this.onLoggedIn(!user)}
-          >
-            Logout
-          </a>
         </Navbar>
         <Container>
           <Row>
