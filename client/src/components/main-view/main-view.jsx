@@ -45,21 +45,10 @@ export class MainView extends React.Component {
 
   // Authentication
 
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username,
-    });
-
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.Username);
-    this.getMovies(authData.token);
-  }
-
   getMovies(token) {
     axios
       .get("https://cruebeeflix.herokuapp.com/movies", {
-        header: { Authorization: "Bearer ${token}" },
+        headers: { Authorization: "Bearer ${token}" },
       })
       .then((response) => {
         // Assign the result to the state
@@ -72,52 +61,71 @@ export class MainView extends React.Component {
       });
   }
 
-  // Registration
-  onRegister(register) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      register,
+      user: authData.user.Username,
+    });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  // Registration
+  onNeedRegistration(registration) {
+    this.setState({
+      registration,
     });
   }
 
   render() {
-    const { movies, selectedMovie, user, register } = this.state;
-
-    if (register)
+    const { movies, selectedMovie, user, registration } = this.state;
+    if (registration)
       return (
         <RegistrationView
-          onRegister={(register) => this.onRegister(register)}
+          onNeedRegistration={(registration) =>
+            this.onNeedRegistration(registration)
+          }
         />
       );
     if (!user)
       return (
         <LoginView
           onLoggedIn={(user) => this.onLoggedIn(user)}
-          onRegister={(register) => this.onRegister(register)}
+          onNeedRegistration={(registration) =>
+            this.onNeedRegistration(registration)
+          }
         />
       );
-
-    // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
       <div className="main-view">
         <Navbar className="navbar navbar-dark">
           <h1 className="main-view-title">myFlix Movies</h1>
+          <a
+            href=""
+            className="app-logout"
+            onClick={(user) => this.onLoggedIn(!user)}
+          >
+            Logout
+          </a>
         </Navbar>
-
-        <Container className="main-view-movies">
+        <Container>
           <Row>
             {selectedMovie ? (
-              <MovieView movie={selectedMovie} />
+              <MovieView
+                movie={selectedMovie}
+                mainview={(movie) => this.onMovieClick(null)}
+              />
             ) : (
               movies.map((movie) => (
-                <Col>
-                  <MovieCard
-                    key={movie._id}
-                    movie={movie}
-                    onClick={(movie) => this.onMovieClick(movie)}
-                  />
-                </Col>
+                <MovieCard
+                  key={movie._id}
+                  movie={movie}
+                  onClick={(movie) => this.onMovieClick(movie)}
+                />
               ))
             )}
           </Row>
@@ -126,3 +134,12 @@ export class MainView extends React.Component {
     );
   }
 }
+
+MainView.propTypes = {
+  movies: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Descrtiption: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Featured: PropTypes.boolean.isRequired,
+  }),
+};

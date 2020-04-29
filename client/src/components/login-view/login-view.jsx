@@ -27,7 +27,7 @@ export function LoginView(props) {
   };
 
   const handleRegister = () => {
-    props.onRegister(true);
+    props.onNeedRegistration(true);
   };
 
   return (

@@ -34768,7 +34768,7 @@ function RegistrationView(props) {
   }, "myFlix Registration"), _react.default.createElement(_Form.default, {
     className: "registration-form"
   }, _react.default.createElement(_Form.default.Group, {
-    controlId: "formUsername"
+    controlId: "formBasicUsername"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Create Username",
@@ -34777,7 +34777,7 @@ function RegistrationView(props) {
       return createUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formPassword"
+    controlId: "formBasicPassword"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Create Password",
@@ -34786,7 +34786,7 @@ function RegistrationView(props) {
       return createPassword(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formEmail"
+    controlId: "formBasicEmail"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Email",
@@ -34795,7 +34795,7 @@ function RegistrationView(props) {
       return createEmail(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formBirthday"
+    controlId: "formBasicBirthday"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Birthday",
@@ -34889,7 +34889,7 @@ function LoginView(props) {
   };
 
   var handleRegister = function handleRegister() {
-    props.onRegister(true);
+    props.onNeedRegistration(true);
   };
 
   return _react.default.createElement("div", null, _react.default.createElement("h1", {
@@ -35441,23 +35441,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     } // Authentication
 
   }, {
-    key: "onLoggedIn",
-    value: function onLoggedIn(authData) {
-      console.log(authData);
-      this.setState({
-        user: authData.user.Username
-      });
-      localStorage.setItem("token", authData.token);
-      localStorage.setItem("user", authData.user.Username);
-      this.getMovies(authData.token);
-    }
-  }, {
     key: "getMovies",
     value: function getMovies(token) {
       var _this3 = this;
 
       _axios.default.get("https://cruebeeflix.herokuapp.com/movies", {
-        header: {
+        headers: {
           Authorization: "Bearer ${token}"
         }
       }).then(function (response) {
@@ -35468,13 +35457,24 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }).catch(function (error) {
         console.log(error);
       });
+    }
+  }, {
+    key: "onLoggedIn",
+    value: function onLoggedIn(authData) {
+      console.log(authData);
+      this.setState({
+        user: authData.user.Username
+      });
+      localStorage.setItem("token", authData.token);
+      localStorage.setItem("user", authData.user.Username);
+      this.getMovies(authData.token);
     } // Registration
 
   }, {
-    key: "onRegister",
-    value: function onRegister(register) {
+    key: "onNeedRegistration",
+    value: function onNeedRegistration(registration) {
       this.setState({
-        register: register
+        registration: registration
       });
     }
   }, {
@@ -35486,21 +35486,20 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user,
-          register = _this$state.register;
-      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
-        onRegister: function onRegister(register) {
-          return _this4.onRegister(register);
+          registration = _this$state.registration;
+      if (registration) return _react.default.createElement(_registrationView.RegistrationView, {
+        onNeedRegistration: function onNeedRegistration(registration) {
+          return _this4.onNeedRegistration(registration);
         }
       });
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
           return _this4.onLoggedIn(user);
         },
-        onRegister: function onRegister(register) {
-          return _this4.onRegister(register);
+        onNeedRegistration: function onNeedRegistration(registration) {
+          return _this4.onNeedRegistration(registration);
         }
-      }); // Before the movies have been loaded
-
+      });
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
@@ -35510,18 +35509,25 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "navbar navbar-dark"
       }, _react.default.createElement("h1", {
         className: "main-view-title"
-      }, "myFlix Movies")), _react.default.createElement(_Container.default, {
-        className: "main-view-movies"
-      }, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
+      }, "myFlix Movies"), _react.default.createElement("a", {
+        href: "",
+        className: "app-logout",
+        onClick: function onClick(user) {
+          return _this4.onLoggedIn(!user);
+        }
+      }, "Logout")), _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
+        movie: selectedMovie,
+        mainview: function mainview(movie) {
+          return _this4.onMovieClick(null);
+        }
       }) : movies.map(function (movie) {
-        return _react.default.createElement(_Col.default, null, _react.default.createElement(_movieCard.MovieCard, {
+        return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
             return _this4.onMovieClick(movie);
           }
-        }));
+        });
       }))));
     }
   }]);
@@ -35530,6 +35536,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MainView = MainView;
+MainView.propTypes = {
+  movies: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Descrtiption: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Featured: PropTypes.boolean.isRequired
+  })
+};
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","./main-view.scss":"components/main-view/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 

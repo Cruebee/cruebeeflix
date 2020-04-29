@@ -38,7 +38,7 @@ export function RegistrationView(props) {
     <div>
       <h1 className="register-title">myFlix Registration</h1>
       <Form className="registration-form">
-        <Form.Group controlId="formUsername">
+        <Form.Group controlId="formBasicUsername">
           <Form.Control
             type="text"
             placeholder="Create Username"
@@ -46,7 +46,7 @@ export function RegistrationView(props) {
             onChange={(e) => createUsername(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formPassword">
+        <Form.Group controlId="formBasicPassword">
           <Form.Control
             type="text"
             placeholder="Create Password"
@@ -54,7 +54,7 @@ export function RegistrationView(props) {
             onChange={(e) => createPassword(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formEmail">
+        <Form.Group controlId="formBasicEmail">
           <Form.Control
             type="text"
             placeholder="Enter Email"
@@ -62,7 +62,7 @@ export function RegistrationView(props) {
             onChange={(e) => createEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formBirthday">
+        <Form.Group controlId="formBasicBirthday">
           <Form.Control
             type="text"
             placeholder="Enter Birthday"
