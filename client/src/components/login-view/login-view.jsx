@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -11,6 +10,7 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     /* Send a request to server for authentication */
     axios
       .post("https://cruebeeflix.herokuapp.com/login", {
@@ -24,6 +24,11 @@ export function LoginView(props) {
       .catch((e) => {
         console.log("user does not exist");
       });
+=======
+    console.log(username, password);
+    /* Send a request to the server for authentication then call props.onLoggedIn(username) */
+    props.onLoggedIn(username);
+>>>>>>> parent of 13156db... implement POST method on Login-view
   };
 
   const handleRegister = () => {
@@ -36,6 +41,7 @@ export function LoginView(props) {
       <Form className="login-form">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Form.Group controlId="formBasicUsername">
 =======
         <Form.Group controlId="formUsername">
@@ -43,6 +49,9 @@ export function LoginView(props) {
 =======
         <Form.Group controlId="formBasicUsername">
 >>>>>>> parent of 2ea955d... authentication is not working won't allow login
+=======
+        <Form.Group controlId="formUsername">
+>>>>>>> parent of 13156db... implement POST method on Login-view
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -52,6 +61,7 @@ export function LoginView(props) {
         </Form.Group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Form.Group controlId="formBasicPassword">
 =======
         <Form.Group controlId="formPassword">
@@ -59,8 +69,11 @@ export function LoginView(props) {
 =======
         <Form.Group controlId="formBasicPassword">
 >>>>>>> parent of 2ea955d... authentication is not working won't allow login
+=======
+        <Form.Group controlId="formPassword">
+>>>>>>> parent of 13156db... implement POST method on Login-view
           <Form.Control
-            type="password"
+            type="text"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
