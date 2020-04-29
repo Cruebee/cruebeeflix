@@ -35478,7 +35478,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("h1", {
         className: "main-view-title"
       }, "myFlix Movies")), _react.default.createElement(_Container.default, {
-        className: "main-view"
+        className: "main-view-movies"
       }, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie
       }) : movies.map(function (movie) {

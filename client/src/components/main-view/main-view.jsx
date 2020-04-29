@@ -71,7 +71,7 @@ export class MainView extends React.Component {
           <h1 className='main-view-title'>myFlix Movies</h1>
         </Navbar>
 
-        <Container className="main-view">
+        <Container className="main-view-movies">
           <Row>
             {selectedMovie
               ? <MovieView movie={selectedMovie} />
