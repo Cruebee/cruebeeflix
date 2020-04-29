@@ -48,7 +48,7 @@ export function RegistrationView(props) {
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Create Password"
             value={password}
             onChange={(e) => createPassword(e.target.value)}

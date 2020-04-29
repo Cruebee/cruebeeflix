@@ -34779,7 +34779,7 @@ function RegistrationView(props) {
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
   }, _react.default.createElement(_Form.default.Control, {
-    type: "text",
+    type: "password",
     placeholder: "Create Password",
     value: password,
     onChange: function onChange(e) {
