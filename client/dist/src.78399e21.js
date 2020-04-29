@@ -34888,16 +34888,18 @@ function LoginView(props) {
     });
   };
 
-  var handleRegister = function handleRegister() {
+  var handleRegistration = function handleRegistration() {
     props.onNeedRegistration(true);
   };
 
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+  return _react.default.createElement("div", {
+    className: "login-view"
+  }, _react.default.createElement("h1", {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
-    controlId: "formBasicUsername"
+    controlId: "formUsername"
   }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
@@ -34906,7 +34908,7 @@ function LoginView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formBasicPassword"
+    controlId: "formPassword"
   }, _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
@@ -34917,7 +34919,7 @@ function LoginView(props) {
   })), _react.default.createElement(_Button.default, {
     className: "submit-button",
     variant: "success",
-    type: "submit",
+    type: "button",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement(_Form.default.Group, {
     className: "registration-group",
@@ -34927,7 +34929,7 @@ function LoginView(props) {
   }, "Need an account?"), _react.default.createElement(_Button.default, {
     variant: "info",
     className: "registration-button",
-    onClick: handleRegister
+    onClick: handleRegistration
   }, "Register Here"))));
 }
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
@@ -35220,6 +35222,8 @@ var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
+var _mainView = require("../main-view/main-view");
+
 require("./movie-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35314,7 +35318,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director")), _react.default.createElement(_Button.default, {
         className: "back-button",
         onClick: function onClick() {
-          return window.open("main-view", "_self");
+          return _onClick();
         },
         variant: "info"
       }, "Back")))));
@@ -35339,7 +35343,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","../main-view/main-view":"components/main-view/main-view.jsx","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
