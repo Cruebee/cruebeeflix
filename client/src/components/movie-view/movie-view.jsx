@@ -5,8 +5,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { MainView } from "../main-view/main-view";
-
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
@@ -64,7 +62,7 @@ export class MovieView extends React.Component {
 
               <Button
                 className="back-button"
-                onClick={() => onClick()}
+                onClick={() => window.open("main-view", "_self")}
                 variant="info"
               >
                 Back
