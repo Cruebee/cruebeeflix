@@ -35,6 +35,7 @@ export function LoginView(props) {
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
         <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -43,6 +44,7 @@ export function LoginView(props) {
           />
         </Form.Group>
         <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
           <Form.Control
             type="password"
             placeholder="Enter password"
@@ -53,7 +55,7 @@ export function LoginView(props) {
         <Button
           className="submit-button"
           variant="success"
-          type="button"
+          type="submit"
           onClick={handleSubmit}
         >
           Submit

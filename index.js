@@ -76,7 +76,7 @@ app.get('/', function (req, res) {
 // ------ Movies ------
 // get a JSON list of ALL movies:
 app.get('/movies',
-  passport.authenticate('jwt', {session: false }),
+  /*passport.authenticate('jwt', {session: false }),*/
   function (req, res) {
   Movies.find()
     .populate('Genre')
@@ -89,7 +89,7 @@ app.get('/movies',
 
 // get data about a single movie, by its title:
 app.get('/movies/:Title',
-  passport.authenticate('jwt', { session: false }),
+  /*passport.authenticate('jwt', { session: false }),*/
   function (req, res) {
     Movies.findOne({ Title: req.params.Title })
       .populate('Genre')
