@@ -34900,7 +34900,7 @@ function LoginView(props) {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
     value: username,
@@ -34909,7 +34909,7 @@ function LoginView(props) {
     }
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     value: password,
@@ -34919,7 +34919,7 @@ function LoginView(props) {
   })), _react.default.createElement(_Button.default, {
     className: "submit-button",
     variant: "success",
-    type: "submit",
+    type: "button",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement(_Form.default.Group, {
     className: "registration-group",
@@ -35452,9 +35452,27 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this2 = this;
+
+      _axios.default.get("https://cruebeeflix.herokuapp.com/movies", {
+        headers: {
+          Authorization: "Bearer ${token}"
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        _this2.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -35463,15 +35481,15 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           registration = _this$state.registration;
       if (registration) return _react.default.createElement(_registrationView.RegistrationView, {
         onNeedRegistration: function onNeedRegistration(registration) {
-          return _this2.onNeedRegistration(registration);
+          return _this3.onNeedRegistration(registration);
         }
       });
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this2.onLoggedIn(user);
+          return _this3.onLoggedIn(user);
         },
         onNeedRegistration: function onNeedRegistration(registration) {
-          return _this2.onNeedRegistration(registration);
+          return _this3.onNeedRegistration(registration);
         }
       });
       if (!movies) return _react.default.createElement("div", {
@@ -35487,19 +35505,19 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         href: "",
         className: "app-logout",
         onClick: function onClick(user) {
-          return _this2.onLoggedIn(!user);
+          return _this3.onLoggedIn(!user);
         }
       }, "Logout")), _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie,
         mainview: function mainview(movie) {
-          return _this2.onMovieClick(null);
+          return _this3.onMovieClick(null);
         }
       }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this2.onMovieClick(movie);
+            return _this3.onMovieClick(movie);
           }
         });
       }))));
