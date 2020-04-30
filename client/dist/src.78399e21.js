@@ -35464,7 +35464,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       _axios.default.get("https://cruebeeflix.herokuapp.com/movies", {
         headers: {
-          Authorization: "Bearer ${token}"
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
         _this3.setState({
