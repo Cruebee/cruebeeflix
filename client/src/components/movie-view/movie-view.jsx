@@ -52,9 +52,8 @@ export class MovieView extends React.Component {
                 <span className="label">Director:</span>
                 <span className="value">{movie.Director[0].Name}</span>
                 <Button
-                  onClick={() => onClick(director)}
+                  onClick={() => this.props.director(movie.Director[0])}
                   variant="primary"
-                  disabled
                 >
                   Director
                 </Button>
@@ -62,7 +61,7 @@ export class MovieView extends React.Component {
 
               <Button
                 className="back-button"
-                onClick={() => window.open("main-view", "_self")}
+                onClick={() => this.props.mainview()}
                 variant="info"
               >
                 Back

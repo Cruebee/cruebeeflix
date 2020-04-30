@@ -94,6 +94,7 @@ export class MainView extends React.Component {
               <MovieView
                 movie={selectedMovie}
                 mainview={(movie) => this.onMovieClick(null)}
+                director={(d) => console.log(d)}
               />
             ) : (
               movies.map((movie) => (
