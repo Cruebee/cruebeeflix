@@ -36,6 +36,7 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
+
   // Authentication
 
   onMovieClick(movie) {
@@ -53,6 +54,22 @@ export class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
+  }
+
+  // Get Movies
+  getMovies(token) {
+    axios
+      .get("https://cruebeeflix.herokuapp.com/movies", {
+        headers: { Authorization: "Bearer ${token}" },
+      })
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   // Registration

@@ -106,7 +106,8 @@ app.get('/movies/:Title',
 
 // ------ Genres ------
 // Get a list of genres:
-app.get('/genres', passport.authenticate('jwt', { session: false }),
+app.get('/genres',
+  passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Genres.find()
       .then(function (genres) {
