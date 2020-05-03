@@ -36067,7 +36067,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return movies.map(function (m) {
             return _react.default.createElement(_movieCard.MovieCard, {
               key: m._id,
-              movie: m
+              mocie: m
             });
           });
         }
@@ -36095,12 +36095,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
           return _react.default.createElement(_genreView.GenreView, {
             genre: movies.find(function (m) {
-              return m.genre.name === match.params.name;
+              return m.genre.Name === match.params.Name;
             }).genre
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/directors/:Name",
+        path: "directors/:Name",
         render: function render(_ref3) {
           var match = _ref3.match;
           if (movies.length === 0) return _react.default.createElement(_Container.default, {
@@ -36108,14 +36108,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
           return _react.default.createElement(_directorView.DirectorView, {
             director: movies.find(function (m) {
-              return m.director.name === match.params.name;
+              return m.director.Name === match.params.Name;
             }).director
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/users/:Username",
         render: function render() {
-          if (movies.length === 0) return _react.default.createElement("div", {
+          if (movies.length === 0) return _react.default.createElement(_Container.default, {
             className: "main-view"
           });
           return _react.default.createElement(ProfileView, {
