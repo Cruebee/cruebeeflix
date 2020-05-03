@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -53,6 +54,17 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
+  // Log Out
+  handleLogOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    this.setState({
+      user: null,
+    });
+    console.log("logged out");
+  }
+
   // Get Movies
   getMovies(token) {
     axios
@@ -101,6 +113,13 @@ export class MainView extends React.Component {
       <div className="main-view">
         <Navbar className="navbar navbar-dark">
           <h1 className="main-view-title">myFlix Movies</h1>
+          <Button
+            className="logout-button"
+            variant="primary"
+            onClick={() => this.handleLogOut()}
+          >
+            Log out
+          </Button>
         </Navbar>
         <Container>
           <Row>
