@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { Link } from "react-router-dom";
+
 import "./movie-view.scss";
 
 export class MovieView extends React.Component {
@@ -59,13 +61,14 @@ export class MovieView extends React.Component {
                 </Button>
               </div>
 
-              <Button
-                className="back-button"
-                onClick={() => this.props.mainview()}
-                variant="info"
-              >
-                Back
+              <Link to={`/`}>
+                <Button
+                  className="back-button"
+                  variant="info"
+                >
+                  Back
               </Button>
+              </Link>
             </div>
           </Col>
         </Row>

@@ -38198,6 +38198,8 @@ var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
+var _reactRouterDom = require("react-router-dom");
+
 require("./movie-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -38290,13 +38292,12 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           return _this2.props.director(movie.Director[0]);
         },
         variant: "primary"
-      }, "Director")), _react.default.createElement(_Button.default, {
+      }, "Director")), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, _react.default.createElement(_Button.default, {
         className: "back-button",
-        onClick: function onClick() {
-          return _this2.props.mainview();
-        },
         variant: "info"
-      }, "Back")))));
+      }, "Back"))))));
     }
   }]);
 
@@ -38318,7 +38319,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -38681,7 +38682,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("h1", {
         className: "main-view-title"
       }, "myFlix"), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/users/".concat(localStorage.getItem("user"))
+        to: "/users/".concat(localStorage.getItem('user'))
       }, _react.default.createElement(_Button.default, {
         className: "profile-button",
         variant: "primary"
@@ -38703,7 +38704,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return movies.map(function (m) {
             return _react.default.createElement(_movieCard.MovieCard, {
               key: m._id,
-              mocie: m
+              movie: m
             });
           });
         }

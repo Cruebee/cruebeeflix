@@ -95,7 +95,7 @@ export class MainView extends React.Component {
         <Container className="main-view" fluid="true">
           <Navbar className="navbar navbar-dark">
             <h1 className="main-view-title">myFlix</h1>
-            <Link to={`/users/${localStorage.getItem("user")}`}>
+            <Link to={`/users/${localStorage.getItem('user')}`}>
               <Button className="profile-button" variant="primary">
                 Profile
               </Button>
@@ -111,10 +111,11 @@ export class MainView extends React.Component {
           <Row>
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              return movies.map(m => <MovieCard key={m._id} mocie={m} />)
+              return movies.map(m => <MovieCard key={m._id} movie={m} />)
             }} />
             <Route path="/register" render={() => <RegistrationView />} />
-            <Route path="/movies/:MovieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.MovieId)} />} />
+            <Route path="/movies/:MovieId" render={({ match }) =>
+              <MovieView movie={movies.find(m => m._id === match.params.MovieId)} />} />
             <Route path="/genres/:Name" render={({ match }) => {
               if (movies.length === 0) return <Container className="main-view" />;
               return <GenreView genre={movies.find(m => m.genre.Name === match.params.Name).genre} />
