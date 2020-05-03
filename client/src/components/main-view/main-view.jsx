@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Col from 'react-bootstrat/Col';
+
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
