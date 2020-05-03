@@ -35427,15 +35427,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   _createClass(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var accessToken = localStorage.getItem("token");
 
-      _axios.default.get("https://cruebeeflix.herokuapp.com/movies").then(function (response) {
-        _this2.setState({
-          movies: response.data
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem("user")
         });
-      }).catch(function (error) {
-        console.log(error);
-      });
+        this.getMovies(accessToken);
+      }
     } // Authentication
 
   }, {
@@ -35460,14 +35459,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "getMovies",
     value: function getMovies(token) {
-      var _this3 = this;
+      var _this2 = this;
 
       _axios.default.get("https://cruebeeflix.herokuapp.com/movies", {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this3.setState({
+        _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
@@ -35485,7 +35484,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -35494,15 +35493,15 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           registration = _this$state.registration;
       if (registration) return _react.default.createElement(_registrationView.RegistrationView, {
         onNeedRegistration: function onNeedRegistration(registration) {
-          return _this4.onNeedRegistration(registration);
+          return _this3.onNeedRegistration(registration);
         }
       });
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
+          return _this3.onLoggedIn(user);
         },
         onNeedRegistration: function onNeedRegistration(registration) {
-          return _this4.onNeedRegistration(registration);
+          return _this3.onNeedRegistration(registration);
         }
       });
       if (!movies) return _react.default.createElement("div", {
@@ -35517,7 +35516,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, "myFlix Movies")), _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie,
         mainview: function mainview(movie) {
-          return _this4.onMovieClick(null);
+          return _this3.onMovieClick(null);
         },
         director: function director(d) {
           return console.log(d);
@@ -35527,7 +35526,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this4.onMovieClick(movie);
+            return _this3.onMovieClick(movie);
           }
         });
       }))));
