@@ -39416,8 +39416,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     } // Log Out
 
   }, {
-    key: "handleLogOut",
-    value: function handleLogOut() {
+    key: "onLogOut",
+    value: function onLogOut() {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       this.setState({
@@ -39476,8 +39476,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, "Profile"))), _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, {
         className: "log-out-button",
         variant: "info",
-        onClick: function onClick() {
-          return _this3.handleLogOut();
+        onClick: function onClick(user) {
+          return _this3.onLogOut(!user);
         }
       }, "Log Out"))), _react.default.createElement(_Row.default, null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
@@ -39543,7 +39543,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             className: "main-view"
           });
           return _react.default.createElement(_profileView.ProfileView, {
-            movies: movies
+            onLogOut: function onLogOut(user) {
+              return _this3.onLogOut(!user);
+            }
           });
         }
       }))));

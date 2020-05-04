@@ -55,7 +55,7 @@ export class MainView extends React.Component {
   }
 
   // Log Out
-  handleLogOut() {
+  onLogOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
@@ -112,7 +112,7 @@ export class MainView extends React.Component {
               <Button
                 className="log-out-button"
                 variant="info"
-                onClick={() => this.handleLogOut()}
+                onClick={user => this.onLogOut(!user)}
               >
                 Log Out
             </Button>
@@ -136,7 +136,7 @@ export class MainView extends React.Component {
             }} />
             <Route path="/users/:Username" render={() => {
               if (movies.length === 0) return <Container className="main-view" />;
-              return <ProfileView movies={movies} />
+              return <ProfileView onLogOut={user => this.onLogOut(!user)} />
             }} />
           </Row>
         </Container>
