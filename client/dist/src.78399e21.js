@@ -37818,6 +37818,10 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
+var _reactRouterDom = require("react-router-dom");
+
 require("./login-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37839,12 +37843,12 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function LoginView(props) {
-  var _useState = (0, _react.useState)(""),
+  var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
       setUsername = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(""),
+  var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
@@ -37854,7 +37858,7 @@ function LoginView(props) {
     console.log(username, password);
     /* Send a request to the server for authentication */
 
-    _axios.default.post("https://cruebeeflix.herokuapp.com/login", {
+    _axios.default.post('https://cruebeeflix.herokuapp.com/login', {
       Username: username,
       Password: password
     }).then(function (response) {
@@ -37865,19 +37869,16 @@ function LoginView(props) {
     });
   };
 
-  var handleRegistration = function handleRegistration() {
-    props.onNeedRegistration(true);
-  };
-
-  return _react.default.createElement("div", {
-    className: "login-view"
+  return _react.default.createElement(_Container.default, {
+    className: "login-view",
+    fluid: "true"
   }, _react.default.createElement("h1", {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
-  }, _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
     value: username,
@@ -37886,7 +37887,7 @@ function LoginView(props) {
     }
   })), _react.default.createElement(_Form.default.Group, {
     controlId: "formPassword"
-  }, _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     value: password,
@@ -37903,13 +37904,14 @@ function LoginView(props) {
     controlId: "formRegistration"
   }, _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
-  }, "Need an account?"), _react.default.createElement(_Button.default, {
+  }, "Need an account?"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/register"
+  }, _react.default.createElement(_Button.default, {
     variant: "info",
-    className: "registration-button",
-    onClick: handleRegistration
-  }, "Register Here"))));
+    className: "registration-button"
+  }, "Register Here")))));
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

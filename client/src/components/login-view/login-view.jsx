@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 
-import "./login-view.scss";
+import './login-view.scss';
 
 export function LoginView(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
     axios
-      .post("https://cruebeeflix.herokuapp.com/login", {
+      .post('https://cruebeeflix.herokuapp.com/login', {
         Username: username,
         Password: password,
       })
@@ -27,15 +29,12 @@ export function LoginView(props) {
       });
   };
 
-  const handleRegistration = () => {
-    props.onNeedRegistration(true);
-  };
-
   return (
-    <div className="login-view">
+    <Container className="login-view" fluid="true">
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
         <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Username"
@@ -44,6 +43,7 @@ export function LoginView(props) {
           />
         </Form.Group>
         <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
           <Form.Control
             type="password"
             placeholder="Enter password"
@@ -61,15 +61,16 @@ export function LoginView(props) {
         </Button>
         <Form.Group className="registration-group" controlId="formRegistration">
           <Form.Text className="text-muted">Need an account?</Form.Text>
-          <Button
-            variant="info"
-            className="registration-button"
-            onClick={handleRegistration}
-          >
-            Register Here
+          <Link to={`/register`}>
+            <Button
+              variant="info"
+              className="registration-button"
+            >
+              Register Here
           </Button>
+          </Link>
         </Form.Group>
       </Form>
-    </div>
+    </Container>
   );
 }
