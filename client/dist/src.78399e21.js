@@ -38760,25 +38760,25 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-title"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Title:"), _react.default.createElement("span", {
+      }, "Title: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Title)), _react.default.createElement("div", {
         className: "movie-description"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Description:"), _react.default.createElement("span", {
+      }, "Description: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Description)), _react.default.createElement("div", {
         className: "movie-genre"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Genre:"), _react.default.createElement("span", {
+      }, "Genre: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Genre[0].Name)), _react.default.createElement("div", {
         className: "movie-director"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Director:"), _react.default.createElement("span", {
+      }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director[0].Name)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -38987,9 +38987,9 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-name"
-      }, Genre[0].Name), _react.default.createElement(_Card.default.Text, {
+      }, "Name: ", Genre[0].Name), _react.default.createElement(_Card.default.Text, {
         className: "genre-description"
-      }, Genre[0].Description), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Description: ", Genre[0].Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "primary"

@@ -29,22 +29,22 @@ export class MovieView extends React.Component {
               <img className="movie-poster" src={movie.ImagePath} />
 
               <div className="movie-title">
-                <span className="label">Title:</span>
+                <span className="label">Title: </span>
                 <span className="value">{movie.Title}</span>
               </div>
 
               <div className="movie-description">
-                <span className="label">Description:</span>
+                <span className="label">Description: </span>
                 <span className="value">{movie.Description}</span>
               </div>
 
               <div className="movie-genre">
-                <span className="label">Genre:</span>
+                <span className="label">Genre: </span>
                 <span className="value">{movie.Genre[0].Name}</span>
               </div>
 
               <div className="movie-director">
-                <span className="label">Director:</span>
+                <span className="label">Director: </span>
                 <span className="value">{movie.Director[0].Name}</span>
               </div>
 

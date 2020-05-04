@@ -23,10 +23,8 @@ export class GenreView extends React.Component {
     return (
       <Card className="genre-view" style={{ width: "32rem" }}>
         <Card.Body>
-          <Card.Title className="genre-name">{Genre[0].Name}</Card.Title>
-          <Card.Text className="genre-description">
-            {Genre[0].Description}
-          </Card.Text>
+          <Card.Title className="genre-name">Name: {Genre[0].Name}</Card.Title>
+          <Card.Text className="genre-description">Description: {Genre[0].Description}</Card.Text>
           <Link to={`/`}>
             <Button
               variant="primary"

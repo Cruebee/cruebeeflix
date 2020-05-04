@@ -55,6 +55,14 @@
 .movie-container {
   width: 60%;
 }
+.director-view {
+  margin: 2rem auto;
+  text-align: center;
+}
+.genre-view {
+  margin: 2rem auto;
+  text-align: center;
+}
 .navbar,
 .navbar-dark {
   justify-content: center;
