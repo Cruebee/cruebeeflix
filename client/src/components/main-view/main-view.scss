@@ -10,8 +10,17 @@ $black: #343a40;
 .navbar,
 .navbar-dark {
   justify-content: center;
+  width: 100%;
 }
 
 .main-view-title {
   color: $black;
+}
+
+.profile-button {
+  margin: 1rem auto;
+}
+
+.log-out-button {
+  margin: 1rem auto;
 }

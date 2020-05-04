@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -93,21 +94,29 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Container className="main-view">
-          <Navbar className="navbar navbar-dark">
-            <h1 className="main-view-title">myFlix</h1>
-            <Link to={`/users/${localStorage.getItem('user')}`}>
-              <Button className="profile-button" variant="primary">
-                Profile
+          <Row>
+            <Navbar className="navbar navbar-dark">
+              <h1 className="main-view-title">myFlix</h1>
+            </Navbar>
+          </Row>
+          <Row>
+            <Col>
+              <Link to={`/users/${localStorage.getItem('user')}`}>
+                <Button className="profile-button" variant="primary">
+                  Profile
               </Button>
-            </Link>
-            <Button
-              className="log-out-button"
-              variant="info"
-              onClick={() => this.handleLogOut()}
-            >
-              Log Out
+              </Link>
+            </Col>
+            <Col>
+              <Button
+                className="log-out-button"
+                variant="info"
+                onClick={() => this.handleLogOut()}
+              >
+                Log Out
             </Button>
-          </Navbar>
+            </Col>
+          </Row>
           <Row>
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
