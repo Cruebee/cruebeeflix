@@ -94,6 +94,16 @@ export function ProfileView(props) {
           variant="primary"
           onClick={handleUpdate}>Update Profile</Button>
       </Form>
-    </Container>
+      <Container>
+        <Link to={`/`}>
+          <Button
+            className="back-button"
+            variant="info"
+          >
+            Back
+            </Button>
+        </Link>
+      </Container>
+    </Container >
   );
 }
