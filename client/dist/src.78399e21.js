@@ -37870,8 +37870,7 @@ function LoginView(props) {
   };
 
   return _react.default.createElement(_Container.default, {
-    className: "login-view",
-    fluid: "true"
+    className: "login-view"
   }, _react.default.createElement("h1", {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
@@ -38673,12 +38672,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           movies = _this$state.movies,
           user = _this$state.user;
       if (!movies) return _react.default.createElement(_Container.default, {
-        className: "main-view",
-        fluid: "true"
+        className: "main-view"
       });
       return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Container.default, {
-        className: "main-view",
-        fluid: "true"
+        className: "main-view"
       }, _react.default.createElement(_Navbar.default, {
         className: "navbar navbar-dark"
       }, _react.default.createElement("h1", {

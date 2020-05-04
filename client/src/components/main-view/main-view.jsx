@@ -88,11 +88,11 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
-    if (!movies) return <Container className="main-view" fluid="true" />;
+    if (!movies) return <Container className="main-view" />;
 
     return (
       <Router>
-        <Container className="main-view" fluid="true">
+        <Container className="main-view">
           <Navbar className="navbar navbar-dark">
             <h1 className="main-view-title">myFlix</h1>
             <Link to={`/users/${localStorage.getItem('user')}`}>

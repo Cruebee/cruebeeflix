@@ -30,7 +30,7 @@ export function LoginView(props) {
   };
 
   return (
-    <Container className="login-view" fluid="true">
+    <Container className="login-view">
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
         <Form.Group controlId="formUsername">

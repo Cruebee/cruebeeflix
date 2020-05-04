@@ -20,6 +20,15 @@
   color: #343a40;
   text-align: center;
 }
+
+.registration-group {
+  margin: 0 auto;
+  width: 30%;
+}
+
+.registration-button {
+  cursor: pointer;
+}
 .movie-view {
   margin: 2rem auto;
   text-align: center;
