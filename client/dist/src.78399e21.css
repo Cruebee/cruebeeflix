@@ -11,7 +11,7 @@
 }
 .login-form {
   margin: 8rem auto;
-  width: 30%;
+  width: 35%;
 }
 
 .login-title {
@@ -21,9 +21,23 @@
   text-align: center;
 }
 
+.login-submit {
+  margin: 0 auto;
+  width: 35%;
+}
+
+.login-button {
+  cursor: pointer;
+  text-align: center;
+}
+
 .registration-group {
   margin: 0 auto;
-  width: 30%;
+  width: 50%;
+}
+
+.need-account {
+  text-align: center;
 }
 
 .registration-button {

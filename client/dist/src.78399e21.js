@@ -37893,16 +37893,18 @@ function LoginView(props) {
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement(_Button.default, {
-    className: "submit-button",
+  })), _react.default.createElement(_Form.default.Group, {
+    className: "login-submit"
+  }, _react.default.createElement(_Button.default, {
+    className: "login-button",
     variant: "success",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), _react.default.createElement(_Form.default.Group, {
+  }, "Submit")), _react.default.createElement(_Form.default.Group, {
     className: "registration-group",
     controlId: "formRegistration"
   }, _react.default.createElement(_Form.default.Text, {
-    className: "text-muted"
+    className: "text-muted need-account"
   }, "Need an account?"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
   }, _react.default.createElement(_Button.default, {
