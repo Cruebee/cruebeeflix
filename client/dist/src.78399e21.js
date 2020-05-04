@@ -38886,13 +38886,21 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         src: Director[0].ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "director-name"
-      }, "Name: ", Director[0].Name), _react.default.createElement(_Card.default.Text, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Name: "), Director[0].Name), _react.default.createElement(_Card.default.Text, {
         className: "director-bio"
-      }, "Bio: ", Director[0].Bio), _react.default.createElement(_Card.default.Text, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Bio: "), Director[0].Bio), _react.default.createElement(_Card.default.Text, {
         className: "director-birth"
-      }, "Birth: ", Director[0].Birth), _react.default.createElement(_Card.default.Text, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Birth: "), Director[0].Birth), _react.default.createElement(_Card.default.Text, {
         className: "director-death"
-      }, "Death: ", Director[0].Death), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Death: "), Director[0].Death), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "primary"
@@ -38987,9 +38995,13 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-name"
-      }, "Name: ", Genre[0].Name), _react.default.createElement(_Card.default.Text, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Name: "), Genre[0].Name), _react.default.createElement(_Card.default.Text, {
         className: "genre-description"
-      }, "Description: ", Genre[0].Description), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Description: "), Genre[0].Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "primary"

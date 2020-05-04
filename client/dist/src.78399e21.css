@@ -55,6 +55,10 @@
 .movie-container {
   width: 60%;
 }
+
+.label {
+  color: #28a745;
+}
 .director-view {
   margin: 2rem auto;
   text-align: center;
