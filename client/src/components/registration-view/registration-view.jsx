@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
-import "./registration-view.scss";
+import { Link } from 'react-router-dom';
+
+import './registration-view.scss';
 
 export function RegistrationView(props) {
-  const [username, createUsername] = useState("");
-  const [password, createPassword] = useState("");
-  const [email, createEmail] = useState("");
-  const [birthday, createBirthday] = useState("");
+  const [username, createUsername] = useState('');
+  const [password, createPassword] = useState('');
+  const [email, createEmail] = useState('');
+  const [birthday, createBirthday] = useState('');
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -80,13 +82,14 @@ export function RegistrationView(props) {
         </Button>
         <Form.Group className="login-group" controlId="formLogin">
           <Form.Text className="text-muted">Already have an account?</Form.Text>
-          <Button
-            className="back-button"
-            onClick={() => window.open("login-view", "_self")}
-            variant="info"
-          >
-            Login
+          <Link to={`/`}>
+            <Button
+              className="back-button"
+              variant="info"
+            >
+              Login
           </Button>
+          </Link>
         </Form.Group>
       </Form>
     </div>
