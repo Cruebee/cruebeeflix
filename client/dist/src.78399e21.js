@@ -38150,6 +38150,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       // Via the movies endpoint of your API
       var movie = this.props.movie;
       return _react.default.createElement(_Card.default, {
+        className: "movie-cards",
         style: {
           width: "16rem"
         }
