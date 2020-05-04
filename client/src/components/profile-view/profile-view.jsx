@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 // Bootstrap imports
 import Form from 'react-bootstrap/Form';
@@ -10,100 +10,213 @@ import { Link } from 'react-router-dom';
 // scss import
 import './profile-view.scss';
 
-export function ProfileView(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const userInfo = () => {
-    axios.get(`https://cruebeeflix.herokuapp.com/users/${localStorage.getItem('user')}`, {
-      headers: { Authorization: `${localStorage.getItem('token')}` }
+export class ProfileView extends React.Component {
+
+  constructor() {
+    super();
+
+    this.Username = null,
+      this.Password = null,
+      this.Email = null,
+      this.Birthday = null
+
+    this.state = {
+      userInfo: null,
+      onLogOut: null
+    };
+  }
+
+  componentDidMount() {
+    this.getUserInfo(localStorage.getItem('user'), localStorage.getItem('token'));
+  }
+
+  getUserInfo(user, token) {
+    axios.get(`https://cruebeeflix.herokuapp.com/users/${user}`, {
+      headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
-        return response.data;
+        this.setState({
+          userInfo: response.data
+        })
       })
-      .catch(err => {
-        console.error(err);
+      .catch(error => {
+        console.error(error);
       });
   }
 
-  const handleUpdate = (e) => {
-    e.preventDefault()
-    console.log(Username);
-    // send request to server for auth:
-    axios.post('https://cruebeeflix.herokuapp.com/users', {
-      Username: Username,
-      Password: Password,
-      Email: Email,
-      Birthday: Birthday
+  removieFavorite(e, movieId) {
+    e.preventDefault();
+    axios({
+      method: 'delete',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem('user')}/movies/${movieId}`,
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     })
       .then(response => {
-        const data = response.data;
-        console.log(data);
-        window.open('/', '_self');
+        alert(response.data);
+        this.setState({
+          userInfo: null
+        })
+        this.getUserInfo(localStorage.getItem('user'), localStorage.getItem('token'));
       })
       .catch(e => {
-        console.log(e);
+        console.error(e);
       });
-  };
+  }
 
-  return (
-    <Container className="profile-view">
-      <h1 className="profile-view-title">Update Profile</h1>
-      <Form className="profile-form">
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Username"
-            defaultValue={userInfo.Username}
-            onChange={e => setUsername(e.target.value)} />
-        </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)} />
-        </Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Email"
-            defaultValue={userInfo.Email}
-            onChange={e => setEmail(e.target.value)} />
-          <Form.Text className="text-muted">
-            Your privacy is important to us, none of your information will be shared with anyone else.
+  updateUser(e, Username, Password, Email, Birthday, userInfo) {
+    e.preventDefault();
+    axios({
+      method: 'put',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem('user')}`,
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+      data: {
+        Username: Username ? Username : userInfo.Username,
+        Password: Password,
+        Email: Email ? Email : userInfo.Email,
+        Birthday: Birthday ? Birthday : userInfo.Birthday
+      }
+    })
+      .then(response => {
+        alert('Your account has been updated.');
+      })
+      .catch(error => {
+        alert(error);
+      })
+  }
+
+  deregisterUser(e) {
+    e.preventDefault();
+    axios({
+      method: 'delete',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem('user')}`,
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` },
+    })
+      .then(response => {
+        alert(response.data + ' You will now be taken to the login screen.');
+        this.props.onLoggedOut(true);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+
+  setUsername(input) {
+    this.Username = input;
+  }
+
+  setPassword(input) {
+    this.Password = input;
+  }
+
+  setEmail(input) {
+    this.Email = input;
+  }
+
+  setBirthday(input) {
+    this.Birthday = input;
+  }
+
+  render() {
+
+    const { userInfo } = this.state;
+    if (!userInfo) return <div className="loader">Loading...</div>;
+    return (
+      <Container className="profile-view">
+        <h1 className="profile-view-title">Update Profile</h1>
+        <Form className="profile-form">
+          <Form.Group controlId="formUsername">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Username"
+              defaultValue={userInfo.Username}
+              onChange={e => this.setUsername(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter Password"
+              value={userInfo.Password}
+              onChange={e => this.setPassword(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId="formEmail">
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Email"
+              defaultValue={userInfo.Email}
+              onChange={e => this.setEmail(e.target.value)} />
+            <Form.Text className="text-muted">
+              Your privacy is important to us, none of your information will be shared with anyone else.
             </Form.Text>
-        </Form.Group>
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Text className="text-muted">
-            We use this information to provide you with more age apropriate movies.
+          </Form.Group>
+          <Form.Group controlId="formBirthday">
+            <Form.Label>Birthday:</Form.Label>
+            <Form.Text className="text-muted">
+              We use this information to provide you with more age apropriate movies.
           </Form.Text>
-          <Form.Control
-            type="date"
-            placeholder="Enter Birthday"
-            defaultValue={userInfo.Birthday}
-            onChange={e => setBirthday(e.target.value)} />
-        </Form.Group>
-        <Button
-          className="update-button"
-          variant="primary"
-          onClick={handleUpdate}>Update Profile</Button>
-      </Form>
-      <Container>
-        <Link to={`/`}>
-          <Button
-            className="back-button"
-            variant="info"
-          >
-            Back
+            <Form.Control
+              type="date"
+              placeholder="Enter Birthday"
+              defaultValue={userInfo.Birthday.split('T')[0]}
+              onChange={e => this.setBirthday(e.target.value)} />
+          </Form.Group>
+          <div>
+            <Button
+              className="update-button"
+              variant="primary"
+              onClick={(e) => this.updateUser(e, this.Username, this.Password, this.Email, this.Birthday, userInfo)}
+            >
+              Update Profile
             </Button>
-        </Link>
+          </div>
+        </Form>
+        <div>
+          <Link to={`/`}>
+            <Button
+              className="back-button"
+              variant="info"
+            >
+              Back
+            </Button>
+          </Link>
+        </div>
+        <Container className="profile-view">
+          <h1 className="user-favorites">Favorite Movies</h1>
+          <ListGroup className="app-title">
+            {userInfo.FavoriteMovies.length === 0 && <ListGroup.Item>You have no favorite movies.</ListGroup.Item>}
+            {userInfo.FavoriteMovies.map(movie => {
+              return (<ListGroup.Item className="favorite-movies">
+                <div>
+                  {movie.Title}
+                </div>
+                <div className="delete-favorite">
+                  <Button
+                    className="delete-button"
+                    key={movie._id}
+                    onClick={(e) => this.removieFavorite(e, movie._id)}
+                  >
+                    Delete Favorite
+                    </Button>
+                </div>
+              </ListGroup.Item>)
+            })
+            }
+          </ListGroup>
+        </Container>
+        <Container className="profile-view">
+          <h1 className="deregister-user">Remove Account</h1>
+          <ListGroup className="deregister-user-group">
+            <Button
+              className="deregister-button"
+              onClick={(e) => this.deregisterUser(e)}
+            >
+              Remove Account
+              </Button>
+          </ListGroup>
+        </Container>
       </Container>
-    </Container>
-  );
+    );
+  }
 }

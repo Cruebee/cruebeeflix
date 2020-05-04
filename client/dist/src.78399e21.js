@@ -39030,9 +39030,9 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ProfileView = ProfileView;
+exports.ProfileView = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -39050,130 +39050,258 @@ require("./profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function ProfileView(props) {
-  var _useState = (0, _react.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-  var _useState3 = (0, _react.useState)(''),
-      _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-  var _useState5 = (0, _react.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-  var _useState7 = (0, _react.useState)(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      birthday = _useState8[0],
-      setBirthday = _useState8[1];
+var ProfileView = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProfileView, _React$Component);
 
-  var userInfo = function userInfo() {
-    _axios.default.get("https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user')), {
-      headers: {
-        Authorization: "".concat(localStorage.getItem('token'))
-      }
-    }).then(function (response) {
-      return response.data;
-    }).catch(function (err) {
-      console.error(err);
-    });
-  };
+  var _super = _createSuper(ProfileView);
 
-  var handleUpdate = function handleUpdate(e) {
-    e.preventDefault();
-    console.log(Username); // send request to server for auth:
+  function ProfileView() {
+    var _this;
 
-    _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
-      Username: Username,
-      Password: Password,
-      Email: Email,
-      Birthday: Birthday
-    }).then(function (response) {
-      var data = response.data;
-      console.log(data);
-      window.open('/', '_self');
-    }).catch(function (e) {
-      console.log(e);
-    });
-  };
+    _classCallCheck(this, ProfileView);
 
-  return _react.default.createElement(_Container.default, {
-    className: "profile-view"
-  }, _react.default.createElement("h1", {
-    className: "profile-view-title"
-  }, "Update Profile"), _react.default.createElement(_Form.default, {
-    className: "profile-form"
-  }, _react.default.createElement(_Form.default.Group, {
-    controlId: "formUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
-    type: "text",
-    placeholder: "Enter Username",
-    defaultValue: userInfo.Username,
-    onChange: function onChange(e) {
-      return setUsername(e.target.value);
+    _this = _super.call(this);
+    _this.Username = null, _this.Password = null, _this.Email = null, _this.Birthday = null;
+    _this.state = {
+      userInfo: null,
+      onLogOut: null
+    };
+    return _this;
+  }
+
+  _createClass(ProfileView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getUserInfo(localStorage.getItem('user'), localStorage.getItem('token'));
     }
-  })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
-    type: "password",
-    placeholder: "Enter Password",
-    value: password,
-    onChange: function onChange(e) {
-      return setPassword(e.target.value);
+  }, {
+    key: "getUserInfo",
+    value: function getUserInfo(user, token) {
+      var _this2 = this;
+
+      _axios.default.get("https://cruebeeflix.herokuapp.com/users/".concat(user), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        _this2.setState({
+          userInfo: response.data
+        });
+      }).catch(function (error) {
+        console.error(error);
+      });
     }
-  })), _react.default.createElement(_Form.default.Group, {
-    controlId: "formEmail"
-  }, _react.default.createElement(_Form.default.Label, null, "Email:"), _react.default.createElement(_Form.default.Control, {
-    type: "text",
-    placeholder: "Enter Email",
-    defaultValue: userInfo.Email,
-    onChange: function onChange(e) {
-      return setEmail(e.target.value);
+  }, {
+    key: "removieFavorite",
+    value: function removieFavorite(e, movieId) {
+      var _this3 = this;
+
+      e.preventDefault();
+      (0, _axios.default)({
+        method: 'delete',
+        url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user'), "/movies/").concat(movieId),
+        headers: {
+          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        alert(response.data);
+
+        _this3.setState({
+          userInfo: null
+        });
+
+        _this3.getUserInfo(localStorage.getItem('user'), localStorage.getItem('token'));
+      }).catch(function (e) {
+        console.error(e);
+      });
     }
-  }), _react.default.createElement(_Form.default.Text, {
-    className: "text-muted"
-  }, "Your privacy is important to us, none of your information will be shared with anyone else.")), _react.default.createElement(_Form.default.Group, {
-    controlId: "formBirthday"
-  }, _react.default.createElement(_Form.default.Label, null, "Birthday:"), _react.default.createElement(_Form.default.Text, {
-    className: "text-muted"
-  }, "We use this information to provide you with more age apropriate movies."), _react.default.createElement(_Form.default.Control, {
-    type: "date",
-    placeholder: "Enter Birthday",
-    defaultValue: userInfo.Birthday,
-    onChange: function onChange(e) {
-      return setBirthday(e.target.value);
+  }, {
+    key: "updateUser",
+    value: function updateUser(e, Username, Password, Email, Birthday, userInfo) {
+      e.preventDefault();
+      (0, _axios.default)({
+        method: 'put',
+        url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user')),
+        headers: {
+          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+        },
+        data: {
+          Username: Username ? Username : userInfo.Username,
+          Password: Password,
+          Email: Email ? Email : userInfo.Email,
+          Birthday: Birthday ? Birthday : userInfo.Birthday
+        }
+      }).then(function (response) {
+        alert('Your account has been updated.');
+      }).catch(function (error) {
+        alert(error);
+      });
     }
-  })), _react.default.createElement(_Button.default, {
-    className: "update-button",
-    variant: "primary",
-    onClick: handleUpdate
-  }, "Update Profile")), _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.Link, {
-    to: "/"
-  }, _react.default.createElement(_Button.default, {
-    className: "back-button",
-    variant: "info"
-  }, "Back"))));
-}
+  }, {
+    key: "deregisterUser",
+    value: function deregisterUser(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      (0, _axios.default)({
+        method: 'delete',
+        url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user')),
+        headers: {
+          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        alert(response.data + ' You will now be taken to the login screen.');
+
+        _this4.props.onLoggedOut(true);
+      }).catch(function (error) {
+        console.error(error);
+      });
+    }
+  }, {
+    key: "setUsername",
+    value: function setUsername(input) {
+      this.Username = input;
+    }
+  }, {
+    key: "setPassword",
+    value: function setPassword(input) {
+      this.Password = input;
+    }
+  }, {
+    key: "setEmail",
+    value: function setEmail(input) {
+      this.Email = input;
+    }
+  }, {
+    key: "setBirthday",
+    value: function setBirthday(input) {
+      this.Birthday = input;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+
+      var userInfo = this.state.userInfo;
+      if (!userInfo) return _react.default.createElement("div", {
+        className: "loader"
+      }, "Loading...");
+      return _react.default.createElement(_Container.default, {
+        className: "profile-view"
+      }, _react.default.createElement("h1", {
+        className: "profile-view-title"
+      }, "Update Profile"), _react.default.createElement(_Form.default, {
+        className: "profile-form"
+      }, _react.default.createElement(_Form.default.Group, {
+        controlId: "formUsername"
+      }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+        type: "text",
+        placeholder: "Enter Username",
+        defaultValue: userInfo.Username,
+        onChange: function onChange(e) {
+          return _this5.setUsername(e.target.value);
+        }
+      })), _react.default.createElement(_Form.default.Group, {
+        controlId: "formPassword"
+      }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
+        type: "password",
+        placeholder: "Enter Password",
+        value: userInfo.Password,
+        onChange: function onChange(e) {
+          return _this5.setPassword(e.target.value);
+        }
+      })), _react.default.createElement(_Form.default.Group, {
+        controlId: "formEmail"
+      }, _react.default.createElement(_Form.default.Label, null, "Email:"), _react.default.createElement(_Form.default.Control, {
+        type: "text",
+        placeholder: "Enter Email",
+        defaultValue: userInfo.Email,
+        onChange: function onChange(e) {
+          return _this5.setEmail(e.target.value);
+        }
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, "Your privacy is important to us, none of your information will be shared with anyone else.")), _react.default.createElement(_Form.default.Group, {
+        controlId: "formBirthday"
+      }, _react.default.createElement(_Form.default.Label, null, "Birthday:"), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, "We use this information to provide you with more age apropriate movies."), _react.default.createElement(_Form.default.Control, {
+        type: "date",
+        placeholder: "Enter Birthday",
+        defaultValue: userInfo.Birthday.split('T')[0],
+        onChange: function onChange(e) {
+          return _this5.setBirthday(e.target.value);
+        }
+      })), _react.default.createElement("div", null, _react.default.createElement(_Button.default, {
+        className: "update-button",
+        variant: "primary",
+        onClick: function onClick(e) {
+          return _this5.updateUser(e, _this5.Username, _this5.Password, _this5.Email, _this5.Birthday, userInfo);
+        }
+      }, "Update Profile"))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, _react.default.createElement(_Button.default, {
+        className: "back-button",
+        variant: "info"
+      }, "Back"))), _react.default.createElement(_Container.default, {
+        className: "profile-view"
+      }, _react.default.createElement("h1", {
+        className: "user-favorites"
+      }, "Favorite Movies"), _react.default.createElement(_ListGroup.default, {
+        className: "app-title"
+      }, userInfo.FavoriteMovies.length === 0 && _react.default.createElement(_ListGroup.default.Item, null, "You have no favorite movies."), userInfo.FavoriteMovies.map(function (movie) {
+        return _react.default.createElement(_ListGroup.default.Item, {
+          className: "favorite-movies"
+        }, _react.default.createElement("div", null, movie.Title), _react.default.createElement("div", {
+          className: "delete-favorite"
+        }, _react.default.createElement(_Button.default, {
+          className: "delete-button",
+          key: movie._id,
+          onClick: function onClick(e) {
+            return _this5.removieFavorite(e, movie._id);
+          }
+        }, "Delete Favorite")));
+      }))), _react.default.createElement(_Container.default, {
+        className: "profile-view"
+      }, _react.default.createElement("h1", {
+        className: "deregister-user"
+      }, "Remove Account"), _react.default.createElement(_ListGroup.default, {
+        className: "deregister-user-group"
+      }, _react.default.createElement(_Button.default, {
+        className: "deregister-button",
+        onClick: function onClick(e) {
+          return _this5.deregisterUser(e);
+        }
+      }, "Remove Account"))));
+    }
+  }]);
+
+  return ProfileView;
+}(_react.default.Component);
+
+exports.ProfileView = ProfileView;
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
