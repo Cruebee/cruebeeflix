@@ -1,10 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+// Bootstrap imports
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+// react-router imports
+import { Link } from 'react-router-dom';
 
-import "./movie-card.scss";
+import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
@@ -20,9 +23,38 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Link to={`/movies/${movie._id}`}>
-            <Button variant="link">Open</Button>
-          </Link>
+          <ListGroup className="card-links">
+            <ListGroup.Item>
+              <Link to={`/movies/${movie._id}`}>
+                <Button
+                  className="movie-details"
+                  variant="link"
+                >
+                  Movie Details
+              </Button>
+              </Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Link to={`/directors/${movie.Director[0].Name}`}>
+                <Button
+                  className="director-details"
+                  variant="link"
+                >
+                  Director Details
+                  </Button>
+              </Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Link to={`/genres/${movie.Genre[0].Name}`}>
+                <Button
+                  className="genre-details"
+                  variant="link"
+                >
+                  Genre Details
+                  </Button>
+              </Link>
+            </ListGroup.Item>
+          </ListGroup>
         </Card.Body>
       </Card>
     );

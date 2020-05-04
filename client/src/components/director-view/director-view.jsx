@@ -13,18 +13,18 @@ export class DirectorView extends React.Component {
   }
 
   render() {
-    const { director } = this.props;
+    const { movie, Director } = this.props;
 
-    if (!director) return null;
+    if (!Director) return null;
 
     return (
       <Card className="director-view" style={{ width: "32rem" }}>
-        <Card.Img variant="top" src={director.ImagePath} />
+        <Card.Img variant="top" src={Director.ImagePath} />
         <Card.Body>
-          <Card.Title className="director-name">{director.Name}</Card.Title>
-          <Card.Text className="director-bio">{director.Bio}</Card.Text>
-          <Card.Text className="director-birth">{director.Birth}</Card.Text>
-          <Card.Text className="director-death">{director.Death}</Card.Text>
+          <Card.Title className="director-name">{Director.Name}</Card.Title>
+          <Card.Text className="director-bio">{Director.Bio}</Card.Text>
+          <Card.Text className="director-birth">{Director.Birth}</Card.Text>
+          <Card.Text className="director-death">{Director.Death}</Card.Text>
 
           <Button
             onClick={() => window.open("main-view", "_self")}

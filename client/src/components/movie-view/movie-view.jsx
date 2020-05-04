@@ -41,24 +41,11 @@ export class MovieView extends React.Component {
               <div className="movie-genre">
                 <span className="label">Genre:</span>
                 <span className="value">{movie.Genre[0].Name}</span>
-                <Button
-                  onClick={() => onClick(genre)}
-                  variant="primary"
-                  disabled
-                >
-                  Genre
-                </Button>
               </div>
 
               <div className="movie-director">
                 <span className="label">Director:</span>
                 <span className="value">{movie.Director[0].Name}</span>
-                <Button
-                  onClick={() => this.props.director(movie.Director[0])}
-                  variant="primary"
-                >
-                  Director
-                </Button>
               </div>
 
               <Link to={`/`}>
@@ -72,7 +59,7 @@ export class MovieView extends React.Component {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container >
     );
   }
 }
