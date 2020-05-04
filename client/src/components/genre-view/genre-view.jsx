@@ -1,9 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-import "./genre-view.scss";
+// react-router imports
+import { Link } from 'react-router-dom';
+
+import './genre-view.scss';
 
 export class GenreView extends React.Component {
   constructor() {
@@ -13,24 +16,24 @@ export class GenreView extends React.Component {
   }
 
   render() {
-    const { genre } = this.props;
+    const { Genre } = this.props;
 
-    if (!genre) return null;
+    if (!Genre) return null;
 
     return (
       <Card className="genre-view" style={{ width: "32rem" }}>
         <Card.Body>
-          <Card.Title className="genre-name">{genre.Name}</Card.Title>
+          <Card.Title className="genre-name">{Genre[0].Name}</Card.Title>
           <Card.Text className="genre-description">
-            {genre.Description}
+            {Genre[0].Description}
           </Card.Text>
-
-          <Button
-            onclick={() => window.open("main-view", "_self")}
-            variant="primary"
-          >
-            Back
+          <Link to={`/`}>
+            <Button
+              variant="primary"
+            >
+              Back
           </Button>
+          </Link>
         </Card.Body>
       </Card>
     );
