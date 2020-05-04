@@ -32,10 +32,10 @@ export function ProfileView(props) {
     console.log(Username);
     // send request to server for auth:
     axios.post('https://cruebeeflix.herokuapp.com/users', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
+      Username: Username,
+      Password: Password,
+      Email: Email,
+      Birthday: Birthday
     })
       .then(response => {
         const data = response.data;
@@ -104,6 +104,6 @@ export function ProfileView(props) {
             </Button>
         </Link>
       </Container>
-    </Container >
+    </Container>
   );
 }

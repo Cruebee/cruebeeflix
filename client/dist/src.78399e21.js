@@ -39104,10 +39104,10 @@ function ProfileView(props) {
     console.log(Username); // send request to server for auth:
 
     _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
+      Username: Username,
+      Password: Password,
+      Email: Email,
+      Birthday: Birthday
     }).then(function (response) {
       var data = response.data;
       console.log(data);
