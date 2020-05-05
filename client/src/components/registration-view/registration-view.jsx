@@ -16,10 +16,9 @@ export function RegistrationView(props) {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log("Registered");
-    props.onNeedRegistration(false);
 
     axios
-      .post("https://cruebeeflix.herokuapp.com/users", {
+      .post('https://cruebeeflix.herokuapp.com/users', {
         Username: username,
         Password: password,
         Email: email,
@@ -29,7 +28,7 @@ export function RegistrationView(props) {
         const data = response.data;
         alert("Your account has been created. Please login.");
         console.log(data);
-        window.open("/client", "_self");
+        window.open("/", "_self");
       })
       .catch((e) => {
         console.log("error registering user.");

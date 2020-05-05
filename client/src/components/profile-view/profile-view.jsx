@@ -93,7 +93,8 @@ export class ProfileView extends React.Component {
     })
       .then(response => {
         alert(response.data + ' You will now be taken to the login screen.');
-        this.props.onLoggedOut(true);
+        this.props.onLogOut(true);
+        window.open('/', '_self')
       })
       .catch(error => {
         console.error(error);

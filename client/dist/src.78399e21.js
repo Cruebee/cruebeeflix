@@ -37724,9 +37724,8 @@ function RegistrationView(props) {
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
     console.log("Registered");
-    props.onNeedRegistration(false);
 
-    _axios.default.post("https://cruebeeflix.herokuapp.com/users", {
+    _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
       Username: username,
       Password: password,
       Email: email,
@@ -37735,7 +37734,7 @@ function RegistrationView(props) {
       var data = response.data;
       alert("Your account has been created. Please login.");
       console.log(data);
-      window.open("/client", "_self");
+      window.open("/", "_self");
     }).catch(function (e) {
       console.log("error registering user.");
     });
@@ -39174,7 +39173,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }).then(function (response) {
         alert(response.data + ' You will now be taken to the login screen.');
 
-        _this4.props.onLoggedOut(true);
+        _this4.props.onLogOut(true);
+
+        window.open('/', '_self');
       }).catch(function (error) {
         console.error(error);
       });
@@ -39442,14 +39443,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }).catch(function (error) {
         console.log(error);
       });
-    } // Registration
-
-  }, {
-    key: "onNeedRegistration",
-    value: function onNeedRegistration(registration) {
-      this.setState({
-        registration: registration
-      });
     }
   }, {
     key: "render",
@@ -39652,7 +39645,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50399" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49359" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

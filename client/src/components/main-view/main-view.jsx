@@ -81,13 +81,6 @@ export class MainView extends React.Component {
       });
   }
 
-  // Registration
-  onNeedRegistration(registration) {
-    this.setState({
-      registration,
-    });
-  }
-
   render() {
     const { movies, user } = this.state;
     if (!movies) return <Container className="main-view" />;
