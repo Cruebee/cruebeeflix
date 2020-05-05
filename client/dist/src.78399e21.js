@@ -39465,7 +39465,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         to: "/users/".concat(localStorage.getItem('user'))
       }, _react.default.createElement(_Button.default, {
         className: "profile-button",
-        variant: "primary"
+        variant: "primary",
+        onClick: true
       }, "Profile"))), _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, {
         className: "log-out-button",
         variant: "info",

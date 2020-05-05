@@ -96,7 +96,11 @@ export class MainView extends React.Component {
           <Row>
             <Col>
               <Link to={`/users/${localStorage.getItem('user')}`}>
-                <Button className="profile-button" variant="primary">
+                <Button
+                  className="profile-button"
+                  variant="primary"
+                  onClick
+                >
                   Profile
               </Button>
               </Link>
