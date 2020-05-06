@@ -1,14 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Axios from 'axios';
+// React-Bootstrap imports
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+// react-router imports
+import { Link } from 'react-router-dom';
 
-import { Link } from "react-router-dom";
-
-import "./movie-view.scss";
-import Axios from "axios";
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
   constructor() {
@@ -47,59 +50,33 @@ export class MovieView extends React.Component {
     }
 
     return (
-      <Container className="movie-container">
-        <Row>
-          <Col>
-            <div className="movie-view">
-              <img className="movie-poster" src={movie.ImagePath} />
-
-              <div className="movie-title">
-                <span className="label">Title: </span>
-                <span className="value">{movie.Title}</span>
-              </div>
-
-              <div className="movie-description">
-                <span className="label">Description: </span>
-                <span className="value">{movie.Description}</span>
-              </div>
-
-              <div className="movie-genre">
-                <span className="label">Genre: </span>
-                <span className="value">{movie.Genre[0].Name}</span>
-              </div>
-
-              <div className="movie-director">
-                <span className="label">Director: </span>
-                <span className="value">{movie.Director[0].Name}</span>
-              </div>
-
-              <div>
-                <span className="label">Featured: </span>
-                <span className="value">{featured}</span>
-              </div>
-
-              <div className="favorite-button-container">
-                <span className="label">Add to Favorites: </span>
-                <Button
-                  className="favorite-button"
-                  onClick={(e) => this.addFavoriteMovie(e, movie)}
-                >
-                  Add Favorite
-                  </Button>
-              </div>
-
-              <Link to={`/`}>
-                <Button
-                  className="back-button"
-                  variant="info"
-                >
-                  Back
-              </Button>
-              </Link>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <Card className="movie-view" style={{ width: '20rem' }}>
+        <Card.Img variant="top" src={movie.ImagePath} />
+        <Card.Text className="movie-description"><span className="label">Title: </span>{movie.Description}</Card.Text>
+        <ListGroup className="movie-details">
+          <ListGroup.Item className="movie-details"><span className="label">Genre: </span>{movie.Genre[0].Name}</ListGroup.Item>
+          <ListGroup.Item className="movie-details"><span className="label">Director: </span>{movie.Director[0].Name}</ListGroup.Item>
+          <ListGroup.Item className="movie-details"><span className="label">Featured: </span>{featured}</ListGroup.Item>
+        </ListGroup>
+        <div className="favorites-container">
+          <Button
+            variant="btn"
+            className="favorite-button"
+            onClick={(e) => this.addFavoriteMovie(e, movie)}
+          >
+            Add To Favorites
+            </Button>
+        </div>
+        <div className="return-button">
+          <Link to={`/`}>
+            <Button
+              className="back-button"
+            >
+              Back
+            </Button>
+          </Link>
+        </div>
+      </Card>
     );
   }
 }

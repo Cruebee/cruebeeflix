@@ -38706,6 +38706,10 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
+var _ListGroup = _interopRequireDefault(require("react-bootstrap/ListGroup"));
+
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
@@ -38714,11 +38718,11 @@ var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
+var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./movie-view.scss");
-
-var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38792,56 +38796,47 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         featured = 'No';
       }
 
-      return _react.default.createElement(_Container.default, {
-        className: "movie-container"
-      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
-        className: "movie-view"
-      }, _react.default.createElement("img", {
-        className: "movie-poster",
+      return _react.default.createElement(_Card.default, {
+        className: "movie-view",
+        style: {
+          width: '20rem'
+        }
+      }, _react.default.createElement(_Card.default.Img, {
+        variant: "top",
         src: movie.ImagePath
-      }), _react.default.createElement("div", {
-        className: "movie-title"
-      }, _react.default.createElement("span", {
-        className: "label"
-      }, "Title: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Title)), _react.default.createElement("div", {
+      }), _react.default.createElement(_Card.default.Text, {
         className: "movie-description"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Description: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Description)), _react.default.createElement("div", {
-        className: "movie-genre"
+      }, "Title: "), movie.Description), _react.default.createElement(_ListGroup.default, {
+        className: "movie-details"
+      }, _react.default.createElement(_ListGroup.default.Item, {
+        className: "movie-details"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Genre: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Genre[0].Name)), _react.default.createElement("div", {
-        className: "movie-director"
+      }, "Genre: "), movie.Genre[0].Name), _react.default.createElement(_ListGroup.default.Item, {
+        className: "movie-details"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Director: "), _react.default.createElement("span", {
-        className: "value"
-      }, movie.Director[0].Name)), _react.default.createElement("div", null, _react.default.createElement("span", {
-        className: "label"
-      }, "Featured: "), _react.default.createElement("span", {
-        className: "value"
-      }, featured)), _react.default.createElement("div", {
-        className: "favorite-button-container"
+      }, "Director: "), movie.Director[0].Name), _react.default.createElement(_ListGroup.default.Item, {
+        className: "movie-details"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Add to Favorites: "), _react.default.createElement(_Button.default, {
+      }, "Featured: "), featured)), _react.default.createElement("div", {
+        className: "favorites-container"
+      }, _react.default.createElement(_Button.default, {
+        variant: "btn",
         className: "favorite-button",
         onClick: function onClick(e) {
           return _this2.addFavoriteMovie(e, movie);
         }
-      }, "Add Favorite")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Add To Favorites")), _react.default.createElement("div", {
+        className: "return-button"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "back-button",
-        variant: "info"
-      }, "Back"))))));
+        className: "back-button"
+      }, "Back"))));
     }
   }]);
 
@@ -38863,7 +38858,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

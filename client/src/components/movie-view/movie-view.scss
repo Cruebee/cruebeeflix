@@ -8,6 +8,11 @@ $white: #fff;
 .movie-view {
   margin: 2rem auto;
   text-align: center;
+  background-color: $grey;
+}
+
+.movie-details {
+  background-color: $grey;
 }
 
 .movie-container {
@@ -15,5 +20,36 @@ $white: #fff;
 }
 
 .label {
-  color: $green;
+  color: $white;
+}
+
+.favorite-button {
+  margin: 1rem auto;
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+}
+
+.favorite-button:hover,
+.favorite-button:active,
+.favorite-button:focus {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  opacity: 0.7;
+}
+
+.back-button {
+  margin-bottom: 1rem;
+  background-color: $lime;
+  color: $black;
+  border-color: $lime;
+}
+
+.back-button:hover,
+.back-button:focus,
+.back-button:active {
+  background-color: $lime;
+  color: $black;
+  border-color: $lime;
 }
