@@ -38873,10 +38873,11 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           return _this2.addFavoriteMovie(e, movie);
         }
       }, "Add To Favorites")), _react.default.createElement("div", {
-        className: "return-button"
+        className: "return-section"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
+        variant: "btn",
         className: "back-button"
       }, "Back"))));
     }
@@ -39214,7 +39215,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "removeFavorite",
-    value: function removeFavorite(e, movieId) {
+    value: function removeFavorite(e, movieId, movies) {
       var _this3 = this;
 
       e.preventDefault();
@@ -39225,7 +39226,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           'Authorization': "Bearer ".concat(localStorage.getItem('token'))
         }
       }).then(function (response) {
-        alert('The movie has been removed from your favorites list.');
+        alert("".concat(movies.Title), ' has been removed from your favorites list.');
 
         _this3.setState({
           userInfo: null

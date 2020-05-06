@@ -67,9 +67,10 @@ export class MovieView extends React.Component {
             Add To Favorites
             </Button>
         </div>
-        <div className="return-button">
+        <div className="return-section">
           <Link to={`/`}>
             <Button
+              variant="btn"
               className="back-button"
             >
               Back

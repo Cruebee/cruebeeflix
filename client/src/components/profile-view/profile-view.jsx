@@ -45,7 +45,7 @@ export class ProfileView extends React.Component {
       });
   }
 
-  removeFavorite(e, movieId) {
+  removeFavorite(e, movieId, movies) {
     e.preventDefault();
     axios({
       method: 'delete',
@@ -53,7 +53,7 @@ export class ProfileView extends React.Component {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     })
       .then(response => {
-        alert('The movie has been removed from your favorites list.');
+        alert(`${movies.Title}`, ' has been removed from your favorites list.');
         this.setState({
           userInfo: null
         })
