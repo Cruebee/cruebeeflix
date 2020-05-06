@@ -96,24 +96,28 @@ export class MainView extends React.Component {
           </Row>
           <Row>
             <Col>
-              <Link to={`/users/${localStorage.getItem('user')}`}>
-                <Button
-                  className="profile-button"
-                  variant="primary"
-                  onClick
-                >
-                  Profile
+              <div className="button-container">
+                <Link to={`/users/${localStorage.getItem('user')}`}>
+                  <Button
+                    className="profile-button"
+                    variant="btn"
+                    onClick
+                  >
+                    Profile
               </Button>
-              </Link>
+                </Link>
+              </div>
             </Col>
             <Col>
-              <Button
-                className="log-out-button"
-                variant="info"
-                onClick={user => this.onLogOut(!user)}
-              >
-                Log Out
+              <div className="button-container">
+                <Button
+                  className="log-out-button"
+                  variant="btn"
+                  onClick={user => this.onLogOut(!user)}
+                >
+                  Log Out
             </Button>
+              </div>
             </Col>
           </Row>
           <Row>

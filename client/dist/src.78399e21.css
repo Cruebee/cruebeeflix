@@ -21,12 +21,13 @@
 
 .login-label {
   text-align: left;
+  color: #6B6E70;
 }
 
 .login-title {
   margin: 4rem auto;
   width: 50%;
-  color: #343a40;
+  color: #6B6E70;
   text-align: center;
 }
 
@@ -39,19 +40,19 @@
 .login-button {
   cursor: pointer;
   text-align: center;
-  background-color: #F7C331;
-  color: #343a40;
-  border-color: #F7C331;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
 }
 
 .login-button:hover,
 .login-button:focus,
 .login-button:active {
-  background-color: #F7C331;
+  background-color: #61892F;
   cursor: pointer;
   opacity: 0.8;
-  color: #343a40;
-  border-color: #F7C331;
+  color: #fff;
+  border-color: #61892F;
 }
 
 .registration-group {
@@ -66,19 +67,19 @@
 
 .register-button {
   cursor: pointer;
-  background-color: #F7882F;
-  color: #343a40;
-  border-color: #F7882F;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
 }
 
 .register-button:hover,
 .register-button:focus,
 .register-button:active {
-  background-color: #F7882F;
+  background-color: #86C232;
   cursor: pointer;
   opacity: 0.8;
-  color: #343a40;
-  border-color: #F7882F;
+  color: #222629;
+  border-color: #86C232;
 }
 .movie-cards {
   text-align: center;
@@ -104,25 +105,58 @@
   margin: 2rem auto;
   text-align: center;
 }
+.main-view {
+  width: 100%;
+}
+
 .navbar,
 .navbar-dark {
   justify-content: center;
   width: 100%;
 }
 
+.button-container {
+  text-align: center;
+}
+
 .main-view-title {
-  color: #343a40;
+  color: #6B6E70;
 }
 
 .profile-button {
   margin: 1rem auto;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.profile-button:active,
+.profile-button:hover,
+.profile-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
 }
 
 .log-out-button {
   margin: 1rem auto;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+}
+
+.log-out-button:active,
+.log-out-button:hover,
+.log-out-button:focus {
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+  opacity: 0.7;
 }
 .my-flix {
-  color: #343a40;
+  color: #6B6E70;
+  background-color: #222629;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

@@ -1,8 +1,9 @@
-$blue: #6B7A8F;
-$orange: #F7882F;
-$yellow: #F7C331;
-$grey: #DCC7AA;
-$black: #343a40;
+$black: #222629;
+$grey: #474B4F;
+$light-grey: #6B6E70;
+$lime: #86C232;
+$green: #61892F;
+$white: #fff;
 
 .login-view {
   text-align: center;
@@ -15,12 +16,13 @@ $black: #343a40;
 
 .login-label {
   text-align: left;
+  color: $light-grey;
 }
 
 .login-title {
   margin: 4rem auto;
   width: 50%;
-  color: $black;
+  color: $light-grey;
   text-align: center;
 }
 
@@ -33,19 +35,19 @@ $black: #343a40;
 .login-button {
   cursor: pointer;
   text-align:center;
-  background-color: $yellow;
-  color: $black;
-  border-color: $yellow;
+  background-color: $green;
+  color: $white;
+  border-color: $green;
 }
 
 .login-button:hover,
 .login-button:focus,
 .login-button:active {
-  background-color: $yellow;
+  background-color: $green;
   cursor: pointer;
   opacity: 0.8;
-  color: $black;
-  border-color: $yellow;
+  color: $white;
+  border-color: $green;
 }
 
 .registration-group {
@@ -60,17 +62,17 @@ $black: #343a40;
 
 .register-button {
   cursor: pointer;
-  background-color: $orange;
+  background-color: $lime;
   color: $black;
-  border-color: $orange;
+  border-color: $lime;
 }
 
 .register-button:hover,
 .register-button:focus,
 .register-button:active {
-  background-color: $orange;
+  background-color: $lime;
   cursor: pointer;
   opacity: 0.8;
   color: $black;
-  border-color: $orange;
+  border-color: $lime;
 }

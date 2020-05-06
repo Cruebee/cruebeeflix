@@ -1,11 +1,13 @@
-$blue: #007bff;
-$green: #28a745;
-$grey: #6c757d;
-$yellow: #ffc106;
-$red: #dc3545;
-$teal: #17a2b8;
+$black: #222629;
+$grey: #474B4F;
+$light-grey: #6B6E70;
+$lime: #86C232;
+$green: #61892F;
 $white: #fff;
-$black: #343a40;
+
+.main-view {
+  width: 100%;
+}
 
 .navbar,
 .navbar-dark {
@@ -13,14 +15,42 @@ $black: #343a40;
   width: 100%;
 }
 
+.button-container {
+  text-align: center;
+}
+
 .main-view-title {
-  color: $black;
+  color: $light-grey;
 }
 
 .profile-button {
   margin: 1rem auto;
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+}
+
+.profile-button:active,
+.profile-button:hover,
+.profile-button:focus {
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+  opacity: 0.7;
 }
 
 .log-out-button {
   margin: 1rem auto;
+  background-color: $lime;
+  color: $black;
+  border-color: $lime;
+}
+
+.log-out-button:active,
+.log-out-button:hover,
+.log-out-button:focus {
+  background-color: $lime;
+  color: $black;
+  border-color: $lime;
+  opacity: 0.7;
 }
