@@ -48,6 +48,7 @@ $white: #fff;
   opacity: 0.8;
   color: $white;
   border-color: $green;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
 }
 
 .registration-group {
@@ -75,4 +76,5 @@ $white: #fff;
   opacity: 0.8;
   color: $black;
   border-color: $lime;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
 }

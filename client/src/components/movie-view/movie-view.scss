@@ -37,6 +37,7 @@ $white: #fff;
   border-color: $green;
   color: $white;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
 }
 
 .back-button {
@@ -53,4 +54,5 @@ $white: #fff;
   color: $black;
   border-color: $lime;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
 }

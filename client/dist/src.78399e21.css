@@ -53,6 +53,7 @@
   opacity: 0.8;
   color: #fff;
   border-color: #61892F;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .registration-group {
@@ -80,6 +81,7 @@
   opacity: 0.8;
   color: #222629;
   border-color: #86C232;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .movie-cards {
   text-align: center;
@@ -131,6 +133,7 @@
   border-color: #61892F;
   color: #fff;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .back-button {
@@ -147,6 +150,7 @@
   color: #222629;
   border-color: #86C232;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .director-view {
   background-color: #474B4F;
@@ -297,6 +301,7 @@
   color: #fff;
   border-color: #61892F;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .log-out-button {
@@ -313,6 +318,7 @@
   color: #222629;
   border-color: #86C232;
   opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .my-flix {
   color: #6B6E70;
