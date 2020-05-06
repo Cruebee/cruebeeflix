@@ -1,15 +1,16 @@
 import React from 'react';
 import axios from 'axios';
+// React-Bootsrap imports
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-
-
+import Spinner from 'react-bootstrap/Spinner';
+// react-router imports
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-
+// view imports
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -84,7 +85,11 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
-    if (!movies) return <Container className="main-view" />;
+    if (!movies) return (
+      <Spinner animation="grow" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    );
 
     return (
       <Router>

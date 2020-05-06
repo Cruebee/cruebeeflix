@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Spinner from 'react-bootstrap/Spinner';
 // react-router imports
 import { Link } from 'react-router-dom';
 // scss import
@@ -120,7 +121,12 @@ export class ProfileView extends React.Component {
   render() {
 
     const { userInfo } = this.state;
-    if (!userInfo) return <div className="loader">Loading...</div>;
+    if (!userInfo) return (
+      <Spinner animation="grow" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    );
+
     return (
       <Container className="profile-view">
         <h1 className="profile-view-title">Update Profile</h1>
