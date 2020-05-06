@@ -32,7 +32,7 @@ export class DirectorView extends React.Component {
           <Link to={`/`}>
             <Button
               className="back-button"
-              variant="primary"
+              variant="btn"
             >
               Back
           </Button>

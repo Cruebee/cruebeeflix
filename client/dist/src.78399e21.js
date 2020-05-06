@@ -38955,7 +38955,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "back-button",
-        variant: "primary"
+        variant: "btn"
       }, "Back"))));
     }
   }]);
@@ -38991,6 +38991,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -39043,20 +39045,21 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "genre-view",
         style: {
-          width: "32rem"
+          width: "30rem"
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
-        className: "genre-name"
+        className: "genre-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Name: "), Genre[0].Name), _react.default.createElement(_Card.default.Text, {
-        className: "genre-description"
+        className: "genre-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Description: "), Genre[0].Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "primary"
+        variant: "btn",
+        className: "back-button"
       }, "Back"))));
     }
   }]);
@@ -39071,7 +39074,7 @@ GenreView.propTypes = {
     Description: _propTypes.default.string.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

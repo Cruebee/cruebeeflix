@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 // react-router imports
 import { Link } from 'react-router-dom';
@@ -21,13 +22,14 @@ export class GenreView extends React.Component {
     if (!Genre) return null;
 
     return (
-      <Card className="genre-view" style={{ width: "32rem" }}>
+      <Card className="genre-view" style={{ width: "30rem" }}>
         <Card.Body>
-          <Card.Title className="genre-name"><span className="label">Name: </span>{Genre[0].Name}</Card.Title>
-          <Card.Text className="genre-description"><span className="label">Description: </span>{Genre[0].Description}</Card.Text>
+          <Card.Title className="genre-info"><span className="label">Name: </span>{Genre[0].Name}</Card.Title>
+          <Card.Text className="genre-info"><span className="label">Description: </span>{Genre[0].Description}</Card.Text>
           <Link to={`/`}>
             <Button
-              variant="primary"
+              variant="btn"
+              className="back-button"
             >
               Back
           </Button>

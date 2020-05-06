@@ -158,8 +158,14 @@
   color: #6B6E70;
 }
 .genre-view {
+  background-color: #474B4F;
   margin: 2rem auto;
   text-align: center;
+  height: 100%;
+}
+
+.genre-info {
+  background-color: #474B4F;
 }
 .main-view {
   width: 100%;
