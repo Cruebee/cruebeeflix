@@ -35,9 +35,16 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, onClick } = this.props;
+    const { movie } = this.props;
+    var featured = '';
 
     if (!movie) return null;
+
+    if (movie.Featured) {
+      featured = 'Yes';
+    } else {
+      featured = 'No';
+    }
 
     return (
       <Container className="movie-container">
@@ -64,6 +71,11 @@ export class MovieView extends React.Component {
               <div className="movie-director">
                 <span className="label">Director: </span>
                 <span className="value">{movie.Director[0].Name}</span>
+              </div>
+
+              <div>
+                <span className="label">Featured: </span>
+                <span className="value">{featured}</span>
               </div>
 
               <div className="favorite-button-container">

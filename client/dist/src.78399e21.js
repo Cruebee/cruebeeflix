@@ -38782,10 +38782,16 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          onClick = _this$props.onClick;
+      var movie = this.props.movie;
+      var featured = '';
       if (!movie) return null;
+
+      if (movie.Featured) {
+        featured = 'Yes';
+      } else {
+        featured = 'No';
+      }
+
       return _react.default.createElement(_Container.default, {
         className: "movie-container"
       }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
@@ -38817,7 +38823,11 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director[0].Name)), _react.default.createElement("div", {
+      }, movie.Director[0].Name)), _react.default.createElement("div", null, _react.default.createElement("span", {
+        className: "label"
+      }, "Featured: "), _react.default.createElement("span", {
+        className: "value"
+      }, featured)), _react.default.createElement("div", {
         className: "favorite-button-container"
       }, _react.default.createElement("span", {
         className: "label"
