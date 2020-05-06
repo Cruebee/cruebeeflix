@@ -38930,30 +38930,31 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "director-view",
         style: {
-          width: "32rem"
+          width: "20rem"
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: Director[0].ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
-        className: "director-name"
+        className: "director-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Name: "), Director[0].Name), _react.default.createElement(_Card.default.Text, {
-        className: "director-bio"
+        className: "director-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Bio: "), Director[0].Bio), _react.default.createElement(_Card.default.Text, {
-        className: "director-birth"
+        className: "director-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Birth: "), Director[0].Birth), _react.default.createElement(_Card.default.Text, {
-        className: "director-death"
+        className: "director-info"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Death: "), Director[0].Death), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
+        className: "back-button",
         variant: "primary"
       }, "Back"))));
     }

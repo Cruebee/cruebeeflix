@@ -22,15 +22,16 @@ export class DirectorView extends React.Component {
     if (!Director) return null;
 
     return (
-      <Card className="director-view" style={{ width: "32rem" }}>
+      <Card className="director-view" style={{ width: "20rem" }}>
         <Card.Img variant="top" src={Director[0].ImagePath} />
         <Card.Body>
-          <Card.Title className="director-name"><span className="label">Name: </span>{Director[0].Name}</Card.Title>
-          <Card.Text className="director-bio"><span className="label">Bio: </span>{Director[0].Bio}</Card.Text>
-          <Card.Text className="director-birth"><span className="label">Birth: </span>{Director[0].Birth}</Card.Text>
-          <Card.Text className="director-death"><span className="label">Death: </span>{Director[0].Death}</Card.Text>
+          <Card.Title className="director-info"><span className="label">Name: </span>{Director[0].Name}</Card.Title>
+          <Card.Text className="director-info"><span className="label">Bio: </span>{Director[0].Bio}</Card.Text>
+          <Card.Text className="director-info"><span className="label">Birth: </span>{Director[0].Birth}</Card.Text>
+          <Card.Text className="director-info"><span className="label">Death: </span>{Director[0].Death}</Card.Text>
           <Link to={`/`}>
             <Button
+              className="back-button"
               variant="primary"
             >
               Back
