@@ -39229,7 +39229,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
         type: "password",
         placeholder: "Enter Password",
-        value: userInfo.Password,
+        defaultValue: "",
         onChange: function onChange(e) {
           return _this5.setPassword(e.target.value);
         }
@@ -39646,7 +39646,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49359" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61789" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
