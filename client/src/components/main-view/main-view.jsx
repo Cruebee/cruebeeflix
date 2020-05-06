@@ -58,6 +58,7 @@ export class MainView extends React.Component {
   onLogOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    window.open('/', '_self');
 
     this.setState({
       user: null,

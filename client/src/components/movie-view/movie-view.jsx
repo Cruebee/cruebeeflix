@@ -8,12 +8,30 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
 import "./movie-view.scss";
+import Axios from "axios";
 
 export class MovieView extends React.Component {
   constructor() {
     super();
 
     this.state = {};
+  }
+
+  addFavoriteMovie(e, movie) {
+    e.preventDefault();
+    let username = localStorage.getItem('user');
+    let token = localStorage.getItem('token');
+    Axios({
+      method: 'post',
+      url: `https://cruebeeflix.herokuapp.com/users/${username}/movies/${movie._id}`,
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(response => {
+        alert(`${movie.Title} was added to your favorite movies!`)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -48,6 +66,16 @@ export class MovieView extends React.Component {
                 <span className="value">{movie.Director[0].Name}</span>
               </div>
 
+              <div className="favorite-button-container">
+                <span className="label">Add to Favorites: </span>
+                <Button
+                  className="favorite-button"
+                  onClick={(e) => this.addFavoriteMovie(e, movie)}
+                >
+                  Add Favorite
+                  </Button>
+              </div>
+
               <Link to={`/`}>
                 <Button
                   className="back-button"
@@ -59,7 +87,7 @@ export class MovieView extends React.Component {
             </div>
           </Col>
         </Row>
-      </Container >
+      </Container>
     );
   }
 }

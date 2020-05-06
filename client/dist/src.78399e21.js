@@ -38702,6 +38702,8 @@ var _reactRouterDom = require("react-router-dom");
 
 require("./movie-view.scss");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -38742,8 +38744,28 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MovieView, [{
+    key: "addFavoriteMovie",
+    value: function addFavoriteMovie(e, movie) {
+      e.preventDefault();
+      var username = localStorage.getItem('user');
+      var token = localStorage.getItem('token');
+      (0, _axios.default)({
+        method: 'post',
+        url: "https://cruebeeflix.herokuapp.com/users/".concat(username, "/movies/").concat(movie._id),
+        headers: {
+          'Authorization': "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        alert("".concat(movie.Title, " was added to your favorite movies!"));
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           movie = _this$props.movie,
           onClick = _this$props.onClick;
@@ -38779,7 +38801,16 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director[0].Name)), _react.default.createElement(_reactRouterDom.Link, {
+      }, movie.Director[0].Name)), _react.default.createElement("div", {
+        className: "favorite-button-container"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Add to Favorites: "), _react.default.createElement(_Button.default, {
+        className: "favorite-button",
+        onClick: function onClick(e) {
+          return _this2.addFavoriteMovie(e, movie);
+        }
+      }, "Add Favorite")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "back-button",
@@ -38806,7 +38837,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -39113,8 +39144,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "removieFavorite",
-    value: function removieFavorite(e, movieId) {
+    key: "removeFavorite",
+    value: function removeFavorite(e, movieId) {
       var _this3 = this;
 
       e.preventDefault();
@@ -39125,7 +39156,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           'Authorization': "Bearer ".concat(localStorage.getItem('token'))
         }
       }).then(function (response) {
-        alert(response.data);
+        alert('The movie has been removed from your favorites list.');
 
         _this3.setState({
           userInfo: null
@@ -39281,7 +39312,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           className: "delete-button",
           key: movie._id,
           onClick: function onClick(e) {
-            return _this5.removieFavorite(e, movie._id);
+            return _this5.removeFavorite(e, movie._id);
           }
         }, "Delete Favorite")));
       }))), _react.default.createElement(_Container.default, {
@@ -39421,6 +39452,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
+      window.open('/', '_self');
       this.setState({
         user: null
       });
