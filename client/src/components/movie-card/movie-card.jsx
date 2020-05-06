@@ -24,30 +24,30 @@ export class MovieCard extends React.Component {
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
           <ListGroup className="card-links">
-            <ListGroup.Item>
+            <ListGroup.Item className="card-item">
               <Link to={`/movies/${movie._id}`}>
                 <Button
-                  className="movie-details"
+                  className="movie-details detail-link"
                   variant="link"
                 >
                   Movie Details
               </Button>
               </Link>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item className="card-item">
               <Link to={`/directors/${movie.Director[0].Name}`}>
                 <Button
-                  className="director-details"
+                  className="director-details detail-link"
                   variant="link"
                 >
                   Director Details
                   </Button>
               </Link>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item className="card-item">
               <Link to={`/genres/${movie.Genre[0].Name}`}>
                 <Button
-                  className="genre-details"
+                  className="genre-details detail-link"
                   variant="link"
                 >
                   Genre Details

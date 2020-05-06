@@ -38652,20 +38652,26 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_ListGroup.default, {
         className: "card-links"
-      }, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_ListGroup.default.Item, {
+        className: "card-item"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
-        className: "movie-details",
+        className: "movie-details detail-link",
         variant: "link"
-      }, "Movie Details"))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, "Movie Details"))), _react.default.createElement(_ListGroup.default.Item, {
+        className: "card-item"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/directors/".concat(movie.Director[0].Name)
       }, _react.default.createElement(_Button.default, {
-        className: "director-details",
+        className: "director-details detail-link",
         variant: "link"
-      }, "Director Details"))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, "Director Details"))), _react.default.createElement(_ListGroup.default.Item, {
+        className: "card-item"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/genres/".concat(movie.Genre[0].Name)
       }, _react.default.createElement(_Button.default, {
-        className: "genre-details",
+        className: "genre-details detail-link",
         variant: "link"
       }, "Genre Details"))))));
     }

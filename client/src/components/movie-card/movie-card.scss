@@ -1,13 +1,21 @@
-$blue: #007bff;
-$green: #28a745;
-$grey: #6c757d;
-$yellow: #ffc106;
-$red: #dc3545;
-$teal: #17a2b8;
+$black: #222629;
+$grey: #474B4F;
+$light-grey: #6B6E70;
+$lime: #86C232;
+$green: #61892F;
 $white: #fff;
-$black: #343a40;
 
 .movie-cards {
   text-align: center;
   margin: 3rem auto;
+  background-color: $grey;
+  color: $white;
+}
+
+.card-item {
+  background-color: $light-grey;
+}
+
+.detail-link {
+  color: $lime;
 }

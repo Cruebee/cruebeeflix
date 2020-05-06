@@ -7,7 +7,7 @@
 .register-title {
   margin: 3rem auto;
   width: 30%;
-  color: #343a40;
+  color: #222629;
   text-align: center;
 }
 .login-view {
@@ -84,6 +84,16 @@
 .movie-cards {
   text-align: center;
   margin: 3rem auto;
+  background-color: #474B4F;
+  color: #fff;
+}
+
+.card-item {
+  background-color: #6B6E70;
+}
+
+.detail-link {
+  color: #86C232;
 }
 .movie-view {
   margin: 2rem auto;
