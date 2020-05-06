@@ -95,6 +95,10 @@
 .detail-link {
   color: #86C232;
 }
+
+.detail-link:hover {
+  color: #61892F;
+}
 .movie-view {
   margin: 2rem auto;
   text-align: center;
@@ -105,7 +109,7 @@
 }
 
 .label {
-  color: #28a745;
+  color: #61892F;
 }
 .director-view {
   margin: 2rem auto;
