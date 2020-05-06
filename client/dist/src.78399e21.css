@@ -134,7 +134,7 @@
 }
 
 .back-button {
-  margin-bottom: 1rem;
+  margin: 1rem;
   background-color: #86C232;
   color: #222629;
   border-color: #86C232;
@@ -146,6 +146,7 @@
   background-color: #86C232;
   color: #222629;
   border-color: #86C232;
+  opacity: 0.7;
 }
 .director-view {
   background-color: #474B4F;
@@ -166,6 +167,103 @@
 
 .genre-info {
   background-color: #474B4F;
+}
+.form-control {
+  background-color: #474B4F;
+  color: #fff;
+  border-color: #474B4F;
+}
+
+.form-control:hover,
+.form-control:active,
+.form-control:focus {
+  background-color: #474B4F;
+  color: #fff;
+  border-color: #474B4F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.profile-form {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.update-button {
+  margin: 0;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.update-button:hover,
+.update-button:active,
+.update-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.return-button {
+  margin: 1rem 1rem 0.5rem 1rem;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+}
+
+.return-button:hover,
+.return-button:active,
+.return-button:focus {
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.favorites-list {
+  width: 100%;
+}
+
+.favorite-movies {
+  background-color: #474B4F;
+}
+
+.delete-button {
+  margin: 0.5rem auto;
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+}
+
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.deregister-button {
+  margin: 1rem auto;
+  width: 100%;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.deregister-button:hover,
+.deregister-button:active,
+.deregister-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .main-view {
   width: 100%;

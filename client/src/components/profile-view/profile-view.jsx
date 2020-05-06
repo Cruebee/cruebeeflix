@@ -128,6 +128,7 @@ export class ProfileView extends React.Component {
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control
+              className="form-item"
               type="text"
               placeholder="Enter Username"
               defaultValue={userInfo.Username}
@@ -136,6 +137,7 @@ export class ProfileView extends React.Component {
           <Form.Group controlId="formPassword">
             <Form.Label>Password:</Form.Label>
             <Form.Control
+              className="form-item"
               type="password"
               placeholder="Enter Password"
               defaultValue={""}
@@ -144,6 +146,7 @@ export class ProfileView extends React.Component {
           <Form.Group controlId="formEmail">
             <Form.Label>Email:</Form.Label>
             <Form.Control
+              className="form-item"
               type="text"
               placeholder="Enter Email"
               defaultValue={userInfo.Email}
@@ -158,6 +161,7 @@ export class ProfileView extends React.Component {
               We use this information to provide you with more age apropriate movies.
           </Form.Text>
             <Form.Control
+              className="form-item"
               type="date"
               placeholder="Enter Birthday"
               defaultValue={userInfo.Birthday.split('T')[0]}
@@ -166,7 +170,7 @@ export class ProfileView extends React.Component {
           <div>
             <Button
               className="update-button"
-              variant="primary"
+              variant="btn"
               onClick={(e) => this.updateUser(e, this.Username, this.Password, this.Email, this.Birthday, userInfo)}
             >
               Update Profile
@@ -176,8 +180,8 @@ export class ProfileView extends React.Component {
         <div>
           <Link to={`/`}>
             <Button
-              className="back-button"
-              variant="info"
+              className="return-button"
+              variant="btn"
             >
               Back
             </Button>
@@ -185,7 +189,7 @@ export class ProfileView extends React.Component {
         </div>
         <Container className="profile-view">
           <h1 className="user-favorites">Favorite Movies</h1>
-          <ListGroup className="app-title">
+          <ListGroup className="favorites-list">
             {userInfo.FavoriteMovies.length === 0 && <ListGroup.Item>You have no favorite movies.</ListGroup.Item>}
             {userInfo.FavoriteMovies.map(movie => {
               return (<ListGroup.Item className="favorite-movies">
@@ -194,6 +198,7 @@ export class ProfileView extends React.Component {
                 </div>
                 <div className="delete-favorite">
                   <Button
+                    variant="btn"
                     className="delete-button"
                     key={movie._id}
                     onClick={(e) => this.removeFavorite(e, movie._id)}
@@ -210,6 +215,7 @@ export class ProfileView extends React.Component {
           <h1 className="deregister-user">Remove Account</h1>
           <ListGroup className="deregister-user-group">
             <Button
+              variant="btn"
               className="deregister-button"
               onClick={(e) => this.deregisterUser(e)}
             >

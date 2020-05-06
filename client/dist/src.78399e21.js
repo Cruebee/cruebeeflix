@@ -39274,6 +39274,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Form.default.Group, {
         controlId: "formUsername"
       }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+        className: "form-item",
         type: "text",
         placeholder: "Enter Username",
         defaultValue: userInfo.Username,
@@ -39283,6 +39284,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formPassword"
       }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
+        className: "form-item",
         type: "password",
         placeholder: "Enter Password",
         defaultValue: "",
@@ -39292,6 +39294,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       })), _react.default.createElement(_Form.default.Group, {
         controlId: "formEmail"
       }, _react.default.createElement(_Form.default.Label, null, "Email:"), _react.default.createElement(_Form.default.Control, {
+        className: "form-item",
         type: "text",
         placeholder: "Enter Email",
         defaultValue: userInfo.Email,
@@ -39305,6 +39308,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Form.default.Label, null, "Birthday:"), _react.default.createElement(_Form.default.Text, {
         className: "text-muted"
       }, "We use this information to provide you with more age apropriate movies."), _react.default.createElement(_Form.default.Control, {
+        className: "form-item",
         type: "date",
         placeholder: "Enter Birthday",
         defaultValue: userInfo.Birthday.split('T')[0],
@@ -39313,27 +39317,28 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       })), _react.default.createElement("div", null, _react.default.createElement(_Button.default, {
         className: "update-button",
-        variant: "primary",
+        variant: "btn",
         onClick: function onClick(e) {
           return _this5.updateUser(e, _this5.Username, _this5.Password, _this5.Email, _this5.Birthday, userInfo);
         }
       }, "Update Profile"))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "back-button",
-        variant: "info"
+        className: "return-button",
+        variant: "btn"
       }, "Back"))), _react.default.createElement(_Container.default, {
         className: "profile-view"
       }, _react.default.createElement("h1", {
         className: "user-favorites"
       }, "Favorite Movies"), _react.default.createElement(_ListGroup.default, {
-        className: "app-title"
+        className: "favorites-list"
       }, userInfo.FavoriteMovies.length === 0 && _react.default.createElement(_ListGroup.default.Item, null, "You have no favorite movies."), userInfo.FavoriteMovies.map(function (movie) {
         return _react.default.createElement(_ListGroup.default.Item, {
           className: "favorite-movies"
         }, _react.default.createElement("div", null, movie.Title), _react.default.createElement("div", {
           className: "delete-favorite"
         }, _react.default.createElement(_Button.default, {
+          variant: "btn",
           className: "delete-button",
           key: movie._id,
           onClick: function onClick(e) {
@@ -39347,6 +39352,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Remove Account"), _react.default.createElement(_ListGroup.default, {
         className: "deregister-user-group"
       }, _react.default.createElement(_Button.default, {
+        variant: "btn",
         className: "deregister-button",
         onClick: function onClick(e) {
           return _this5.deregisterUser(e);

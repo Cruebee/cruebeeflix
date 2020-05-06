@@ -1,0 +1,104 @@
+$black: #222629;
+$grey: #474B4F;
+$light-grey: #6B6E70;
+$lime: #86C232;
+$green: #61892F;
+$white: #fff;
+
+.form-control {
+  background-color: $grey;
+  color: $white;
+  border-color: $grey;
+}
+
+.form-control:hover,
+.form-control:active,
+.form-control:focus {
+  background-color: $grey;
+  color: $white;
+  border-color: $grey;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+}
+
+.profile-form {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.update-button {
+  margin: 0;
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+}
+
+.update-button:hover,
+.update-button:active,
+.update-button:focus {
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+}
+
+.return-button {
+  margin: 1rem 1rem 0.5rem 1rem;
+  background-color: $lime;
+  color: $black;
+  border-color: $lime;
+}
+
+.return-button:hover,
+.return-button:active,
+.return-button:focus {
+  background-color: $lime;
+  border-color: $lime;
+  color: $black;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+}
+
+.favorites-list {
+  width: 100%;
+}
+
+.favorite-movies {
+  background-color: $grey;
+}
+
+.delete-button {
+  margin: 0.5rem auto;
+  background-color: $lime;
+  border-color: $lime;
+  color: $black;
+}
+
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+  background-color: $lime;
+  border-color: $lime;
+  color: $black;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+}
+
+.deregister-button {
+  margin: 1rem auto;
+  width: 100%;
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+}
+
+.deregister-button:hover,
+.deregister-button:active,
+.deregister-button:focus {
+  background-color: $green;
+  color: $white;
+  border-color: $green;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+}
