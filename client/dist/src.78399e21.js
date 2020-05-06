@@ -37820,6 +37820,10 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./login-view.scss");
@@ -37875,9 +37879,12 @@ function LoginView(props) {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
-  }, _react.default.createElement(_Form.default.Group, {
+  }, _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
+    as: _Col.default,
     controlId: "formUsername"
-  }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement("div", {
+    className: "login-label"
+  }, _react.default.createElement(_Form.default.Label, null, "Username:")), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
     value: username,
@@ -37885,22 +37892,25 @@ function LoginView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
+    as: _Col.default,
     controlId: "formPassword"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement("div", {
+    className: "login-label"
+  }, _react.default.createElement(_Form.default.Label, null, "Password:")), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement(_Form.default.Group, {
+  }))), _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
     className: "login-submit"
   }, _react.default.createElement(_Button.default, {
     className: "login-button",
-    variant: "success",
+    variant: "btn",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit")), _react.default.createElement(_Form.default.Group, {
+  }, "Submit"))), _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
     className: "registration-group",
     controlId: "formRegistration"
   }, _react.default.createElement(_Form.default.Text, {
@@ -37908,11 +37918,11 @@ function LoginView(props) {
   }, "Need an account?"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
   }, _react.default.createElement(_Button.default, {
-    variant: "info",
-    className: "registration-button"
-  }, "Register Here")))));
+    className: "register-button",
+    variant: "btn"
+  }, "Register Here"))))));
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

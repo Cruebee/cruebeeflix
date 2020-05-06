@@ -10,39 +10,75 @@
   color: #343a40;
   text-align: center;
 }
+.login-view {
+  text-align: center;
+}
+
 .login-form {
-  margin: 8rem auto;
-  width: 35%;
+  margin: 4rem auto;
+  width: 80%;
+}
+
+.login-label {
+  text-align: left;
 }
 
 .login-title {
-  margin: 6rem auto;
-  width: 30%;
+  margin: 4rem auto;
+  width: 50%;
   color: #343a40;
   text-align: center;
 }
 
 .login-submit {
   margin: 0 auto;
-  width: 35%;
+  width: 50%;
+  text-align: center;
 }
 
 .login-button {
   cursor: pointer;
   text-align: center;
+  background-color: #F7C331;
+  color: #343a40;
+  border-color: #F7C331;
+}
+
+.login-button:hover,
+.login-button:focus,
+.login-button:active {
+  background-color: #F7C331;
+  cursor: pointer;
+  opacity: 0.8;
+  color: #343a40;
+  border-color: #F7C331;
 }
 
 .registration-group {
   margin: 0 auto;
   width: 50%;
+  text-align: center;
 }
 
 .need-account {
   text-align: center;
 }
 
-.registration-button {
+.register-button {
   cursor: pointer;
+  background-color: #F7882F;
+  color: #343a40;
+  border-color: #F7882F;
+}
+
+.register-button:hover,
+.register-button:focus,
+.register-button:active {
+  background-color: #F7882F;
+  cursor: pointer;
+  opacity: 0.8;
+  color: #343a40;
+  border-color: #F7882F;
 }
 .movie-cards {
   text-align: center;

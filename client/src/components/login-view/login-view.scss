@@ -1,43 +1,76 @@
-$blue: #007bff;
-$green: #28a745;
-$grey: #6c757d;
-$yellow: #ffc106;
-$red: #dc3545;
-$teal: #17a2b8;
-$white: #fff;
+$blue: #6B7A8F;
+$orange: #F7882F;
+$yellow: #F7C331;
+$grey: #DCC7AA;
 $black: #343a40;
 
+.login-view {
+  text-align: center;
+}
+
 .login-form {
-  margin: 8rem auto;
-  width: 35%;
+  margin: 4rem auto;
+  width: 80%;
+}
+
+.login-label {
+  text-align: left;
 }
 
 .login-title {
-  margin: 6rem auto;
-  width: 30%;
+  margin: 4rem auto;
+  width: 50%;
   color: $black;
   text-align: center;
 }
 
 .login-submit {
   margin: 0 auto;
-  width: 35%;
+  width: 50%;
+  text-align: center;
 }
 
 .login-button {
   cursor: pointer;
   text-align:center;
+  background-color: $yellow;
+  color: $black;
+  border-color: $yellow;
+}
+
+.login-button:hover,
+.login-button:focus,
+.login-button:active {
+  background-color: $yellow;
+  cursor: pointer;
+  opacity: 0.8;
+  color: $black;
+  border-color: $yellow;
 }
 
 .registration-group {
   margin: 0 auto;
   width: 50%;
+  text-align: center;
 }
 
 .need-account {
   text-align: center;
 }
 
-.registration-button {
+.register-button {
   cursor: pointer;
+  background-color: $orange;
+  color: $black;
+  border-color: $orange;
+}
+
+.register-button:hover,
+.register-button:focus,
+.register-button:active {
+  background-color: $orange;
+  cursor: pointer;
+  opacity: 0.8;
+  color: $black;
+  border-color: $orange;
 }
