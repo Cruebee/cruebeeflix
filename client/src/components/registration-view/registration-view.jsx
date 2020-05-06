@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+// React-Bootstrap imports
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
+import Container from 'react-bootstrap/Container';
+// react-router imports
 import { Link } from 'react-router-dom';
 
 import './registration-view.scss';
@@ -36,8 +38,8 @@ export function RegistrationView(props) {
   };
 
   return (
-    <div>
-      <h1 className="register-title">myFlix Registration</h1>
+    <Container>
+      <h1 className="register-title">Registration</h1>
       <Form className="registration-form">
         <Form.Group controlId="formBasicUsername">
           <Form.Control
@@ -72,10 +74,10 @@ export function RegistrationView(props) {
           />
         </Form.Group>
         <Button
-          className="submit-button"
+          className="registration-button"
           type="submit"
           onClick={handleRegister}
-          variant="success"
+          variant="btn"
         >
           Register
         </Button>
@@ -84,13 +86,13 @@ export function RegistrationView(props) {
           <Link to={`/`}>
             <Button
               className="back-button"
-              variant="info"
+              variant="btn"
             >
               Login
           </Button>
           </Link>
         </Form.Group>
       </Form>
-    </div>
+    </Container>
   );
 }

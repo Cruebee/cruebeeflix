@@ -14,6 +14,23 @@ $white: #fff;
 .register-title {
   margin: 3rem auto;
   width: 30%;
-  color: $black;
+  color: $light-grey;
   text-align: center;
+}
+
+.registration-button {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  margin: 0.5rem auto;
+}
+
+.registration-button:hover,
+.registration-button:active,
+.registration-button:focus {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
 }

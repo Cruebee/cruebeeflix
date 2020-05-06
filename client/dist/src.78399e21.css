@@ -7,8 +7,25 @@
 .register-title {
   margin: 3rem auto;
   width: 30%;
-  color: #222629;
+  color: #6B6E70;
   text-align: center;
+}
+
+.registration-button {
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+  margin: 0.5rem auto;
+}
+
+.registration-button:hover,
+.registration-button:active,
+.registration-button:focus {
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .login-view {
   text-align: center;

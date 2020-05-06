@@ -37678,6 +37678,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
 var _reactRouterDom = require("react-router-dom");
 
 require("./registration-view.scss");
@@ -37740,9 +37742,9 @@ function RegistrationView(props) {
     });
   };
 
-  return _react.default.createElement("div", null, _react.default.createElement("h1", {
+  return _react.default.createElement(_Container.default, null, _react.default.createElement("h1", {
     className: "register-title"
-  }, "myFlix Registration"), _react.default.createElement(_Form.default, {
+  }, "Registration"), _react.default.createElement(_Form.default, {
     className: "registration-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
@@ -37781,10 +37783,10 @@ function RegistrationView(props) {
       return createBirthday(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
-    className: "submit-button",
+    className: "registration-button",
     type: "submit",
     onClick: handleRegister,
-    variant: "success"
+    variant: "btn"
   }, "Register"), _react.default.createElement(_Form.default.Group, {
     className: "login-group",
     controlId: "formLogin"
@@ -37794,10 +37796,10 @@ function RegistrationView(props) {
     to: "/"
   }, _react.default.createElement(_Button.default, {
     className: "back-button",
-    variant: "info"
+    variant: "btn"
   }, "Login")))));
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
