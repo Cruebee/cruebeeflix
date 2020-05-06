@@ -38665,7 +38665,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         to: "/directors/".concat(movie.Director[0].Name)
       }, _react.default.createElement(_Button.default, {
         className: "director-details detail-link",
-        variant: "link"
+        variant: "link btn"
       }, "Director Details"))), _react.default.createElement(_ListGroup.default.Item, {
         className: "card-item"
       }, _react.default.createElement(_reactRouterDom.Link, {
@@ -38809,17 +38809,17 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("span", {
         className: "label"
       }, "Title: "), movie.Description), _react.default.createElement(_ListGroup.default, {
-        className: "movie-details"
+        className: "details"
       }, _react.default.createElement(_ListGroup.default.Item, {
-        className: "movie-details"
+        className: "details"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Genre: "), movie.Genre[0].Name), _react.default.createElement(_ListGroup.default.Item, {
-        className: "movie-details"
+        className: "details"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Director: "), movie.Director[0].Name), _react.default.createElement(_ListGroup.default.Item, {
-        className: "movie-details"
+        className: "details"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Featured: "), featured)), _react.default.createElement("div", {

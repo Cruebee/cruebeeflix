@@ -38,7 +38,7 @@ export class MovieCard extends React.Component {
               <Link to={`/directors/${movie.Director[0].Name}`}>
                 <Button
                   className="director-details detail-link"
-                  variant="link"
+                  variant="link btn"
                 >
                   Director Details
                   </Button>
