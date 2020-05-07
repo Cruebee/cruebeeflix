@@ -93,39 +93,31 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <Container className="main-view">
-          <Row>
-            <Navbar className="navbar navbar-dark">
-              <h1 className="main-view-title">myFlix</h1>
-            </Navbar>
-          </Row>
-          <Row>
-            <Col>
-              <div className="button-container">
-                <Link to={`/users/${localStorage.getItem('user')}`}>
-                  <Button
-                    className="profile-button"
-                    variant="btn"
-                    onClick
-                  >
-                    Profile
-              </Button>
-                </Link>
-              </div>
-            </Col>
-            <Col>
-              <div className="button-container">
+        <Container className="main-view" fluid="true">
+          <Navbar className="navbar navbar-dark">
+            <h1 className="main-view-title">myFlix</h1>
+            <div className="button-container">
+              <Link to={`/users/${localStorage.getItem('user')}`}>
                 <Button
-                  className="log-out-button"
+                  className="profile-button"
                   variant="btn"
-                  onClick={user => this.onLogOut(!user)}
+                  onClick
                 >
-                  Log Out
+                  Profile
+              </Button>
+              </Link>
+            </div>
+            <div className="button-container">
+              <Button
+                className="log-out-button"
+                variant="btn"
+                onClick={user => this.onLogOut(!user)}
+              >
+                Log Out
             </Button>
-              </div>
-            </Col>
-          </Row>
-          <Row>
+            </div>
+          </Navbar>
+          <div>
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               return movies.map(m => <MovieCard key={m._id} movie={m} />)
@@ -145,7 +137,7 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <Container className="main-view" />;
               return <ProfileView onLogOut={user => this.onLogOut(!user)} />
             }} />
-          </Row>
+          </div>
         </Container>
       </Router>
     );
