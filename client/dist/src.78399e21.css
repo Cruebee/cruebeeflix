@@ -1,3 +1,21 @@
+.movie-cards {
+  text-align: center;
+  margin: 3rem auto;
+  background-color: #474B4F;
+  color: #fff;
+}
+
+.card-item {
+  background-color: #6B6E70;
+}
+
+.detail-link {
+  color: #86C232;
+}
+
+.detail-link:hover {
+  color: #61892F;
+}
 .registration-form {
   margin: 3rem auto;
   width: 50%;
@@ -101,24 +119,6 @@
   color: #222629;
   border-color: #86C232;
   box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
-}
-.movie-cards {
-  text-align: center;
-  margin: 3rem auto;
-  background-color: #474B4F;
-  color: #fff;
-}
-
-.card-item {
-  background-color: #6B6E70;
-}
-
-.detail-link {
-  color: #86C232;
-}
-
-.detail-link:hover {
-  color: #61892F;
 }
 .movie-view {
   margin: 2rem auto;
