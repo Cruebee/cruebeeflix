@@ -21,10 +21,11 @@ $white: #fff;
 
 .main-view-title {
   color: $light-grey;
+  margin: 1rem auto;
 }
 
 .profile-button {
-  margin: 1rem auto;
+  margin-right: 1rem;
   background-color: $green;
   color: $white;
   border-color: $green;

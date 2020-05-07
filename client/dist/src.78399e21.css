@@ -304,10 +304,11 @@
 
 .main-view-title {
   color: #6B6E70;
+  margin: 1rem auto;
 }
 
 .profile-button {
-  margin: 1rem auto;
+  margin-right: 1rem;
   background-color: #61892F;
   color: #fff;
   border-color: #61892F;
