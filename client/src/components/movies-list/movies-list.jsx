@@ -1,7 +1,8 @@
 import React from 'react';
 // Redux import
 import { connect } from 'react-redux';
-// Component import
+// Custom imports
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
 
 const mapStateToProps = state => {
@@ -19,7 +20,10 @@ function MoviesList(props) {
 
   if (!movies) return <div className="main-view" />;
 
-  return filteredMovies.map(m => <MovieCard key={m._id} movie={m} />);
+  return <div className="movies-list">
+    <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+    {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
+  </div>;
 }
 
 export default connect(mapStateToProps)(MoviesList);
