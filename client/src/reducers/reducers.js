@@ -20,7 +20,7 @@ function movies(state = [], action) {
   }
 }
 
-const moviesApp = combinedReducers({
+const moviesApp = combineReducers({
   visibilityFilter,
   movies
 });
