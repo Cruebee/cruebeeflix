@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 // Flux & Redux imports
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// react-bootstrap import
-import Container from 'react-bootstrap/Container';
 // custom imports
 import { MainView } from "./components/main-view/main-view";
 import moviesApp from './reducers/reducers';
