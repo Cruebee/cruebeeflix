@@ -106,8 +106,6 @@ export class MainView extends React.Component {
                   Profile
               </Button>
               </Link>
-            </div>
-            <div className="button-container">
               <Button
                 className="log-out-button"
                 variant="btn"
@@ -117,7 +115,7 @@ export class MainView extends React.Component {
             </Button>
             </div>
           </Navbar>
-          <div>
+          <Row>
             <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               return movies.map(m => <MovieCard key={m._id} movie={m} />)
@@ -137,7 +135,7 @@ export class MainView extends React.Component {
               if (movies.length === 0) return <Container className="main-view" />;
               return <ProfileView onLogOut={user => this.onLogOut(!user)} />
             }} />
-          </div>
+          </Row>
         </Container>
       </Router>
     );

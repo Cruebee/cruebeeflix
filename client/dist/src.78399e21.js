@@ -39586,15 +39586,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "profile-button",
         variant: "btn",
         onClick: true
-      }, "Profile"))), _react.default.createElement("div", {
-        className: "button-container"
-      }, _react.default.createElement(_Button.default, {
+      }, "Profile")), _react.default.createElement(_Button.default, {
         className: "log-out-button",
         variant: "btn",
         onClick: function onClick(user) {
           return _this3.onLogOut(!user);
         }
-      }, "Log Out"))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "Log Out"))), _react.default.createElement(_Row.default, null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {

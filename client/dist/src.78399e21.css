@@ -290,17 +290,15 @@
 }
 .main-view {
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .navbar,
 .navbar-dark {
-  justify-content: center;
   width: 100%;
 }
 
 .button-container {
+  margin: 1rem auto;
   text-align: center;
 }
 
