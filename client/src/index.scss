@@ -5,6 +5,10 @@ $lime: #86C232;
 $green: #61892F;
 $white: #fff;
 
+body {
+  background-color: $black;
+}
+
 .my-flix {
   width: 100%;
   height: 100%;
@@ -16,4 +20,5 @@ $white: #fff;
 
 .app-container {
   background-color: $black;
+  min-height: 100vh;
 }
