@@ -41040,7 +41040,7 @@ function RegistrationView(props) {
       var data = response.data;
       alert("Your account has been created. Please login.");
       console.log(data);
-      window.open("/client", "_self");
+      window.open("/cruebeeflix", "_self");
     }).catch(function (e) {
       console.log("error registering user.");
     });
@@ -42032,7 +42032,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/client', '_self');
+      window.open('/cruebeeflix', '_self');
       this.setState({
         user: null
       });
@@ -42062,7 +42062,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var movies = this.props.movies;
       var user = this.state.user;
       return _react.default.createElement(_reactRouterDom.BrowserRouter, {
-        basename: "/client"
+        basename: "/cruebeeflix"
       }, _react.default.createElement(_Container.default, {
         className: "main-view",
         fluid: "true"
