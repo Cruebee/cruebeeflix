@@ -1,0 +1,374 @@
+.filter-form {
+  color: #fff;
+  margin-left: 3rem;
+  min-width: 18rem;
+  max-width: 18rem;
+}
+
+.search-div {
+  width: 100%;
+}
+.card-container {
+  margin-left: 2rem;
+}
+
+.movie-cards {
+  text-align: center;
+  margin: 1rem;
+  background-color: #474B4F;
+  color: #fff;
+}
+
+.card-item {
+  background-color: #6B6E70;
+}
+
+.detail-link {
+  color: #86C232;
+}
+
+.detail-link:hover {
+  color: #61892F;
+}
+.registration-form {
+  margin: 3rem auto;
+  width: 60%;
+  text-align: center;
+}
+
+.register-title {
+  margin: 3rem auto;
+  color: #6B6E70;
+  text-align: center;
+}
+
+.registration-button {
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+  margin: 0.5rem auto;
+}
+
+.registration-button:hover,
+.registration-button:active,
+.registration-button:focus {
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+.login-view {
+  text-align: center;
+}
+
+.login-form {
+  margin: 4rem auto;
+  width: 80%;
+}
+
+.login-label {
+  text-align: left;
+  color: #6B6E70;
+}
+
+.login-title {
+  margin: 4rem auto;
+  width: 50%;
+  color: #6B6E70;
+  text-align: center;
+}
+
+.login-submit {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+
+.login-button {
+  cursor: pointer;
+  text-align: center;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  margin: 1rem;
+}
+
+.login-button:hover,
+.login-button:focus,
+.login-button:active {
+  background-color: #61892F;
+  cursor: pointer;
+  opacity: 0.8;
+  color: #fff;
+  border-color: #61892F;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.registration-group {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+
+.need-account {
+  text-align: center;
+}
+
+.register-button {
+  cursor: pointer;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+  margin: 1rem;
+}
+
+.register-button:hover,
+.register-button:focus,
+.register-button:active {
+  background-color: #86C232;
+  cursor: pointer;
+  opacity: 0.8;
+  color: #222629;
+  border-color: #86C232;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+.movie-view {
+  margin: 2rem auto;
+  text-align: center;
+  background-color: #474B4F;
+}
+
+.details {
+  background-color: #474B4F;
+}
+
+.movie-container {
+  width: 60%;
+}
+
+.label {
+  color: #fff;
+}
+
+.favorite-button {
+  margin: 1rem auto;
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+}
+
+.favorite-button:hover,
+.favorite-button:active,
+.favorite-button:focus {
+  background-color: #61892F;
+  border-color: #61892F;
+  color: #fff;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.back-button {
+  margin: 1rem;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+}
+
+.back-button:hover,
+.back-button:focus,
+.back-button:active {
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+.director-view {
+  background-color: #474B4F;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.director-info {
+  background-color: #474B4F;
+  color: #6B6E70;
+}
+.genre-view {
+  background-color: #474B4F;
+  margin: 2rem auto;
+  text-align: center;
+  height: 100%;
+}
+
+.genre-info {
+  background-color: #474B4F;
+}
+.form-control {
+  background-color: #474B4F;
+  color: #fff;
+  border-color: #474B4F;
+}
+
+.form-control:hover,
+.form-control:active,
+.form-control:focus {
+  background-color: #474B4F;
+  color: #fff;
+  border-color: #474B4F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.profile-form {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.update-button {
+  margin: 0;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.update-button:hover,
+.update-button:active,
+.update-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.return-button {
+  margin: 1rem 1rem 0.5rem 1rem;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+}
+
+.return-button:hover,
+.return-button:active,
+.return-button:focus {
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.favorites-list {
+  width: 100%;
+}
+
+.favorite-movies {
+  background-color: #474B4F;
+}
+
+.delete-button {
+  margin: 0.5rem auto;
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+}
+
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+  background-color: #86C232;
+  border-color: #86C232;
+  color: #222629;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.deregister-button {
+  margin: 1rem auto;
+  width: 100%;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.deregister-button:hover,
+.deregister-button:active,
+.deregister-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+.main-view {
+  width: 100%;
+}
+
+.navbar,
+.navbar-dark {
+  width: 100%;
+}
+
+.button-container {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.main-view-title {
+  color: #6B6E70;
+  margin: 1rem auto;
+}
+
+.profile-button {
+  margin-right: 1rem;
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+}
+
+.profile-button:active,
+.profile-button:hover,
+.profile-button:focus {
+  background-color: #61892F;
+  color: #fff;
+  border-color: #61892F;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.log-out-button {
+  margin: 1rem auto;
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+}
+
+.log-out-button:active,
+.log-out-button:hover,
+.log-out-button:focus {
+  background-color: #86C232;
+  color: #222629;
+  border-color: #86C232;
+  opacity: 0.7;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+body {
+  background-color: #222629;
+}
+
+.my-flix {
+  width: 100%;
+  height: 100%;
+  color: #6B6E70;
+  background-color: #222629;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  background-color: #222629;
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=/src.78399e21.css.map */
