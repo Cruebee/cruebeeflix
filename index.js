@@ -34,7 +34,7 @@ var allowedOrigins = [
   'https://cruebeeflix.herokuapp.com',
   'https://cruebeeflix.herokuapp.com/login',
   'https://cruebee.github.io/cruebeeflix/',
-  'https://cruebee.github.io'
+  'https://cruebee.github.io',
 ];
 // import "auth.js" file.
 var auth = require('./auth')(app);
