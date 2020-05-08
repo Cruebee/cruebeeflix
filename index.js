@@ -1,17 +1,22 @@
+// Required libraries
 const express = require('express'),
   morgan = require('morgan'),
   app = express(),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   passport = require('passport'),
-  require('./passport'),
   cors = require('cors'),
+  // Models
   Models = require('./models.js'),
   Movies = Models.Movie,
   Users = Models.User,
   Directors = Models.Director,
-  Genres = Models.Genre;
+  Genres = Models.Genre,
+  // Hosting 
+  path = require('path');
+
+require('/passport');
 
 const { check, validationResult } = require('express-validator');
 
@@ -27,7 +32,8 @@ var allowedOrigins = [
   'http://testsite.com',
   'http://localhost:1234',
 ];
-
+// import "auth.js" file.
+var auth = require('./auth')(app);
 
 // use morgan to log URL access
 app.use(morgan('common'));
@@ -40,9 +46,6 @@ app.use(bodyParser.json());
 
 // use cors
 app.use(cors());
-
-// import "auth.js" file.
-var auth = require('./auth')(app);
 
 // use CORS:
 app.use(
@@ -76,16 +79,16 @@ app.get('/', function (req, res) {
 // ------ Movies ------
 // get a JSON list of ALL movies:
 app.get('/movies',
-  passport.authenticate('jwt', {session: false }),
+  passport.authenticate('jwt', { session: false }),
   function (req, res) {
-  Movies.find()
-    .populate('Genre')
-    .populate('Director')
-    .exec(function (err, movie) {
-      if (err) return console.error(err);
-      res.status(201).json(movie);
-    });
-});
+    Movies.find()
+      .populate('Genre')
+      .populate('Director')
+      .exec(function (err, movie) {
+        if (err) return console.error(err);
+        res.status(201).json(movie);
+      });
+  });
 
 // get data about a single movie, by its title:
 app.get('/movies/:Title',
@@ -180,11 +183,11 @@ app.get('/users',
 
 // GET a user by Username:
 app.get('/users/:Username',
-  passport.authenticate('jwt', {session: false}),
-  function(req, res) {
-    Users.findOne({ Username: req.params.Username})
+  passport.authenticate('jwt', { session: false }),
+  function (req, res) {
+    Users.findOne({ Username: req.params.Username })
       .populate('FavoriteMovies')
-      .exec(function(err, user) {
+      .exec(function (err, user) {
         if (err) return console.error(err);
         res.status(201).json(user);
       });
