@@ -16,7 +16,7 @@ const express = require('express'),
   // Hosting 
   path = require('path');
 
-require('/passport');
+require('./passport');
 
 const { check, validationResult } = require('express-validator');
 
