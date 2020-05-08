@@ -1,4 +1,5 @@
 import React from 'react';
+import Row from 'react-bootstrap/Row';
 // Redux import
 import { connect } from 'react-redux';
 // Custom imports
@@ -22,10 +23,10 @@ function MoviesList(props) {
 
   if (!movies) return <div className="main-view" />;
 
-  return <div className="movies-list">
+  return <Row className="movies-list" >
     <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
-  </div>;
+  </Row>;
 }
 
 export default connect(mapStateToProps)(MoviesList);
