@@ -40,6 +40,8 @@ app.use(morgan('common'));
 
 // use express.static to return all static files within 'public' folder
 app.use(express.static('public'));
+// implement "/client" directory
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
 
 // initialize the body-parser module
 app.use(bodyParser.json());
