@@ -92,7 +92,7 @@ class MainView extends React.Component {
     let { user } = this.state;
 
     return (
-      <Router>
+      <Router basename="/client">
         <Container className="main-view" fluid="true">
           <Navbar className="navbar navbar-dark">
             <h1 className="main-view-title">myFlix</h1>
