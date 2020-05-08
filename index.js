@@ -39,13 +39,13 @@ var auth = require('./auth')(app);
 // use morgan to log URL access
 app.use(morgan('common'));
 
+// use express.static to return all static files within 'public' folder
+app.use(express.static('public'));
 // implement "/client" directory (linking app to host on Heroku)
 app.use('/client', express.static(path.join(__dirname, 'client', 'dist')));
 app.get('/client/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
-// use express.static to return all static files within 'public' folder
-app.use(express.static('public'));
 
 // initialize the body-parser module
 app.use(bodyParser.json());
