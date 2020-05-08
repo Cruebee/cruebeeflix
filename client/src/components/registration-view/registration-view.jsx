@@ -83,7 +83,7 @@ export function RegistrationView(props) {
         </Button>
         <Form.Group className="login-group" controlId="formLogin">
           <Form.Text className="text-muted">Already have an account?</Form.Text>
-          <Link to={`/`}>
+          <Link to={`/client`}>
             <Button
               className="back-button"
               variant="btn"

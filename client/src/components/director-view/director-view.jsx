@@ -29,7 +29,7 @@ export class DirectorView extends React.Component {
           <Card.Text className="director-info"><span className="label">Bio: </span>{Director[0].Bio}</Card.Text>
           <Card.Text className="director-info"><span className="label">Birth: </span>{Director[0].Birth}</Card.Text>
           <Card.Text className="director-info"><span className="label">Death: </span>{Director[0].Death}</Card.Text>
-          <Link to={`/`}>
+          <Link to={`/client`}>
             <Button
               className="back-button"
               variant="btn"

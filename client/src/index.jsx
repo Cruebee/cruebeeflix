@@ -1,14 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 // Flux & Redux imports
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 // custom imports
-import MainView from "./components/main-view/main-view";
+import MainView from './components/main-view/main-view';
 import moviesApp from './reducers/reducers';
 
 // import statement to indicate you need to bundle './index.scss';
-import "./index.scss";
+import './index.scss';
 
 const store = createStore(moviesApp);
 
