@@ -10,12 +10,14 @@ import { setFilter } from '../../actions/actions';
 import './visibility-filter-input.scss';
 
 function VisibilityFilterInput(props) {
-  return <Form.Control
-    className="filter-form"
-    onChange={e => props.setFilter(e.target.value)}
-    value={props.visibilityFilter}
-    placeholder="filter"
-  />;
+  return <div className="search-div">
+    <Form.Control
+      className="filter-form"
+      onChange={e => props.setFilter(e.target.value)}
+      value={props.visibilityFilter}
+      placeholder="Filter Movies"
+    />
+  </div>;
 }
 
 export default connect(

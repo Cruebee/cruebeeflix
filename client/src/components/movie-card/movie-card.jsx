@@ -17,46 +17,48 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Card className="movie-cards" style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={movie.ImagePath} />
+      <div className="card-container">
+        <Card className="movie-cards" style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={movie.ImagePath} />
 
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <ListGroup className="card-links">
-            <ListGroup.Item className="card-item">
-              <Link to={`/movies/${movie._id}`}>
-                <Button
-                  className="movie-details detail-link"
-                  variant="link"
-                >
-                  Movie Details
+          <Card.Body>
+            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Text>{movie.Description}</Card.Text>
+            <ListGroup className="card-links">
+              <ListGroup.Item className="card-item">
+                <Link to={`/movies/${movie._id}`}>
+                  <Button
+                    className="movie-details detail-link"
+                    variant="link"
+                  >
+                    Movie Details
               </Button>
-              </Link>
-            </ListGroup.Item>
-            <ListGroup.Item className="card-item">
-              <Link to={`/directors/${movie.Director[0].Name}`}>
-                <Button
-                  className="director-details detail-link"
-                  variant="link btn"
-                >
-                  Director Details
+                </Link>
+              </ListGroup.Item>
+              <ListGroup.Item className="card-item">
+                <Link to={`/directors/${movie.Director[0].Name}`}>
+                  <Button
+                    className="director-details detail-link"
+                    variant="link btn"
+                  >
+                    Director Details
                   </Button>
-              </Link>
-            </ListGroup.Item>
-            <ListGroup.Item className="card-item">
-              <Link to={`/genres/${movie.Genre[0].Name}`}>
-                <Button
-                  className="genre-details detail-link"
-                  variant="link"
-                >
-                  Genre Details
+                </Link>
+              </ListGroup.Item>
+              <ListGroup.Item className="card-item">
+                <Link to={`/genres/${movie.Genre[0].Name}`}>
+                  <Button
+                    className="genre-details detail-link"
+                    variant="link"
+                  >
+                    Genre Details
                   </Button>
-              </Link>
-            </ListGroup.Item>
-          </ListGroup>
-        </Card.Body>
-      </Card>
+                </Link>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card.Body>
+        </Card>
+      </div>
     );
   }
 }

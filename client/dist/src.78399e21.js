@@ -40116,14 +40116,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // React-bootstrap import
 // Action import
 function VisibilityFilterInput(props) {
-  return _react.default.createElement(_Form.default.Control, {
+  return _react.default.createElement("div", {
+    className: "search-div"
+  }, _react.default.createElement(_Form.default.Control, {
     className: "filter-form",
     onChange: function onChange(e) {
       return props.setFilter(e.target.value);
     },
     value: props.visibilityFilter,
-    placeholder: "filter"
-  });
+    placeholder: "Filter Movies"
+  }));
 }
 
 var _default = (0, _reactRedux.connect)(null, {
@@ -40851,7 +40853,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       // Which in this case, is the "MainView", as "MainView" is what's connected to your DB
       // Via the movies endpoint of your API
       var movie = this.props.movie;
-      return _react.default.createElement(_Card.default, {
+      return _react.default.createElement("div", {
+        className: "card-container"
+      }, _react.default.createElement(_Card.default, {
         className: "movie-cards",
         style: {
           width: "18rem"
@@ -40882,7 +40886,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         className: "genre-details detail-link",
         variant: "link"
-      }, "Genre Details"))))));
+      }, "Genre Details")))))));
     }
   }]);
 
@@ -42311,7 +42315,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53286" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50012" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

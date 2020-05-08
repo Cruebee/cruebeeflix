@@ -7,5 +7,11 @@ $white: #fff;
 
 .filter-form {
   color: $white;
-  background-color: white;
+  margin-left: 3rem;
+  min-width: 18rem;
+  max-width: 18rem;
+}
+
+.search-div {
+  width: 100%;
 }

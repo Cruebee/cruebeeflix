@@ -5,9 +5,13 @@ $lime: #86C232;
 $green: #61892F;
 $white: #fff;
 
+.card-container {
+  margin-left: 2rem;
+}
+
 .movie-cards {
   text-align: center;
-  margin: 3rem auto;
+  margin: 1rem;
   background-color: $grey;
   color: $white;
 }

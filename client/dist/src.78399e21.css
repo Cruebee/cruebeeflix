@@ -1,10 +1,20 @@
 .filter-form {
   color: #fff;
-  background-color: white;
+  margin-left: 3rem;
+  min-width: 18rem;
+  max-width: 18rem;
 }
+
+.search-div {
+  width: 100%;
+}
+.card-container {
+  margin-left: 2rem;
+}
+
 .movie-cards {
   text-align: center;
-  margin: 3rem auto;
+  margin: 1rem;
   background-color: #474B4F;
   color: #fff;
 }
