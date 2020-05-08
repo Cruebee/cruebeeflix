@@ -42,9 +42,9 @@ app.use(morgan('common'));
 // use express.static to return all static files within 'public' folder
 app.use(express.static('public'));
 // implement "/client" directory (linking app to host on Heroku)
-app.use("/client", express.static(path.join(__dirname, "client", "dist")));
-app.get("/client/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist')));
+app.get('/client/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 // initialize the body-parser module
