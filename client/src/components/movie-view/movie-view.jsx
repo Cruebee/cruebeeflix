@@ -68,7 +68,7 @@ export class MovieView extends React.Component {
             </Button>
         </div>
         <div className="return-section">
-          <Link to={`/client`}>
+          <Link to={`/`}>
             <Button
               variant="btn"
               className="back-button"

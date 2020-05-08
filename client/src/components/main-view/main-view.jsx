@@ -116,7 +116,7 @@ class MainView extends React.Component {
             </div>
           </Navbar>
           <Row>
-            <Route exact path="/client" render={() => {
+            <Route exact path="/" render={() => {
               if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               return movies.map(m => <MoviesList movies={movies} />)
             }} />

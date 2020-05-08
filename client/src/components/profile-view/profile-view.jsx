@@ -184,7 +184,7 @@ export class ProfileView extends React.Component {
           </div>
         </Form>
         <div>
-          <Link to={`/client`}>
+          <Link to={`/`}>
             <Button
               className="return-button"
               variant="btn"
