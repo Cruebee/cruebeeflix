@@ -43,8 +43,6 @@ node_modules
 # Cached Files #
 ################
 .cache 
-client/.cache
-client/src/.cache
-client/src/dist/.cache
-movie_api/.cache
+.DS_Store
+log.txt
 cache
