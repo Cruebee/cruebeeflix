@@ -34,8 +34,6 @@ var allowedOrigins = [
   'https://cruebeeflix.herokuapp.com',
   'https://cruebeeflix.herokuapp.com/login'
 ];
-// import "auth.js" file.
-var auth = require('./auth')(app);
 
 // use morgan to log URL access
 app.use(morgan('common'));
@@ -70,6 +68,10 @@ app.use(
     },
   })
 );
+
+
+// import "auth.js" file.
+var auth = require('./auth')(app);
 
 // add in error handler: (figure out how to make the error handler communicate the cause of error i.e., username/password/email are required.)
 app.use(function (err, req, res, next) {
