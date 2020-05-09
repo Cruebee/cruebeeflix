@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cruebee/movie_api-my-flix.git"
+    "url": "git+https://github.com/Cruebee/cruebeeflix.git"
   },
   "keywords": [
     "movie",
@@ -20,9 +20,9 @@
   "author": "cruejameson",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cruebee/movie_api-my-flix/issues"
+    "url": "https://github.com/Cruebee/cruebeeflix/issues"
   },
-  "homepage": "https://github.com/Cruebee/movie_api-my-flix#readme",
+  "homepage": "https://github.com/Cruebee/cruebeeflix#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
