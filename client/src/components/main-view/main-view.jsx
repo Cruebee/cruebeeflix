@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // Actions import
 import { setMovies } from '../../actions/actions';
+import { setUser } from '../../actions/actions';
 // MoviesList import
 import MoviesList from '../movies-list/movies-list';
 // View imports
