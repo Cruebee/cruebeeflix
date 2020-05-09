@@ -46,3 +46,7 @@ node_modules
 .DS_Store
 log.txt
 cache
+
+# Packages #
+############
+package-lock.json
