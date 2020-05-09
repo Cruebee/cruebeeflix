@@ -38920,17 +38920,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.setMovies = setMovies;
 exports.setFilter = setFilter;
 exports.setUser = setUser;
-exports.setButton = setButton;
 exports.setFavorite = setFavorite;
-exports.SET_FAVORITE = exports.SET_BUTTON = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
+exports.SET_FAVORITE = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
 exports.SET_FILTER = SET_FILTER;
 var SET_USER = 'SET_USER';
 exports.SET_USER = SET_USER;
-var SET_BUTTON = 'SET_BUTTON';
-exports.SET_BUTTON = SET_BUTTON;
 var SET_FAVORITE = 'SET_FAVORITE';
 exports.SET_FAVORITE = SET_FAVORITE;
 
@@ -38951,13 +38948,6 @@ function setFilter(value) {
 function setUser(value) {
   return {
     type: SET_USER,
-    value: value
-  };
-}
-
-function setButton(value) {
-  return {
-    type: SET_BUTTON,
     value: value
   };
 }
@@ -41366,13 +41356,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "movie-view",
         style: {
-          width: '20rem'
+          width: '18rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Text, {
-        className: "movie-description"
+        className: "details"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Title: "), movie.Description), _react.default.createElement(_ListGroup.default, {
@@ -41498,7 +41488,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "director-view",
         style: {
-          width: "20rem"
+          width: "18rem"
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -41613,7 +41603,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "genre-view",
         style: {
-          width: "30rem"
+          width: "25rem"
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-info"
@@ -42049,11 +42039,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
       console.log(authData);
-      this.setState({
-        user: authData.user.Username
-      });
+      this.props.setUser(authData.user.Username);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
+      window.open('/client', '_self');
       this.getMovies(authData.token);
     } // Log Out
 
@@ -42063,9 +42052,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.open('/client', '_self');
-      this.setState({
-        user: null
-      });
+      this.props.setUser(user);
       console.log('logged out');
     } // Get Movies
 
@@ -42114,7 +42101,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick(user) {
           return _this3.onLogOut(!user);
         }
-      }, "Log Out"))), _react.default.createElement(_Row.default, null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "Log Out"))), _react.default.createElement(_Row.default, null, _react.default.createElement("div", {
+        className: "movies-container"
+      }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
@@ -42129,7 +42118,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             });
           });
         }
-      }), _react.default.createElement(_reactRouterDom.Route, {
+      })), _react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
         render: function render() {
           return _react.default.createElement(_registrationView.RegistrationView, null);
@@ -42191,12 +42180,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   };
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, {
-  setMovies: _actions.setMovies
+  setMovies: _actions.setMovies,
+  setUser: _actions.setUser
 })(MainView);
 
 exports.default = _default;
@@ -42251,9 +42242,24 @@ function user() {
   }
 }
 
+function favorite() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_FAVORITE:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
-  movies: movies
+  movies: movies,
+  user: user,
+  favorite: favorite
 });
 var _default = moviesApp;
 exports.default = _default;
@@ -42360,7 +42366,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64508" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63841" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -6,13 +6,15 @@ $green: #61892F;
 $white: #fff;
 
 .movie-view {
-  margin: 2rem auto;
+  margin-left: 2rem;
   text-align: center;
   background-color: $grey;
 }
 
 .details {
   background-color: $grey;
+  color: $white;
+  padding: 1rem;
 }
 
 .movie-container {
@@ -20,7 +22,7 @@ $white: #fff;
 }
 
 .label {
-  color: $white;
+  color: $lime;
 }
 
 .favorite-button {

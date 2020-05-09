@@ -22,7 +22,7 @@ export class DirectorView extends React.Component {
     if (!Director) return null;
 
     return (
-      <Card className="director-view" style={{ width: "20rem" }}>
+      <Card className="director-view" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={Director[0].ImagePath} />
         <Card.Body>
           <Card.Title className="director-info"><span className="label">Name: </span>{Director[0].Name}</Card.Title>

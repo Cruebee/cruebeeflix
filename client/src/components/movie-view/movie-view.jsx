@@ -50,9 +50,9 @@ export class MovieView extends React.Component {
     }
 
     return (
-      <Card className="movie-view" style={{ width: '20rem' }}>
+      <Card className="movie-view" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={movie.ImagePath} />
-        <Card.Text className="movie-description"><span className="label">Title: </span>{movie.Description}</Card.Text>
+        <Card.Text className="details"><span className="label">Title: </span>{movie.Description}</Card.Text>
         <ListGroup className="details">
           <ListGroup.Item className="details"><span className="label">Genre: </span>{movie.Genre[0].Name}</ListGroup.Item>
           <ListGroup.Item className="details"><span className="label">Director: </span>{movie.Director[0].Name}</ListGroup.Item>

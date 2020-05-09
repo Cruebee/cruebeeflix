@@ -55,6 +55,7 @@ class MainView extends React.Component {
     this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
+    window.open('/client', '_self')
     this.getMovies(authData.token);
   }
 
@@ -111,10 +112,12 @@ class MainView extends React.Component {
             </div>
           </Navbar>
           <Row>
-            <Route exact path="/" render={() => {
-              if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              return movies.map(m => <MoviesList movies={movies} />)
-            }} />
+            <div className="movies-container">
+              <Route exact path="/" render={() => {
+                if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                return movies.map(m => <MoviesList movies={movies} />)
+              }} />
+            </div>
             <Route path="/register" render={() => <RegistrationView />} />
             <Route path="/movies/:MovieId" render={({ match }) =>
               <MovieView movie={movies.find(m => m._id === match.params.MovieId)} />} />

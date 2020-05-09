@@ -14,7 +14,6 @@
 
 .movie-cards {
   text-align: center;
-  margin: 1rem;
   background-color: #474B4F;
   color: #fff;
 }
@@ -134,13 +133,15 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .movie-view {
-  margin: 2rem auto;
+  margin-left: 2rem;
   text-align: center;
   background-color: #474B4F;
 }
 
 .details {
   background-color: #474B4F;
+  color: #fff;
+  padding: 1rem;
 }
 
 .movie-container {
@@ -148,7 +149,7 @@
 }
 
 .label {
-  color: #fff;
+  color: #86C232;
 }
 
 .favorite-button {
@@ -186,13 +187,13 @@
 }
 .director-view {
   background-color: #474B4F;
-  margin: 2rem auto;
+  margin-left: 2rem;
   text-align: center;
 }
 
 .director-info {
   background-color: #474B4F;
-  color: #6B6E70;
+  color: #fff;
 }
 .genre-view {
   background-color: #474B4F;
@@ -202,7 +203,9 @@
 }
 
 .genre-info {
+  padding: 1rem;
   background-color: #474B4F;
+  color: #fff;
 }
 .form-control {
   background-color: #474B4F;
@@ -261,6 +264,7 @@
 
 .favorites-list {
   width: 100%;
+  color: #fff;
 }
 
 .favorite-movies {
@@ -305,13 +309,17 @@
   width: 100%;
 }
 
+.movies-container {
+  margin-left: 2rem;
+}
+
 .navbar,
 .navbar-dark {
   width: 100%;
 }
 
 .button-container {
-  margin: 1rem auto;
+  margin-left: 2rem;
   text-align: center;
 }
 
