@@ -29,9 +29,30 @@ function user(state = '', action) {
   }
 }
 
+function button(state = '', action) {
+  switch (action.type) {
+    case SET_BUTTON:
+      return action.value;
+    default:
+      return state;
+  }
+}
+
+function favorite(state = '', action) {
+  switch (action.type) {
+    case SET_FAVORITE:
+      return action.value;
+    default:
+      return state;
+  }
+}
+
 const moviesApp = combineReducers({
   visibilityFilter,
-  movies
+  movies,
+  user,
+  button,
+  favorite
 });
 
 export default moviesApp;
