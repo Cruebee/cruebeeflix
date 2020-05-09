@@ -173,7 +173,7 @@ export class ProfileView extends React.Component {
               defaultValue={userInfo.Birthday.split('T')[0]}
               onChange={e => this.setBirthday(e.target.value)} />
           </Form.Group>
-          <div>
+          <div className="update-btn-container">
             <Button
               className="update-button"
               variant="btn"
@@ -183,7 +183,7 @@ export class ProfileView extends React.Component {
             </Button>
           </div>
         </Form>
-        <div>
+        <div className="back-btn-container">
           <Link to={`/`}>
             <Button
               className="return-button"

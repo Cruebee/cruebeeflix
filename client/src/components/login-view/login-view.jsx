@@ -36,8 +36,8 @@ export function LoginView(props) {
     <Container className="login-view">
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
-        <Form.Row>
-          <Form.Group as={Col} controlId="formUsername">
+        <Form.Row className="login-group">
+          <Form.Group controlId="formUsername">
             <div className="login-label">
               <Form.Label>Username:</Form.Label>
             </div>
@@ -48,7 +48,7 @@ export function LoginView(props) {
               onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
-          <Form.Group as={Col} controlId="formPassword">
+          <Form.Group controlId="formPassword">
             <div className="login-label">
               <Form.Label>Password:</Form.Label>
             </div>

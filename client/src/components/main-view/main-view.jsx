@@ -92,25 +92,25 @@ class MainView extends React.Component {
         <Container className="main-view" fluid="true">
           <Navbar className="navbar navbar-dark">
             <h1 className="main-view-title">myFlix</h1>
-            <div className="button-container">
-              <Link to={`/users/${localStorage.getItem('user')}`}>
-                <Button
-                  className="profile-button"
-                  variant="btn"
-                  onClick
-                >
-                  Profile
-              </Button>
-              </Link>
-              <Button
-                className="log-out-button"
-                variant="btn"
-                onClick={user => this.onLogOut(!user)}
-              >
-                Log Out
-            </Button>
-            </div>
           </Navbar>
+          <div className="button-container">
+            <Link to={`/users/${localStorage.getItem('user')}`}>
+              <Button
+                className="profile-button"
+                variant="btn"
+                onClick
+              >
+                Profile
+              </Button>
+            </Link>
+            <Button
+              className="log-out-button"
+              variant="btn"
+              onClick={user => this.onLogOut(!user)}
+            >
+              Log Out
+            </Button>
+          </div>
           <Row>
             <div className="movies-container">
               <Route exact path="/" render={() => {

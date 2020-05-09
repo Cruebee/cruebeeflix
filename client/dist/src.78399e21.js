@@ -38919,11 +38919,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setMovies = setMovies;
 exports.setFilter = setFilter;
-exports.SET_FILTER = exports.SET_MOVIES = void 0;
+exports.setUser = setUser;
+exports.setFavorite = setFavorite;
+exports.SET_FAVORITE = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
 exports.SET_FILTER = SET_FILTER;
+var SET_USER = 'SET_USER';
+exports.SET_USER = SET_USER;
+var SET_FAVORITE = 'SET_FAVORITE';
+exports.SET_FAVORITE = SET_FAVORITE;
 
 function setMovies(value) {
   return {
@@ -38935,6 +38941,20 @@ function setMovies(value) {
 function setFilter(value) {
   return {
     type: SET_FILTER,
+    value: value
+  };
+}
+
+function setUser(value) {
+  return {
+    type: SET_USER,
+    value: value
+  };
+}
+
+function setFavorite(value) {
+  return {
+    type: SET_FAVORITE,
     value: value
   };
 }
@@ -41040,7 +41060,7 @@ function RegistrationView(props) {
       var data = response.data;
       alert("Your account has been created. Please login.");
       console.log(data);
-      window.open("/", "_self");
+      window.open("/client", "_self");
     }).catch(function (e) {
       console.log("error registering user.");
     });
@@ -41183,8 +41203,9 @@ function LoginView(props) {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
     className: "login-form"
-  }, _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
-    as: _Col.default,
+  }, _react.default.createElement(_Form.default.Row, {
+    className: "login-group"
+  }, _react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
   }, _react.default.createElement("div", {
     className: "login-label"
@@ -41196,7 +41217,6 @@ function LoginView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_Form.default.Group, {
-    as: _Col.default,
     controlId: "formPassword"
   }, _react.default.createElement("div", {
     className: "login-label"
@@ -41336,13 +41356,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "movie-view",
         style: {
-          width: '20rem'
+          width: '18rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Text, {
-        className: "movie-description"
+        className: "details"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Title: "), movie.Description), _react.default.createElement(_ListGroup.default, {
@@ -41468,7 +41488,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "director-view",
         style: {
-          width: "20rem"
+          width: "18rem"
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -41583,7 +41603,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "genre-view",
         style: {
-          width: "30rem"
+          width: "25rem"
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-info"
@@ -41771,7 +41791,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
         _this4.props.onLogOut(true);
 
-        window.open('/', '_self');
+        window.open('/client', '_self');
       }).catch(function (error) {
         console.error(error);
       });
@@ -41858,13 +41878,17 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this5.setBirthday(e.target.value);
         }
-      })), _react.default.createElement("div", null, _react.default.createElement(_Button.default, {
+      })), _react.default.createElement("div", {
+        className: "update-btn-container"
+      }, _react.default.createElement(_Button.default, {
         className: "update-button",
         variant: "btn",
         onClick: function onClick(e) {
           return _this5.updateUser(e, _this5.Username, _this5.Password, _this5.Email, _this5.Birthday, userInfo);
         }
-      }, "Update Profile"))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, "Update Profile"))), _react.default.createElement("div", {
+        className: "back-btn-container"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         className: "return-button",
@@ -42019,11 +42043,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
       console.log(authData);
-      this.setState({
-        user: authData.user.Username
-      });
+      this.props.setUser(authData.user.Username);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
+      window.open('/client', '_self');
       this.getMovies(authData.token);
     } // Log Out
 
@@ -42032,10 +42055,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLogOut() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.open('/', '_self');
-      this.setState({
-        user: null
-      });
+      window.open('/client', '_self');
+      this.props.setUser(user);
       console.log('logged out');
     } // Get Movies
 
@@ -42061,14 +42082,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var movies = this.props.movies;
       var user = this.state.user;
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Container.default, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
+        basename: "/client"
+      }, _react.default.createElement(_Container.default, {
         className: "main-view",
         fluid: "true"
       }, _react.default.createElement(_Navbar.default, {
         className: "navbar navbar-dark"
       }, _react.default.createElement("h1", {
         className: "main-view-title"
-      }, "myFlix"), _react.default.createElement("div", {
+      }, "myFlix")), _react.default.createElement("div", {
         className: "button-container"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/users/".concat(localStorage.getItem('user'))
@@ -42082,7 +42105,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick(user) {
           return _this3.onLogOut(!user);
         }
-      }, "Log Out"))), _react.default.createElement(_Row.default, null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "Log Out")), _react.default.createElement(_Row.default, null, _react.default.createElement("div", {
+        className: "movies-container"
+      }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
@@ -42097,7 +42122,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             });
           });
         }
-      }), _react.default.createElement(_reactRouterDom.Route, {
+      })), _react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
         render: function render() {
           return _react.default.createElement(_registrationView.RegistrationView, null);
@@ -42159,12 +42184,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   };
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, {
-  setMovies: _actions.setMovies
+  setMovies: _actions.setMovies,
+  setUser: _actions.setUser
 })(MainView);
 
 exports.default = _default;
@@ -42206,9 +42233,37 @@ function movies() {
   }
 }
 
+function user() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_USER:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
+function favorite() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_FAVORITE:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
-  movies: movies
+  movies: movies,
+  user: user,
+  favorite: favorite
 });
 var _default = moviesApp;
 exports.default = _default;
@@ -42315,7 +42370,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50012" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50627" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

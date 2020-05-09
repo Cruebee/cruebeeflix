@@ -11,6 +11,17 @@ $white: #fff;
   border-color: $grey;
 }
 
+.profile-view-title {
+  text-align: center;
+  color: $light-grey;
+}
+
+.user-favorites {
+  color: $light-grey;
+  text-align: center;
+}
+
+
 .form-control:hover,
 .form-control:active,
 .form-control:focus {
@@ -22,15 +33,22 @@ $white: #fff;
 }
 
 .profile-form {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .update-button {
-  margin: 0;
   background-color: $green;
   color: $white;
   border-color: $green;
+}
+
+.update-btn-container {
+  text-align: center;
+}
+
+.back-btn-container {
+  text-align: center;
 }
 
 .update-button:hover,
@@ -44,7 +62,7 @@ $white: #fff;
 }
 
 .return-button {
-  margin: 1rem 1rem 0.5rem 1rem;
+  margin: 1rem;
   background-color: $lime;
   color: $black;
   border-color: $lime;
@@ -67,6 +85,7 @@ $white: #fff;
 
 .favorite-movies {
   background-color: $grey;
+  text-align: center;
 }
 
 .delete-button {
@@ -74,6 +93,10 @@ $white: #fff;
   background-color: $lime;
   border-color: $lime;
   color: $black;
+}
+
+.delete-favorite {
+  text-align: center;
 }
 
 .delete-button:hover,

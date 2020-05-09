@@ -6,6 +6,8 @@ $green: #61892F;
 $white: #fff;
 
 .main-view {
+  max-width: 65rem;
+  min-width: 16rem;
   width: 100%;
 }
 
@@ -15,21 +17,22 @@ $white: #fff;
 
 .navbar,
 .navbar-dark {
+  justify-content: center;
+  margin: 1rem;
   width: 100%;
 }
 
 .button-container {
-  margin-left: 2rem;
+  justify-content: center;
   text-align: center;
 }
 
 .main-view-title {
   color: $light-grey;
-  margin: 1rem auto;
 }
 
 .profile-button {
-  margin-right: 1rem;
+  margin: 2rem;
   background-color: $green;
   color: $white;
   border-color: $green;
@@ -46,7 +49,7 @@ $white: #fff;
 }
 
 .log-out-button {
-  margin: 1rem auto;
+  margin: 2rem;
   background-color: $lime;
   color: $black;
   border-color: $lime;
