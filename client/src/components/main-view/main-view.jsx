@@ -62,10 +62,7 @@ class MainView extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     window.open('/client', '_self');
-
-    this.setState({
-      user: null,
-    });
+    this.props.setUser(user);
     console.log('logged out');
   }
 

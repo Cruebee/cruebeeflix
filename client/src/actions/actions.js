@@ -16,10 +16,6 @@ export function setUser(value) {
   return { type: SET_USER, value };
 }
 
-export function setButton(value) {
-  return { type: SET_BUTTON, value };
-}
-
 export function setFavorite(value) {
   return { type: SET_FAVORITE, value };
 }
