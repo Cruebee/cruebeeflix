@@ -149,6 +149,7 @@ export class ProfileView extends React.Component {
               placeholder="Enter Password"
               defaultValue={""}
               onChange={e => this.setPassword(e.target.value)} />
+            <Form.Text className="text-muted">Please enter your password to update your account.</Form.Text>
           </Form.Group>
           <Form.Group controlId="formEmail">
             <Form.Label>Email:</Form.Label>

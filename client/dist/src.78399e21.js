@@ -41860,7 +41860,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this5.setPassword(e.target.value);
         }
-      })), _react.default.createElement(_Form.default.Group, {
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, "Please enter your password to update your account.")), _react.default.createElement(_Form.default.Group, {
         controlId: "formEmail"
       }, _react.default.createElement(_Form.default.Label, null, "Email:"), _react.default.createElement(_Form.default.Control, {
         className: "form-item",
@@ -42398,7 +42400,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49965" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64339" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
