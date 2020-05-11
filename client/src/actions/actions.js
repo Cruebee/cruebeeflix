@@ -4,6 +4,8 @@ export const SET_USER = 'SET_USER';
 export const SET_FAVORITE = 'SET_FAVORITE';
 
 export function setMovies(value) {
+  console.log('setMovies here');
+  console.log(value);
   return { type: SET_MOVIES, value };
 }
 

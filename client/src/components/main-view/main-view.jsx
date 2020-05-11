@@ -32,7 +32,6 @@ class MainView extends React.Component {
     super();
 
     this.state = {
-      movies: [],
       user: null,
       register: null,
     };
@@ -40,10 +39,9 @@ class MainView extends React.Component {
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
+    let user = localStorage.getItem('user');
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user'),
-      });
+      this.props.setUser(user);
       this.getMovies(accessToken);
     }
   }
@@ -84,8 +82,9 @@ class MainView extends React.Component {
 
   render() {
 
-    let { movies } = this.props;
-    let { user } = this.state;
+    let { movies, user } = this.props;
+
+    if (!movies) return <Container className="main-view" fluid="true" />
 
     return (
       <Router basename="/client">
@@ -115,7 +114,7 @@ class MainView extends React.Component {
             <div className="movies-container">
               <Route exact path="/" render={() => {
                 if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                return movies.map(m => <MoviesList movies={movies} />)
+                return <MoviesList movies={movies} />;
               }} />
             </div>
             <Route path="/register" render={() => <RegistrationView />} />

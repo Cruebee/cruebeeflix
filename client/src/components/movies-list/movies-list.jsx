@@ -1,5 +1,6 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 // Redux import
 import { connect } from 'react-redux';
 // Custom imports
@@ -18,10 +19,10 @@ function MoviesList(props) {
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
-    filteredMovies = movies.filter(m => m.Title.includes(visibilityFilter));
+    filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
-  if (!movies) return <div className="main-view" />;
+  if (!movies) return <Container className="main-view" />;
 
   return <Row className="movies-list" >
     <VisibilityFilterInput visibilityFilter={visibilityFilter} />

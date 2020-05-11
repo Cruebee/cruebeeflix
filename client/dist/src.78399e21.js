@@ -38932,6 +38932,8 @@ var SET_FAVORITE = 'SET_FAVORITE';
 exports.SET_FAVORITE = SET_FAVORITE;
 
 function setMovies(value) {
+  console.log('setMovies here');
+  console.log(value);
   return {
     type: SET_MOVIES,
     value: value
@@ -40919,8 +40921,7 @@ MovieCard.propTypes = {
     Title: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
-  }).isRequired,
-  onClick: _propTypes.default.func.isRequired
+  }).isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
 "use strict";
@@ -40933,6 +40934,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _reactRedux = require("react-redux");
 
@@ -40959,11 +40962,11 @@ function MoviesList(props) {
 
   if (visibilityFilter !== '') {
     filteredMovies = movies.filter(function (m) {
-      return m.Title.includes(visibilityFilter);
+      return m.Title.toLowerCase().includes(visibilityFilter.toLowerCase());
     });
   }
 
-  if (!movies) return _react.default.createElement("div", {
+  if (!movies) return _react.default.createElement(_Container.default, {
     className: "main-view"
   });
   return _react.default.createElement(_Row.default, {
@@ -40981,7 +40984,7 @@ function MoviesList(props) {
 var _default = (0, _reactRedux.connect)(mapStateToProps)(MoviesList);
 
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-redux":"../node_modules/react-redux/es/index.js","../visibility-filter-input/visibility-filter-input":"components/visibility-filter-input/visibility-filter-input.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-redux":"../node_modules/react-redux/es/index.js","../visibility-filter-input/visibility-filter-input":"components/visibility-filter-input/visibility-filter-input.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -42019,7 +42022,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
-      movies: [],
       user: null,
       register: null
     };
@@ -42030,11 +42032,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var accessToken = localStorage.getItem('token');
+      var user = localStorage.getItem('user');
 
       if (accessToken !== null) {
-        this.setState({
-          user: localStorage.getItem('user')
-        });
+        this.props.setUser(user);
         this.getMovies(accessToken);
       }
     } // Authentication
@@ -42080,8 +42081,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var movies = this.props.movies;
-      var user = this.state.user;
+      var _this$props = this.props,
+          movies = _this$props.movies,
+          user = _this$props.user;
+      if (!movies) return _react.default.createElement(_Container.default, {
+        className: "main-view",
+        fluid: "true"
+      });
       return _react.default.createElement(_reactRouterDom.BrowserRouter, {
         basename: "/client"
       }, _react.default.createElement(_Container.default, {
@@ -42116,10 +42122,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               return _this3.onLoggedIn(user);
             }
           });
-          return movies.map(function (m) {
-            return _react.default.createElement(_moviesList.default, {
-              movies: movies
-            });
+          return _react.default.createElement(_moviesList.default, {
+            movies: movies
           });
         }
       })), _react.default.createElement(_reactRouterDom.Route, {
@@ -42370,7 +42374,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50627" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61482" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
