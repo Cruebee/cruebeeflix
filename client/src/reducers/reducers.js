@@ -29,20 +29,10 @@ function user(state = '', action) {
   }
 }
 
-function favorite(state = '', action) {
-  switch (action.type) {
-    case SET_FAVORITE:
-      return action.value;
-    default:
-      return state;
-  }
-}
-
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  user,
-  favorite
+  user
 });
 
 export default moviesApp;

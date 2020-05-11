@@ -41275,12 +41275,6 @@ var _ListGroup = _interopRequireDefault(require("react-bootstrap/ListGroup"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
-var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
-
-var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
-
-var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
-
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
 var _reactRouterDom = require("react-router-dom");
@@ -41422,7 +41416,7 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -41736,7 +41730,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "removeFavorite",
-    value: function removeFavorite(e, movieId, movies) {
+    value: function removeFavorite(e, movieId, movie) {
       var _this3 = this;
 
       e.preventDefault();
@@ -41747,7 +41741,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           'Authorization': "Bearer ".concat(localStorage.getItem('token'))
         }
       }).then(function (response) {
-        alert("".concat(movies.Title), ' has been removed from your favorites list.');
+        alert('The movie was removed from your list of favorites.');
 
         _this3.setState({
           userInfo: null
@@ -42377,7 +42371,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61482" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53546" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

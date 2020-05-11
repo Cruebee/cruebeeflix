@@ -4,13 +4,10 @@ import Axios from 'axios';
 // React-Bootstrap imports
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 // react-router imports
 import { Link } from 'react-router-dom';
-
+// import scss
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
