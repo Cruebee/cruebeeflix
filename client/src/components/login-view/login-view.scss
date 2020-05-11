@@ -5,33 +5,30 @@ $lime: #86C232;
 $green: #61892F;
 $white: #fff;
 
+
 .login-view {
-  max-width: 65rem;
-  min-width: 12rem;
+  justify-content: center;
   width: 100%;
 }
 
-.login-form {
-  margin-right: 2rem;
-}
-
-.login-form-container {
-  text-align: center;
-}
-
 .login-label {
-  text-align: left;
+  text-align: center;
   color: $light-grey;
 }
 
 .login-title {
+  text-align: center;
   width: 100%;
   color: $light-grey;
-  text-align: center;
 }
 
-.login-group {
-  justify-content: center;
+.login-form-space {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.login-group.form-row {
+  justify-content:center;
 }
 
 .login-submit {

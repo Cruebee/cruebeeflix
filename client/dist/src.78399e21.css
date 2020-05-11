@@ -5,18 +5,19 @@
 }
 
 .search-div {
-  margin-left: 3rem;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 .card-container {
-  margin-left: 3rem;
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 .movie-cards {
   text-align: center;
   background-color: #474B4F;
   color: #fff;
+  min-height: 100%;
 }
 
 .card-item {
@@ -59,31 +60,27 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .login-view {
-  max-width: 65rem;
-  min-width: 12rem;
+  justify-content: center;
   width: 100%;
 }
 
-.login-form {
-  margin-right: 2rem;
-}
-
-.login-form-container {
-  text-align: center;
-}
-
 .login-label {
-  text-align: left;
+  text-align: center;
   color: #6B6E70;
 }
 
 .login-title {
+  text-align: center;
   width: 100%;
   color: #6B6E70;
-  text-align: center;
 }
 
-.login-group {
+.login-form-space {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.login-group.form-row {
   justify-content: center;
 }
 
@@ -141,7 +138,6 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .movie-view {
-  margin-left: 2rem;
   text-align: center;
   background-color: #474B4F;
 }
@@ -195,7 +191,6 @@
 }
 .director-view {
   background-color: #474B4F;
-  margin-left: 2rem;
   text-align: center;
 }
 
@@ -205,7 +200,6 @@
 }
 .genre-view {
   background-color: #474B4F;
-  margin: 2rem auto;
   text-align: center;
   height: 100%;
 }
@@ -336,25 +330,27 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 .main-view {
-  max-width: 65rem;
-  min-width: 16rem;
   width: 100%;
 }
 
+.row {
+  justify-content: center;
+  margin: 1rem;
+}
+
 .movies-container {
-  margin-left: 2rem;
+  justify-content: center;
 }
 
 .navbar,
 .navbar-dark {
   justify-content: center;
   margin: 1rem;
-  width: 100%;
 }
 
 .button-container {
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
 }
 
 .main-view-title {
@@ -362,7 +358,7 @@
 }
 
 .profile-button {
-  margin: 2rem;
+  margin: 1rem;
   background-color: #61892F;
   color: #fff;
   border-color: #61892F;
@@ -379,7 +375,7 @@
 }
 
 .log-out-button {
-  margin: 2rem;
+  margin: 1rem;
   background-color: #86C232;
   color: #222629;
   border-color: #86C232;

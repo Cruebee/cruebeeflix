@@ -41149,8 +41149,6 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
-var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
-
 var _reactRouterDom = require("react-router-dom");
 
 require("./login-view.scss");
@@ -41201,7 +41199,8 @@ function LoginView(props) {
   };
 
   return _react.default.createElement(_Container.default, {
-    className: "login-view"
+    className: "login-view",
+    fluid: "true"
   }, _react.default.createElement("h1", {
     className: "login-title"
   }, "Login"), _react.default.createElement(_Form.default, {
@@ -41212,25 +41211,29 @@ function LoginView(props) {
     controlId: "formUsername"
   }, _react.default.createElement("div", {
     className: "login-label"
-  }, _react.default.createElement(_Form.default.Label, null, "Username:")), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Username")), _react.default.createElement(_Form.default.Row, {
+    className: "login-form-space"
+  }, _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter Username",
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement(_Form.default.Group, {
+  }))), _react.default.createElement(_Form.default.Group, {
     controlId: "formPassword"
   }, _react.default.createElement("div", {
     className: "login-label"
-  }, _react.default.createElement(_Form.default.Label, null, "Password:")), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement(_Form.default.Label, null, "Password")), _react.default.createElement(_Form.default.Row, {
+    className: "login-form-space"
+  }, _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  }))), _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
+  })))), _react.default.createElement(_Form.default.Row, null, _react.default.createElement(_Form.default.Group, {
     className: "login-submit"
   }, _react.default.createElement(_Button.default, {
     className: "login-button",
@@ -41249,7 +41252,7 @@ function LoginView(props) {
     variant: "btn"
   }, "Register Here"))))));
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

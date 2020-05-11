@@ -6,14 +6,14 @@ $green: #61892F;
 $white: #fff;
 
 .card-container {
-  margin-left: 3rem;
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 .movie-cards {
   text-align: center;
   background-color: $grey;
   color: $white;
+  min-height: 100%;
 }
 
 .card-item {

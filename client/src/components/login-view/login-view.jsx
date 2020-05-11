@@ -4,7 +4,6 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
 // react-router imports
 import { Link } from 'react-router-dom';
 
@@ -33,31 +32,35 @@ export function LoginView(props) {
   };
 
   return (
-    <Container className="login-view">
+    <Container className="login-view" fluid="true">
       <h1 className="login-title">Login</h1>
       <Form className="login-form">
         <Form.Row className="login-group">
           <Form.Group controlId="formUsername">
             <div className="login-label">
-              <Form.Label>Username:</Form.Label>
+              <Form.Label>Username</Form.Label>
             </div>
-            <Form.Control
-              type="text"
-              placeholder="Enter Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <Form.Row className="login-form-space">
+              <Form.Control
+                type="text"
+                placeholder="Enter Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Row>
           </Form.Group>
           <Form.Group controlId="formPassword">
             <div className="login-label">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label>Password</Form.Label>
             </div>
-            <Form.Control
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Form.Row className="login-form-space">
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Row>
           </Form.Group>
         </Form.Row>
         <Form.Row>

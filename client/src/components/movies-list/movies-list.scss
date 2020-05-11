@@ -5,6 +5,7 @@ $lime: #86C232;
 $green: #61892F;
 $white: #fff;
 
-.movies-list {
-  margin: 0 auto;
+.movies-list.row {
+  justify-content: center;
+  margin: 1rem;
 }
