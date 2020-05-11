@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 // Bootstrap imports
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -232,4 +233,18 @@ export class ProfileView extends React.Component {
       </Container>
     );
   }
+}
+
+ProfileView.propTypes = {
+  userInfo: PropTypes.shape({
+    FavoriteMovies: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        Title: PropTypes.string.isRequired
+      })
+    ),
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired
+  })
 }

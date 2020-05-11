@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { arrayOf } from 'prop-types';
 import Axios from 'axios';
 // React-Bootstrap imports
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -49,7 +49,8 @@ export class MovieView extends React.Component {
     return (
       <Card className="movie-view" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={movie.ImagePath} />
-        <Card.Text className="details"><span className="label">Title: </span>{movie.Description}</Card.Text>
+        <Card.Text className="details"><span className="label">Title: </span>{movie.Title}</Card.Text>
+        <Card.Text className="details"><span className="label">Description: </span>{movie.Description}</Card.Text>
         <ListGroup className="details">
           <ListGroup.Item className="details"><span className="label">Genre: </span>{movie.Genre[0].Name}</ListGroup.Item>
           <ListGroup.Item className="details"><span className="label">Director: </span>{movie.Director[0].Name}</ListGroup.Item>
@@ -84,12 +85,12 @@ MovieView.propTypes = {
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
+    Featured: PropTypes.bool.isRequired,
+    genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
     }),
-    Director: PropTypes.shape({
+    director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
     }),
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  })
 };

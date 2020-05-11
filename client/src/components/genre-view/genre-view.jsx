@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { arrayOf } from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
 
 // react-router imports
 import { Link } from 'react-router-dom';
@@ -41,8 +40,9 @@ export class GenreView extends React.Component {
 }
 
 GenreView.propTypes = {
-  genre: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-  }).isRequired,
+  Genre: arrayOf(
+    PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    })).isRequired,
 };

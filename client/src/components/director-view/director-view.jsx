@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { arrayOf } from 'prop-types';
 // Bootstrap imports
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -44,9 +44,10 @@ export class DirectorView extends React.Component {
 }
 
 DirectorView.propTypes = {
-  director: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-  }).isRequired,
+  Director: arrayOf(
+    PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+    })).isRequired,
 };

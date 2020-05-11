@@ -1,22 +1,23 @@
 import React from 'react';
 import axios from 'axios';
-// Redux imports
-import { connect } from 'react-redux';
-// React-Bootsrap imports
+import PropTypes from 'prop-types';
+// React-Bootsrap
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Spinner from 'react-bootstrap/Spinner';
-// React-router imports
+// React-router
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// Actions import
+// Redux imports
+import { connect } from 'react-redux';
+// Actions
 import { setMovies } from '../../actions/actions';
 import { setUser } from '../../actions/actions';
-// MoviesList import
+// MoviesList
 import MoviesList from '../movies-list/movies-list';
-// View imports
+// Views
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -97,7 +98,6 @@ class MainView extends React.Component {
               <Button
                 className="profile-button"
                 variant="btn"
-                onClick
               >
                 Profile
               </Button>
@@ -144,3 +144,27 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { setMovies, setUser })(MainView);
+
+MainView.propTypes = {
+  Movies: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }),
+    director: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string,
+      Death: PropTypes.string,
+      ImagePath: PropTypes.string.isRequired
+    }),
+    ImagePath: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired
+  }),
+  user: PropTypes.string.isRequired
+};
