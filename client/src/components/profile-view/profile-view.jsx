@@ -53,7 +53,7 @@ export class ProfileView extends React.Component {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     })
       .then(response => {
-        alert(`${movies.Title}`, ' has been removed from your favorites list.');
+        alert('The movie has been removed from your favorites list.');
         this.setState({
           userInfo: null
         })
