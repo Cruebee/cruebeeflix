@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Createauser"><span class="type-signature"></span>Create a user<span class="signature">('/users', User)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create user in database. No JSON Web Token needed. New users get JWT once created
+IDs are also automatically generated, users do not need to add their own ID do not add this field
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">users endpoint requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>User</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the user JSON object containing username, password, email, and birthday</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line352">line 352</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of new user containing new user's username, hashed password, email, and birthday
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'post',
+ url: 'https://cruebeeflix.heroku.com/client/users',
+ {
+   "username": "bobby123",
+   "password": "bottleservice123",
+   "email": "bobbyb@mail.com",
+   "birthday": "01-01-1989"
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="DELETEfavoritemovie"><span class="type-signature"></span>DELETE favorite movie<span class="signature">('/users/:Username/movies/:MovieID', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a selected movie from a user's list of favorite movies
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users/:Username/movies/:MovieID'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">users endpoint with specified user and movieID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line524">line 524</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object with updated user info: username, hashed password, email, birthday and favorites list
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'delete',
+ url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123/movies/123456789',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="DELETEuseraccount"><span class="type-signature"></span>DELETE user account<span class="signature">('/users/:Username', JWT)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Delete a specific user account from database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users/:Username'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">users endpoint with specific user</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON web token in HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line559">line 559</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    returns a string indicating a user has been deleted
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'delete',
+ url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ headers: { 'Authorization' : `Bearer ${token}`}
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETalistofallgenres"><span class="type-signature"></span>GET a list of all genres<span class="signature">('/genres', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a list of genres available in database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/genres'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The genres endpoint request made by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the bearer JSON web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line162">line 162</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of genre containing all genres, names, and descriptions for each
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/genres',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETalldirectors"><span class="type-signature"></span>GET all directors<span class="signature">('/directors', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a list of all directors available in database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/directors'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the directors endpoint requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON wb token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line221">line 221</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object containing list of all directors:
+each director contains, name, picture, bio, birth, and death where available.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/directors',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETallmovies"><span class="type-signature"></span>GET all movies<span class="signature">('/movies', jwt)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets all movies from database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/movies'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the movies endpoint requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>jwt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the bearer json web token passed into the HTTP request from client.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line99">line 99</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of all movies, each contains:
+title, description, director, genre, image url, and a featured status.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/movies',
+ {
+   headers: { Authorzation: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETallusers"><span class="type-signature"></span>GET all users<span class="signature">('/users', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a list of all registered users
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">users endpoint</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JWT web token passed into HTTP request by client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line284">line 284</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object containing list of all registered users
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.heroku.com/client/users',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETdirectorbyname"><span class="type-signature"></span>GET director by name<span class="signature">('/directors/:Name', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets specific director as requested by client by name
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/directors/:Name'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">directors endpoint with a specific director requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line252">line 252</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of director containing,
+director name, picture, bio, birth and death years where available
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/direcors/James%20Cameron',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETmoviebytitle"><span class="type-signature"></span>GET movie by title<span class="signature">('/movies/:Title', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a specific movie from database via the title
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/movies/:Title'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the movie endpoint with a title requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the bearer JSON Web Token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line128">line 128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of movie containing:
+title, description, director, genre, image url, and a featured boolean.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get'
+ url: 'https://cruebeeflix/herokuapp.com/client/movies/Donnie%20Darko',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETspecificGenrebyname"><span class="type-signature"></span>GET specific Genre by name<span class="signature">('/genres/:Name',, JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets specific Genre by name based on client request
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/genres/:Name',</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">genres endpoint with specified name requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line191">line 191</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object of genre containing genres name and description.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/genres/Action',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="GETusersbyusername"><span class="type-signature"></span>GET users by username<span class="signature">('/users/:Username', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets a specific user by username
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users/:Username'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">user endpoint with specific user request by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JWT web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line313">line 313</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object containing user's:
+name, username, hashed password, email, birthday, and favorite movies
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'get',
+ url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Postnewmoviestofavoriteslist"><span class="type-signature"></span>Post new movies to favorites list<span class="signature">('/users/:Username/movies/:MovieId', JWT)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Allows users to add movies to a Favories List via MovieID.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users/:Username/movies/:MovieId'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Users endpoint with specific user and movieID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JWT web token passed into HTTP request from client</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line419">line 419</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object containing new user info with:
+ username, hashed password, email, birthday, and new favorite movies
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'post',
+ url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123/movies/123456789',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+})</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="UpdateuserinfobasedonUsername"><span class="type-signature"></span>Update user info based on Username<span class="signature">('/users/:Username', JWT, User)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Update user profile, uses Username requested by client, only valid user can update
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>'/users/:Username'</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">users endpoint and username requested by client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>JWT</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">bearer JSON web token passed into HTTP request from client</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>User</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">JSON object containing updated username, password, email, and birthday</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line457">line 457</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    JSON object containing updated username, hashed password, email, and birthday for user
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>axios({
+ method: 'put',
+ url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ {
+   headers: { Authorization: `Bearer ${token}`}
+ }
+   data: {
+     "Username" : "bobby123",
+     "Password" : "bottleservice123",
+     "Email" : "bobbyb@mail.com",
+     "Birthday" : "01-01-1989"
+}
+})</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Createauser">Create a user</a></li><li><a href="global.html#DELETEfavoritemovie">DELETE favorite movie</a></li><li><a href="global.html#DELETEuseraccount">DELETE user account</a></li><li><a href="global.html#GETalistofallgenres">GET a list of all genres</a></li><li><a href="global.html#GETalldirectors">GET all directors</a></li><li><a href="global.html#GETallmovies">GET all movies</a></li><li><a href="global.html#GETallusers">GET all users</a></li><li><a href="global.html#GETdirectorbyname">GET director by name</a></li><li><a href="global.html#GETmoviebytitle">GET movie by title</a></li><li><a href="global.html#GETspecificGenrebyname">GET specific Genre by name</a></li><li><a href="global.html#GETusersbyusername">GET users by username</a></li><li><a href="global.html#Postnewmoviestofavoriteslist">Post new movies to favorites list</a></li><li><a href="global.html#UpdateuserinfobasedonUsername">Update user info based on Username</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Wed Aug 19 2020 13:48:23 GMT-0600 (Mountain Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// Required libraries
+// Required Libraries
 const express = require('express'),
   morgan = require('morgan'),
   app = express(),
@@ -13,15 +13,24 @@ const express = require('express'),
   Users = Models.User,
   Directors = Models.Director,
   Genres = Models.Genre,
-  // Hosting 
+  // Hosting
   path = require('path');
 
 require('./passport');
 
 const { check, validationResult } = require('express-validator');
+/**
+ * Mongoose Connection for local testing
+ * links API and MongoDB Atlas
+ */
 
-/*mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true}); */
+/* mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true}); */
 
+/**
+ * Finalized Mongoose Connection for hosting
+ * Links API and MongoDB Atlas Via Heroku's Config Variables
+ * Set up a CONNECTION_URI via Heroku/ Config Variables
+ */
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -32,7 +41,7 @@ var allowedOrigins = [
   'http://testsite.com',
   'http://localhost:1234',
   'https://cruebeeflix.herokuapp.com',
-  'https://cruebeeflix.herokuapp.com/login'
+  'https://cruebeeflix.herokuapp.com/login',
 ];
 
 // use morgan to log URL access
@@ -49,10 +58,13 @@ app.get('/client/*', (req, res) => {
 // initialize the body-parser module
 app.use(bodyParser.json());
 
-// use cors
+// initialize CORS
 app.use(cors());
 
-// use CORS:
+// import "auth.js" file.
+var auth = require('./auth')(app);
+
+// Config CORS:
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -60,7 +72,7 @@ app.use(
       if (allowedOrigins.indexOf(origin) === -1) {
         // If a specific origin isn't found on the list of allowed Origins
         var message =
-          'The CORS policy for this application doesn\'t allow acces from origin ' +
+          "The CORS policy for this application doesn't allow acces from origin " +
           origin;
         return callback(new Error(message), false);
       }
@@ -69,38 +81,68 @@ app.use(
   })
 );
 
-
-// import "auth.js" file.
-var auth = require('./auth')(app);
-
-// add in error handler: (figure out how to make the error handler communicate the cause of error i.e., username/password/email are required.)
+// add in error handler:
+// (figure out how to make the error handler communicate
+// the cause of error i.e., username/password/email are required.)
 app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something Broke!');
 });
 
-// add in the GET requests
+// GET requests
 
 app.get('/', function (req, res) {
   res.send('Welcome to My-Flix!');
 });
 
 // ------ Movies ------
-// get a JSON list of ALL movies:
-app.get('/movies',
-  passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    Movies.find()
-      .populate('Genre')
-      .populate('Director')
-      .exec(function (err, movie) {
-        if (err) return console.error(err);
-        res.status(201).json(movie);
-      });
-  });
+/**
+ * @function GET all movies
+ * @description Gets all movies from database
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/movies',
+ *  {
+ *    headers: { Authorzation: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/movies' the movies endpoint requested by client
+ * @param {object} jwt the bearer json web token passed into the HTTP request from client.
+ * @returns {JSON} JSON object of all movies, each contains:
+ * title, description, director, genre, image url, and a featured status.
+ */
+app.get('/movies', passport.authenticate('jwt', { session: false }), function (
+  req,
+  res
+) {
+  Movies.find()
+    .populate('Genre')
+    .populate('Director')
+    .exec(function (err, movie) {
+      if (err) return console.error(err);
+      res.status(201).json(movie);
+    });
+});
 
-// get data about a single movie, by its title:
-app.get('/movies/:Title',
+/**
+ * @function GET movie by title
+ * @description Gets a specific movie from database via the title
+ * @example
+ * axios({
+ *  method: 'get'
+ *  url: 'https://cruebeeflix/herokuapp.com/client/movies/Donnie%20Darko',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/movies/:Title' the movie endpoint with a title requested by client
+ * @param {object} JWT the bearer JSON Web Token passed into HTTP request from client
+ * @returns {JSON} JSON object of movie containing:
+ * title, description, director, genre, image url, and a featured boolean.
+ */
+app.get(
+  '/movies/:Title',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Movies.findOne({ Title: req.params.Title })
@@ -117,22 +159,52 @@ app.get('/movies/:Title',
 );
 
 // ------ Genres ------
-// Get a list of genres:
-app.get('/genres',
-  passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    Genres.find()
-      .then(function (genres) {
-        res.status(201).json(genres);
-      })
-      .catch(function (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      });
-  });
+/**
+ * @function GET a list of all genres
+ * @description Gets a list of genres available in database
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/genres',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/genres' The genres endpoint request made by client
+ * @param {object} JWT the bearer JSON web token passed into HTTP request from client
+ * @returns {JSON} JSON object of genre containing all genres, names, and descriptions for each
+ */
+app.get('/genres', passport.authenticate('jwt', { session: false }), function (
+  req,
+  res
+) {
+  Genres.find()
+    .then(function (genres) {
+      res.status(201).json(genres);
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
-// Get data from a specific genre by name:
-app.get('/genres/:Name',
+/**
+ * @function GET specific Genre by name
+ * @description Gets specific Genre by name based on client request
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/genres/Action',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/genres/:Name', genres endpoint with specified name requested by client
+ * @param {object} JWT bearer JSON web token passed into HTTP request from client
+ * @returns {JSON} JSON object of genre containing genres name and description.
+ */
+app.get(
+  '/genres/:Name',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Genres.findOne({ Name: req.params.Name })
@@ -146,8 +218,24 @@ app.get('/genres/:Name',
 );
 
 // ------ Directors ------
-// Get a list of ALL directors:
-app.get('/directors',
+/**
+ * @function GET all directors
+ * @description Gets a list of all directors available in database
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/directors',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/directors' the directors endpoint requested by client
+ * @param {object} JWT bearer JSON wb token passed into HTTP request from client
+ * @returns {JSON} JSON object containing list of all directors:
+ * each director contains, name, picture, bio, birth, and death where available.
+ */
+app.get(
+  '/directors',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Directors.find()
@@ -160,8 +248,25 @@ app.get('/directors',
       });
   }
 );
-// Get the data about a Director by name:
-app.get('/directors/:Name',
+
+/**
+ * @function GET director by name
+ * @description Gets specific director as requested by client by name
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/direcors/James%20Cameron',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/directors/:Name' directors endpoint with a specific director requested by client
+ * @param {object} JWT bearer JSON web token passed into HTTP request from client
+ * @returns {JSON} JSON object of director containing,
+ * director name, picture, bio, birth and death years where available
+ */
+app.get(
+  '/directors/:Name',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Directors.findOne({ Name: req.params.Name })
@@ -176,22 +281,53 @@ app.get('/directors/:Name',
 );
 
 // ------ Users ------
-//GET all users:
-app.get('/users',
-  passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    Users.find()
-      .then(function (users) {
-        res.status(201).json(users);
-      })
-      .catch(function (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      });
-  });
+/**
+ * @function GET all users
+ * @description Gets a list of all registered users
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.heroku.com/client/users',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/users' users endpoint
+ * @param {object} JWT bearer JWT web token passed into HTTP request by client
+ * @returns {JSON} JSON object containing list of all registered users
+ */
+app.get('/users', passport.authenticate('jwt', { session: false }), function (
+  req,
+  res
+) {
+  Users.find()
+    .then(function (users) {
+      res.status(201).json(users);
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
-// GET a user by Username:
-app.get('/users/:Username',
+/**
+ * @function GET users by username
+ * @description Gets a specific user by username
+ * @example
+ * axios({
+ *  method: 'get',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/users/:Username' user endpoint with specific user request by client
+ * @param {object} JWT bearer JWT web token passed into HTTP request from client
+ * @returns {JSON} JSON object containing user's:
+ * name, username, hashed password, email, birthday, and favorite movies
+ */
+app.get(
+  '/users/:Username',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Users.findOne({ Username: req.params.Username })
@@ -200,9 +336,11 @@ app.get('/users/:Username',
         if (err) return console.error(err);
         res.status(201).json(user);
       });
-  });
+  }
+);
 
-// Add a user:
+// POST requests
+// Adding a user:
 /* We'll expect JSON in this format
 {
 ID : Integer,
@@ -211,10 +349,33 @@ Password : String,
 Email : String,
 Birthday: Date
 }*/
-app.post('/users',
+/**
+ * @function Create a user
+ * @description Create user in database. No JSON Web Token needed. New users get JWT once created
+ * IDs are also automatically generated, users do not need to add their own ID do not add this field
+ * @example
+ * axios({
+ *  method: 'post',
+ *  url: 'https://cruebeeflix.heroku.com/client/users',
+ *  {
+ *    "username": "bobby123",
+ *    "password": "bottleservice123",
+ *    "email": "bobbyb@mail.com",
+ *    "birthday": "01-01-1989"
+ *  }
+ * })
+ * @param {string} '/users' users endpoint requested by client
+ * @param {JSON} User the user JSON object containing username, password, email, and birthday
+ * @returns {JSON} JSON object of new user containing new user's username, hashed password, email, and birthday
+ */
+app.post(
+  '/users',
   [
     check('Username', 'Username is required').isLength({ min: 5 }),
-    check('Username', 'Username contains non-alphanumeric characters - not allowed.').isAlphanumeric(),
+    check(
+      'Username',
+      'Username contains non-alphanumeric characters - not allowed.'
+    ).isAlphanumeric(),
     check('Password', 'Password is required.').not().isEmpty(),
     check('Email', 'Email does not appear to be valid.').isEmail(),
   ],
@@ -233,13 +394,12 @@ app.post('/users',
           //if the user is found, send a response that it already exists.
           return res.status(400).send(req.body.Username + ' already exists');
         } else {
-          Users
-            .create({
-              Username: req.body.Username,
-              Password: hashedPassword,
-              Email: req.body.Email,
-              Birthday: req.body.Birthday,
-            })
+          Users.create({
+            Username: req.body.Username,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday,
+          })
             .then((user) => {
               res.status(201).json(user);
             })
@@ -256,14 +416,77 @@ app.post('/users',
   }
 );
 
-// Update info of a user by Username:
-app.put('/users/:Username',
+/**
+ * @function Post new movies to favorites list
+ * @description Allows users to add movies to a Favories List via MovieID.
+ * @example
+ * axios({
+ *  method: 'post',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123/movies/123456789',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/users/:Username/movies/:MovieId' Users endpoint with specific user and movieID
+ * @param {object} JWT bearer JWT web token passed into HTTP request from client
+ * @returns {JSON} JSON object containing new user info with:
+ *  username, hashed password, email, birthday, and new favorite movies
+ */
+app.post(
+  '/users/:Username/movies/:MovieID',
+  passport.authenticate('jwt', { session: false }),
+  function (req, res) {
+    Users.findOneAndUpdate(
+      { Username: req.params.Username },
+      { $push: { FavoriteMovies: req.params.MovieID } },
+      { new: true },
+      function (err, updatedUser) {
+        if (err) {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser);
+        }
+      }
+    );
+  }
+);
+
+// PUT requests
+
+/**
+ * @function Update user info based on Username
+ * @description Update user profile, uses Username requested by client, only valid user can update
+ * @example
+ * axios({
+ *  method: 'put',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ *    data: {
+ *      "Username" : "bobby123",
+ *      "Password" : "bottleservice123",
+ *      "Email" : "bobbyb@mail.com",
+ *      "Birthday" : "01-01-1989"
+ * }
+ * })
+ * @param {string} '/users/:Username' users endpoint and username requested by client
+ * @param {object} JWT bearer JSON web token passed into HTTP request from client
+ * @param {JSON} User JSON object containing updated username, password, email, and birthday
+ * @returns {JSON} JSON object containing updated username, hashed password, email, and birthday for user
+ */
+app.put(
+  '/users/:Username',
   passport.authenticate('jwt', { session: false }),
   [
     check('Username', 'Username is required.').isLength({ min: 5 }),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check(
+      'Username',
+      'Username contains non alphanumeric characters - not allowed.'
+    ).isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email doesn\'t appear to be valid.').isEmail(),
+    check('Email', "Email doesn't appear to be valid.").isEmail(),
   ],
   (req, res) => {
     // check validation of object for errors:
@@ -275,10 +498,10 @@ app.put('/users/:Username',
 
     let hashedPassword = Users.hashPassword(req.body.Password);
 
-    Users.findOneAndUpdate({ Username: req.params.Username },
+    Users.findOneAndUpdate(
+      { Username: req.params.Username },
       {
-        $set:
-        {
+        $set: {
           Username: req.body.Username,
           Password: hashedPassword,
           Email: req.body.Email,
@@ -298,28 +521,23 @@ app.put('/users/:Username',
   }
 );
 
-// allow users to add favorite movies to their account:
-app.post('/users/:Username/movies/:MovieID',
-  passport.authenticate('jwt', { session: false }),
-  function (req, res) {
-    Users.findOneAndUpdate(
-      { Username: req.params.Username },
-      { $push: { FavoriteMovies: req.params.MovieID } },
-      { new: true },
-      function (err, updatedUser) {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Error: ' + err);
-        } else {
-          res.json(updatedUser);
-        }
-      }
-    );
-  }
-);
-
-// Remove movie from favorites list:
-app.delete('/users/:Username/movies/:MovieID',
+/**
+ * @function DELETE favorite movie
+ * @description Deletes a selected movie from a user's list of favorite movies
+ * @example
+ * axios({
+ *  method: 'delete',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123/movies/123456789',
+ *  {
+ *    headers: { Authorization: `Bearer ${token}`}
+ *  }
+ * })
+ * @param {string} '/users/:Username/movies/:MovieID' users endpoint with specified user and movieID
+ * @param {object} JWT bearer JSON web token passed into HTTP request from client
+ * @returns {JSON} JSON object with updated user info: username, hashed password, email, birthday and favorites list
+ */
+app.delete(
+  '/users/:Username/movies/:MovieID',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Users.findOneAndUpdate(
@@ -338,8 +556,21 @@ app.delete('/users/:Username/movies/:MovieID',
   }
 );
 
-// allow users to delete account by Username:
-app.delete('/users/:Username',
+/**
+ * @function DELETE user account
+ * @description Delete a specific user account from database
+ * @example
+ * axios({
+ *  method: 'delete',
+ *  url: 'https://cruebeeflix.herokuapp.com/client/users/bobby123',
+ *  headers: { 'Authorization' : `Bearer ${token}`}
+ * })
+ * @param {string} '/users/:Username' users endpoint with specific user
+ * @param {object} JWT bearer JSON web token in HTTP request from client
+ * @returns {string} returns a string indicating a user has been deleted
+ */
+app.delete(
+  '/users/:Username',
   passport.authenticate('jwt', { session: false }),
   function (req, res) {
     Users.findOneAndRemove({ Username: req.params.Username })
@@ -347,7 +578,7 @@ app.delete('/users/:Username',
         if (!user) {
           res.status(400).send(req.params.Username + ' was not found!');
         } else {
-          res.status(200).send(req.params.Username + ' was deleted.');
+          res.status(200).send(req.params.Username + ' was deleted!');
         }
       })
       .catch(function (err) {

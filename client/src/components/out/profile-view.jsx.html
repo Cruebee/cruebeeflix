@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+// Bootstrap imports
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Spinner from 'react-bootstrap/Spinner';
+// react-router imports
+import { Link } from 'react-router-dom';
+// scss import
+import './profile-view.scss';
+
+/**
+ * @function ProfileView
+ * @description renders user profile based on Username. User's can update/delete profile from here
+ */
+export class ProfileView extends React.Component {
+  constructor() {
+    super();
+
+    (this.Username = null),
+      (this.Password = null),
+      (this.Email = null),
+      (this.Birthday = null);
+
+    this.state = {
+      userInfo: null,
+      onLogOut: null,
+    };
+  }
+
+  componentDidMount() {
+    this.getUserInfo(
+      localStorage.getItem('user'),
+      localStorage.getItem('token')
+    );
+  }
+
+  getUserInfo(user, token) {
+    axios
+      .get(`https://cruebeeflix.herokuapp.com/users/${user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          userInfo: response.data,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  removeFavorite(e, movieId, movie) {
+    e.preventDefault();
+    axios({
+      method: 'delete',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem(
+        'user'
+      )}/movies/${movieId}`,
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+      .then((response) => {
+        alert('The movie was removed from your list of favorites.');
+        this.setState({
+          userInfo: null,
+        });
+        this.getUserInfo(
+          localStorage.getItem('user'),
+          localStorage.getItem('token')
+        );
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  updateUser(e, Username, Password, Email, Birthday, userInfo) {
+    e.preventDefault();
+    axios({
+      method: 'put',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem(
+        'user'
+      )}`,
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      data: {
+        Username: Username ? Username : userInfo.Username,
+        Password: Password,
+        Email: Email ? Email : userInfo.Email,
+        Birthday: Birthday ? Birthday : userInfo.Birthday,
+      },
+    })
+      .then((response) => {
+        alert('Your account has been updated.');
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
+  deregisterUser(e) {
+    e.preventDefault();
+    axios({
+      method: 'delete',
+      url: `https://cruebeeflix.herokuapp.com/users/${localStorage.getItem(
+        'user'
+      )}`,
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+      .then((response) => {
+        alert(response.data + ' You will now be taken to the login screen.');
+        this.props.onLogOut(true);
+        window.open('/client', '_self');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  setUsername(input) {
+    this.Username = input;
+  }
+
+  setPassword(input) {
+    this.Password = input;
+  }
+
+  setEmail(input) {
+    this.Email = input;
+  }
+
+  setBirthday(input) {
+    this.Birthday = input;
+  }
+
+  render() {
+    const { userInfo } = this.state;
+    if (!userInfo)
+      return (
+        &lt;Spinner animation='grow' role='status'>
+          &lt;span className='sr-only'>Loading...&lt;/span>
+        &lt;/Spinner>
+      );
+
+    return (
+      &lt;Container className='profile-view'>
+        &lt;h1 className='profile-view-title'>Update Profile&lt;/h1>
+        &lt;Form className='profile-form'>
+          &lt;Form.Group controlId='formUsername'>
+            &lt;Form.Label>Username:&lt;/Form.Label>
+            &lt;Form.Control
+              className='form-item'
+              type='text'
+              placeholder='Enter Username'
+              defaultValue={userInfo.Username}
+              onChange={(e) => this.setUsername(e.target.value)}
+            />
+          &lt;/Form.Group>
+          &lt;Form.Group controlId='formPassword'>
+            &lt;Form.Label>Password:&lt;/Form.Label>
+            &lt;Form.Control
+              className='form-item'
+              type='password'
+              placeholder='Enter Password'
+              defaultValue={''}
+              onChange={(e) => this.setPassword(e.target.value)}
+            />
+            &lt;Form.Text className='text-muted'>
+              Please enter your password to update your account.
+            &lt;/Form.Text>
+          &lt;/Form.Group>
+          &lt;Form.Group controlId='formEmail'>
+            &lt;Form.Label>Email:&lt;/Form.Label>
+            &lt;Form.Control
+              className='form-item'
+              type='text'
+              placeholder='Enter Email'
+              defaultValue={userInfo.Email}
+              onChange={(e) => this.setEmail(e.target.value)}
+            />
+            &lt;Form.Text className='text-muted'>
+              Your privacy is important to us, none of your information will be
+              shared with anyone else.
+            &lt;/Form.Text>
+          &lt;/Form.Group>
+          &lt;Form.Group controlId='formBirthday'>
+            &lt;Form.Label>Birthday:&lt;/Form.Label>
+            &lt;Form.Text className='text-muted'>
+              We use this information to provide you with more age apropriate
+              movies.
+            &lt;/Form.Text>
+            &lt;Form.Control
+              className='form-item'
+              type='date'
+              placeholder='Enter Birthday'
+              defaultValue={userInfo.Birthday.split('T')[0]}
+              onChange={(e) => this.setBirthday(e.target.value)}
+            />
+          &lt;/Form.Group>
+          &lt;div className='update-btn-container'>
+            &lt;Button
+              className='update-button'
+              variant='btn'
+              onClick={(e) =>
+                this.updateUser(
+                  e,
+                  this.Username,
+                  this.Password,
+                  this.Email,
+                  this.Birthday,
+                  userInfo
+                )
+              }
+            >
+              Update Profile
+            &lt;/Button>
+          &lt;/div>
+        &lt;/Form>
+        &lt;div className='back-btn-container'>
+          &lt;Link to={`/`}>
+            &lt;Button className='return-button' variant='btn'>
+              Back
+            &lt;/Button>
+          &lt;/Link>
+        &lt;/div>
+        &lt;Container className='profile-view'>
+          &lt;h1 className='user-favorites'>Favorite Movies&lt;/h1>
+          &lt;ListGroup className='favorites-list'>
+            {userInfo.FavoriteMovies.length === 0 &amp;&amp; (
+              &lt;ListGroup.Item>You have no favorite movies.&lt;/ListGroup.Item>
+            )}
+            {userInfo.FavoriteMovies.map((movie) => {
+              return (
+                &lt;ListGroup.Item className='favorite-movies'>
+                  &lt;div>{movie.Title}&lt;/div>
+                  &lt;div className='delete-favorite'>
+                    &lt;Button
+                      variant='btn'
+                      className='delete-button'
+                      key={movie._id}
+                      onClick={(e) => this.removeFavorite(e, movie._id)}
+                    >
+                      Delete Favorite
+                    &lt;/Button>
+                  &lt;/div>
+                &lt;/ListGroup.Item>
+              );
+            })}
+          &lt;/ListGroup>
+        &lt;/Container>
+        &lt;Container className='profile-view'>
+          &lt;h1 className='deregister-user'>Remove Account&lt;/h1>
+          &lt;ListGroup className='deregister-user-group'>
+            &lt;Button
+              variant='btn'
+              className='deregister-button'
+              onClick={(e) => this.deregisterUser(e)}
+            >
+              Remove Account
+            &lt;/Button>
+          &lt;/ListGroup>
+        &lt;/Container>
+      &lt;/Container>
+    );
+  }
+}
+
+ProfileView.propTypes = {
+  userInfo: PropTypes.shape({
+    FavoriteMovies: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        Title: PropTypes.string.isRequired,
+      })
+    ),
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+  }),
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ProfileView">ProfileView</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Wed Aug 19 2020 13:50:30 GMT-0600 (Mountain Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

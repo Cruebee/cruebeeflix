@@ -27,7 +27,10 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 
 import './main-view.scss';
-
+/**
+ * @function MainView
+ * @description Contains all the views/ launch view after login/registration
+ */
 class MainView extends React.Component {
   constructor() {
     super();
@@ -38,6 +41,10 @@ class MainView extends React.Component {
     };
   }
 
+  /**
+   * @function AccessToken Check
+   * @description Checks for accessToken in localStorage
+   */
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     let user = localStorage.getItem('user');
@@ -47,18 +54,28 @@ class MainView extends React.Component {
     }
   }
 
-  // Authentication
-
+  /**
+   * @function onLoggedIn (sets auth data on login)
+   * @description Set user authorization data (JWT) when logged in
+   * @param {object} authData
+   * @returns {localStorage}
+   * @returns {state}
+   */
   onLoggedIn(authData) {
     console.log(authData);
     this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
-    window.open('/client', '_self')
+    window.open('/client', '_self');
     this.getMovies(authData.token);
   }
 
-  // Log Out
+  /**
+   * @function onLogOut
+   * @description clears local storage and removes JWT tokens when logging out
+   * @param user
+   * @returns {state}
+   */
   onLogOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -67,13 +84,18 @@ class MainView extends React.Component {
     console.log('logged out');
   }
 
-  // Get Movies
+  /**
+   * @function GET list of movies
+   * @description Get a list of movies if user be logged in and authorized
+   * @param {number} token
+   * @returns {array} list of movies
+   */
   getMovies(token) {
     axios
       .get('https://cruebeeflix.herokuapp.com/movies', {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then(response => {
+      .then((response) => {
         this.props.setMovies(response.data);
       })
       .catch(function (error) {
@@ -82,56 +104,94 @@ class MainView extends React.Component {
   }
 
   render() {
-
     let { movies, user } = this.props;
 
-    if (!movies) return <Container className="main-view" fluid="true" />
+    if (!movies) return <Container className='main-view' fluid='true' />;
 
     return (
-      <Router basename="/client">
-        <Container className="main-view" fluid="true">
-          <Navbar className="navbar navbar-dark">
-            <h1 className="main-view-title">myFlix</h1>
+      <Router basename='/client'>
+        <Container className='main-view' fluid='true'>
+          <Navbar className='navbar navbar-dark'>
+            <h1 className='main-view-title'>myFlix</h1>
           </Navbar>
-          <div className="button-container">
+          <div className='button-container'>
             <Link to={`/users/${localStorage.getItem('user')}`}>
-              <Button
-                className="profile-button"
-                variant="btn"
-              >
+              <Button className='profile-button' variant='btn'>
                 Profile
               </Button>
             </Link>
             <Button
-              className="log-out-button"
-              variant="btn"
-              onClick={user => this.onLogOut(!user)}
+              className='log-out-button'
+              variant='btn'
+              onClick={(user) => this.onLogOut(!user)}
             >
               Log Out
             </Button>
           </div>
           <Row>
-            <div className="movies-container">
-              <Route exact path="/" render={() => {
-                if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                return <MoviesList movies={movies} />;
-              }} />
+            <div className='movies-container'>
+              <Route
+                exact
+                path='/'
+                render={() => {
+                  if (!user)
+                    return (
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                    );
+                  return <MoviesList movies={movies} />;
+                }}
+              />
             </div>
-            <Route path="/register" render={() => <RegistrationView />} />
-            <Route path="/movies/:MovieId" render={({ match }) =>
-              <MovieView movie={movies.find(m => m._id === match.params.MovieId)} />} />
-            <Route path="/genres/:Name" render={({ match }) => {
-              if (movies.length === 0) return <Container className="main-view" />;
-              return <GenreView Genre={movies.find(m => m.Genre[0].Name === match.params.Name).Genre} />
-            }} />
-            <Route path="/directors/:Name" render={({ match }) => {
-              if (movies.length === 0) return <Container className="main-view" />;
-              return <DirectorView Director={movies.find(m => m.Director[0].Name === match.params.Name).Director} />
-            }} />
-            <Route path="/users/:Username" render={() => {
-              if (movies.length === 0) return <Container className="main-view" />;
-              return <ProfileView onLogOut={user => this.onLogOut(!user)} />
-            }} />
+            <Route path='/register' render={() => <RegistrationView />} />
+            <Route
+              path='/movies/:MovieId'
+              render={({ match }) => (
+                <MovieView
+                  movie={movies.find((m) => m._id === match.params.MovieId)}
+                />
+              )}
+            />
+            <Route
+              path='/genres/:Name'
+              render={({ match }) => {
+                if (movies.length === 0)
+                  return <Container className='main-view' />;
+                return (
+                  <GenreView
+                    Genre={
+                      movies.find((m) => m.Genre[0].Name === match.params.Name)
+                        .Genre
+                    }
+                  />
+                );
+              }}
+            />
+            <Route
+              path='/directors/:Name'
+              render={({ match }) => {
+                if (movies.length === 0)
+                  return <Container className='main-view' />;
+                return (
+                  <DirectorView
+                    Director={
+                      movies.find(
+                        (m) => m.Director[0].Name === match.params.Name
+                      ).Director
+                    }
+                  />
+                );
+              }}
+            />
+            <Route
+              path='/users/:Username'
+              render={() => {
+                if (movies.length === 0)
+                  return <Container className='main-view' />;
+                return (
+                  <ProfileView onLogOut={(user) => this.onLogOut(!user)} />
+                );
+              }}
+            />
           </Row>
         </Container>
       </Router>
@@ -139,9 +199,9 @@ class MainView extends React.Component {
   }
 }
 
-let mapStateToProps = state => {
-  return { movies: state.movies, user: state.user }
-}
+let mapStateToProps = (state) => {
+  return { movies: state.movies, user: state.user };
+};
 
 export default connect(mapStateToProps, { setMovies, setUser })(MainView);
 
@@ -161,10 +221,10 @@ MainView.propTypes = {
       Bio: PropTypes.string.isRequired,
       Birth: PropTypes.string,
       Death: PropTypes.string,
-      ImagePath: PropTypes.string.isRequired
+      ImagePath: PropTypes.string.isRequired,
     }),
     ImagePath: PropTypes.string.isRequired,
-    Featured: PropTypes.bool.isRequired
+    Featured: PropTypes.bool.isRequired,
   }),
-  user: PropTypes.string.isRequired
+  user: PropTypes.string.isRequired,
 };

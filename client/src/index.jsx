@@ -12,7 +12,11 @@ import './index.scss';
 
 const store = createStore(moviesApp);
 
-// Main component (will eventually use all others)
+/**
+ * @function MyFlixApplication (app container)
+ * Contains all other application data (the root of the applicaiton)
+ * MainView loads all other views through this Component
+ */
 class MyFlixApplication extends React.Component {
   render() {
     return (

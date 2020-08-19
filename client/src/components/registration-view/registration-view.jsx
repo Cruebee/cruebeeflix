@@ -9,6 +9,10 @@ import { Link } from 'react-router-dom';
 
 import './registration-view.scss';
 
+/**
+ * @function RegistrationView
+ * @description Registration form/page where user's can create new profiles
+ */
 export function RegistrationView(props) {
   const [username, createUsername] = useState('');
   const [password, createPassword] = useState('');
@@ -17,7 +21,7 @@ export function RegistrationView(props) {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log("Registered");
+    console.log('Registered');
 
     axios
       .post('https://cruebeeflix.herokuapp.com/users', {
@@ -28,68 +32,65 @@ export function RegistrationView(props) {
       })
       .then((response) => {
         const data = response.data;
-        alert("Your account has been created. Please login.");
+        alert('Your account has been created. Please login.');
         console.log(data);
-        window.open("/client", "_self");
+        window.open('/client', '_self');
       })
       .catch((e) => {
-        console.log("error registering user.");
+        console.log('error registering user.');
       });
   };
 
   return (
     <Container>
-      <h1 className="register-title">Registration</h1>
-      <Form className="registration-form">
-        <Form.Group controlId="formBasicUsername">
+      <h1 className='register-title'>Registration</h1>
+      <Form className='registration-form'>
+        <Form.Group controlId='formBasicUsername'>
           <Form.Control
-            type="text"
-            placeholder="Create Username"
+            type='text'
+            placeholder='Create Username'
             value={username}
             onChange={(e) => createUsername(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formBasicPassword">
+        <Form.Group controlId='formBasicPassword'>
           <Form.Control
-            type="password"
-            placeholder="Create Password"
+            type='password'
+            placeholder='Create Password'
             value={password}
             onChange={(e) => createPassword(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formBasicEmail">
+        <Form.Group controlId='formBasicEmail'>
           <Form.Control
-            type="text"
-            placeholder="Enter Email"
+            type='text'
+            placeholder='Enter Email'
             value={email}
             onChange={(e) => createEmail(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="formBasicBirthday">
+        <Form.Group controlId='formBasicBirthday'>
           <Form.Control
-            type="text"
-            placeholder="Enter Birthday"
+            type='text'
+            placeholder='Enter Birthday'
             value={birthday}
             onChange={(e) => createBirthday(e.target.value)}
           />
         </Form.Group>
         <Button
-          className="registration-button"
-          type="submit"
+          className='registration-button'
+          type='submit'
           onClick={handleRegister}
-          variant="btn"
+          variant='btn'
         >
           Register
         </Button>
-        <Form.Group className="login-group" controlId="formLogin">
-          <Form.Text className="text-muted">Already have an account?</Form.Text>
+        <Form.Group className='login-group' controlId='formLogin'>
+          <Form.Text className='text-muted'>Already have an account?</Form.Text>
           <Link to={`/`}>
-            <Button
-              className="back-button"
-              variant="btn"
-            >
+            <Button className='back-button' variant='btn'>
               Login
-          </Button>
+            </Button>
           </Link>
         </Form.Group>
       </Form>

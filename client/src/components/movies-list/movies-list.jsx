@@ -9,7 +9,11 @@ import { MovieCard } from '../movie-card/movie-card';
 
 //import './movies-list.scss';
 
-const mapStateToProps = state => {
+/**
+ * @function LoopMoviesList
+ * @description loops over all movies in database, to be rendered in main-view
+ */
+const mapStateToProps = (state) => {
   const { visibilityFilter } = state;
   return { visibilityFilter };
 };
@@ -19,15 +23,21 @@ function MoviesList(props) {
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
-    filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
+    filteredMovies = movies.filter((m) =>
+      m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
+    );
   }
 
-  if (!movies) return <Container className="main-view" />;
+  if (!movies) return <Container className='main-view' />;
 
-  return <Row className="movies-list" >
-    <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-    {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
-  </Row>;
+  return (
+    <Row className='movies-list'>
+      <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+      {filteredMovies.map((m) => (
+        <MovieCard key={m._id} movie={m} />
+      ))}
+    </Row>
+  );
 }
 
 export default connect(mapStateToProps)(MoviesList);
