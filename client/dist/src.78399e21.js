@@ -40796,12 +40796,79 @@ ListGroup.displayName = 'ListGroup';
 ListGroup.Item = _ListGroupItem.default;
 var _default = ListGroup;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","warning":"../node_modules/warning/warning.js","uncontrollable":"../node_modules/uncontrollable/esm/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./AbstractNav":"../node_modules/react-bootstrap/esm/AbstractNav.js","./ListGroupItem":"../node_modules/react-bootstrap/esm/ListGroupItem.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","warning":"../node_modules/warning/warning.js","uncontrollable":"../node_modules/uncontrollable/esm/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./AbstractNav":"../node_modules/react-bootstrap/esm/AbstractNav.js","./ListGroupItem":"../node_modules/react-bootstrap/esm/ListGroupItem.js"}],"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40837,7 +40904,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -40847,6 +40914,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function MovieCard class component
+ * @description Component renders basic movie details compiled from API,
+ * including: Movie title, description, and image.
+ */
 var MovieCard = /*#__PURE__*/function (_React$Component) {
   _inherits(MovieCard, _React$Component);
 
@@ -40870,7 +40942,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Card.default, {
         className: "movie-cards",
         style: {
-          width: "18rem"
+          width: '18rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -40938,6 +41010,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // Redux import
 // Custom imports
 //import './movies-list.scss';
+
+/**
+ * @function LoopMoviesList
+ * @description loops over all movies in database, to be rendered in main-view
+ */
 var mapStateToProps = function mapStateToProps(state) {
   var visibilityFilter = state.visibilityFilter;
   return {
@@ -41011,7 +41088,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -41019,6 +41096,10 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+/**
+ * @function RegistrationView
+ * @description Registration form/page where user's can create new profiles
+ */
 function RegistrationView(props) {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -41042,7 +41123,7 @@ function RegistrationView(props) {
 
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
-    console.log("Registered");
+    console.log('Registered');
 
     _axios.default.post('https://cruebeeflix.herokuapp.com/users', {
       Username: username,
@@ -41051,11 +41132,11 @@ function RegistrationView(props) {
       Birthday: birthday
     }).then(function (response) {
       var data = response.data;
-      alert("Your account has been created. Please login.");
+      alert('Your account has been created. Please login.');
       console.log(data);
-      window.open("/client", "_self");
+      window.open('/client', '_self');
     }).catch(function (e) {
-      console.log("error registering user.");
+      console.log('error registering user.');
     });
   };
 
@@ -41121,7 +41202,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41153,7 +41234,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -41161,6 +41242,11 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+/**
+ * @function Post username and password to login
+ * @param {event}
+ * @returns {object} user login data
+ */
 function LoginView(props) {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -41184,7 +41270,7 @@ function LoginView(props) {
       var data = response.data;
       props.onLoggedIn(data);
     }).catch(function (e) {
-      console.log("no such user");
+      console.log('no such user');
     });
   };
 
@@ -41247,7 +41333,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41289,7 +41375,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -41299,6 +41385,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function MovieView class Component
+ * @description Component renders Full movie details, button to add to favorites,
+ * and links to Genre and Director views
+ */
 var MovieView = /*#__PURE__*/function (_React$Component) {
   _inherits(MovieView, _React$Component);
 
@@ -41313,6 +41404,13 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _this.state = {};
     return _this;
   }
+  /**
+   * @function Add movie to favorites list
+   * @param {event} e event triggering addition of movie (onclick)
+   * @param {MovieID} movie movieID to be added to favorites list
+   * @returns {string} string/notification indicating movie was added to list
+   */
+
 
   _createClass(MovieView, [{
     key: "addFavoriteMovie",
@@ -41324,7 +41422,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         method: 'post',
         url: "https://cruebeeflix.herokuapp.com/users/".concat(username, "/movies/").concat(movie._id),
         headers: {
-          'Authorization': "Bearer ".concat(token)
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
         alert("".concat(movie.Title, " was added to your favorite movies!"));
@@ -41419,7 +41517,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41457,7 +41555,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -41467,6 +41565,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function DirectorView
+ * @description Contains information about directors: name, bio, birth, and death if available
+ * @param {string} props - director, movies
+ * @returns {DirectorView}
+ */
 var DirectorView = /*#__PURE__*/function (_React$Component) {
   _inherits(DirectorView, _React$Component);
 
@@ -41490,7 +41594,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "director-view",
         style: {
-          width: "18rem"
+          width: '30rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
         variant: "top",
@@ -41536,7 +41640,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41574,7 +41678,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -41584,6 +41688,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function GenreView displays Genres
+ * @description Displays Genres and info, Name and Description.
+ * @param {string} props - genre, movies
+ * @returns {GenreView}
+ */
 var GenreView = /*#__PURE__*/function (_React$Component) {
   _inherits(GenreView, _React$Component);
 
@@ -41607,7 +41717,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Card.default, {
         className: "genre-view",
         style: {
-          width: "25rem"
+          width: '25rem'
         }
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, {
         className: "genre-info"
@@ -41641,7 +41751,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41683,7 +41793,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -41693,6 +41803,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function ProfileView
+ * @description renders user profile based on Username. User's can update/delete profile from here
+ */
 var ProfileView = /*#__PURE__*/function (_React$Component) {
   _inherits(ProfileView, _React$Component);
 
@@ -41744,7 +41858,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         method: 'delete',
         url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user'), "/movies/").concat(movieId),
         headers: {
-          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
         }
       }).then(function (response) {
         alert('The movie was removed from your list of favorites.');
@@ -41766,7 +41880,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         method: 'put',
         url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user')),
         headers: {
-          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
         },
         data: {
           Username: Username ? Username : userInfo.Username,
@@ -41790,7 +41904,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         method: 'delete',
         url: "https://cruebeeflix.herokuapp.com/users/".concat(localStorage.getItem('user')),
         headers: {
-          'Authorization': "Bearer ".concat(localStorage.getItem('token'))
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
         }
       }).then(function (response) {
         alert(response.data + ' You will now be taken to the login screen.');
@@ -41856,7 +41970,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "form-item",
         type: "password",
         placeholder: "Enter Password",
-        defaultValue: "",
+        defaultValue: '',
         onChange: function onChange(e) {
           return _this5.setPassword(e.target.value);
         }
@@ -41956,7 +42070,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42018,7 +42132,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -42028,6 +42142,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/**
+ * @function MainView
+ * @description Contains all the views/ launch view after login/registration
+ */
 var MainView = /*#__PURE__*/function (_React$Component) {
   _inherits(MainView, _React$Component);
 
@@ -42045,6 +42163,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     };
     return _this;
   }
+  /**
+   * @function AccessToken Check
+   * @description Checks for accessToken in localStorage
+   */
+
 
   _createClass(MainView, [{
     key: "componentDidMount",
@@ -42056,7 +42179,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         this.props.setUser(user);
         this.getMovies(accessToken);
       }
-    } // Authentication
+    }
+    /**
+     * @function onLoggedIn (sets auth data on login)
+     * @description Set user authorization data (JWT) when logged in
+     * @param {object} authData
+     * @returns {localStorage}
+     * @returns {state}
+     */
 
   }, {
     key: "onLoggedIn",
@@ -42067,7 +42197,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('user', authData.user.Username);
       window.open('/client', '_self');
       this.getMovies(authData.token);
-    } // Log Out
+    }
+    /**
+     * @function onLogOut
+     * @description clears local storage and removes JWT tokens when logging out
+     * @param user
+     * @returns {state}
+     */
 
   }, {
     key: "onLogOut",
@@ -42077,7 +42213,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       window.open('/client', '_self');
       this.props.setUser(user);
       console.log('logged out');
-    } // Get Movies
+    }
+    /**
+     * @function GET list of movies
+     * @description Get a list of movies if user be logged in and authorized
+     * @param {number} token
+     * @returns {array} list of movies
+     */
 
   }, {
     key: "getMovies",
@@ -42302,7 +42444,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -42333,7 +42475,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -42343,7 +42485,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var store = (0, _redux.createStore)(_reducers.default); // Main component (will eventually use all others)
+var store = (0, _redux.createStore)(_reducers.default);
+/**
+ * @function MyFlixApplication (app container)
+ * Contains all other application data (the root of the applicaiton)
+ * MainView loads all other views through this Component
+ */
 
 var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _inherits(MyFlixApplication, _React$Component);
@@ -42372,7 +42519,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
 var container = document.getElementsByClassName('app-container')[0]; // Tells React to render your app in the root DOM element:
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.js","./index.scss":"index.scss"}],"../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.js","./index.scss":"index.scss"}],"../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -42400,7 +42547,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64339" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51037" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -42576,5 +42723,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../.nvm/versions/node/v13.11.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
+},{}]},{},["../../../../../../.nvm/versions/node/v12.18.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
 //# sourceMappingURL=/src.78399e21.js.map

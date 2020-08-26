@@ -1,19 +1,32 @@
 $black: #222629;
-$grey: #474B4F;
-$light-grey: #6B6E70;
-$lime: #86C232;
-$green: #61892F;
+$grey: #474b4f;
+$light-grey: #6b6e70;
+$lime: #86c232;
+$green: #61892f;
 $white: #fff;
+
+// New Colors
+$Black: #000;
+$ErrorRed: #8b0000;
+$Taupe: #8c756a;
+$Purple: #625779;
+
+$Ivory: #fffff0;
+$OliveDrab: #737c00;
+$Orange: #dd8e5a;
+// End Colors
 
 .movie-view {
   text-align: center;
-  background-color: $grey;
+  background-color: $Ivory;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .details {
-  background-color: $grey;
-  color: $white;
+  background-color: $Ivory;
+  color: $Black;
   padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .movie-container {
@@ -21,7 +34,7 @@ $white: #fff;
 }
 
 .label {
-  color: $lime;
+  color: $green;
 }
 
 .favorite-button {
@@ -38,22 +51,22 @@ $white: #fff;
   border-color: $green;
   color: $white;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .back-button {
   margin: 1rem;
-  background-color: $lime;
-  color: $black;
-  border-color: $lime;
+  background-color: $OliveDrab;
+  color: $Ivory;
+  border-color: $OliveDrab;
 }
 
 .back-button:hover,
 .back-button:focus,
 .back-button:active {
-  background-color: $lime;
-  color: $black;
-  border-color: $lime;
+  background-color: $OliveDrab;
+  color: $Ivory;
+  border-color: $OliveDrab;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }

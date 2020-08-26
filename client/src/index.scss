@@ -1,24 +1,38 @@
 $black: #222629;
-$grey: #474B4F;
-$light-grey: #6B6E70;
-$lime: #86C232;
-$green: #61892F;
+$grey: #474b4f;
+$light-grey: #6b6e70;
+$lime: #86c232;
+$green: #61892f;
 $white: #fff;
+// New Colors
+
+$Black: #000;
+$ErrorRed: #8b0000;
+$Taupe: #8c756a;
+$Purple: #625779;
+
+$Ivory: #fffff0;
+$OliveDrab: #737c00;
+$Orange: #dd8e5a;
 
 body {
-  background-color: $black;
+  background-color: $Ivory;
 }
 
 .my-flix {
   width: 100%;
   height: 100%;
-  color: $light-grey;
-  background-color: $black;
+  color: $OliveDrab;
+  background-color: $Ivory;
   margin: 0;
   padding: 0;
 }
 
 .app-container {
-  background-color: $black;
+  background-color: $Ivory;
   min-height: 100vh;
+}
+
+.btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

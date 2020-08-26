@@ -1,35 +1,46 @@
 $black: #222629;
-$grey: #474B4F;
-$light-grey: #6B6E70;
-$lime: #86C232;
-$green: #61892F;
+$grey: #474b4f;
+$light-grey: #6b6e70;
+$lime: #86c232;
+$green: #61892f;
 $white: #fff;
 
+// New Colors
+$Black: #000;
+$ErrorRed: #8b0000;
+$Earth: #8b6a5a;
+$Purple: #625779;
+
+$Ivory: #fffff0;
+$OliveDrab: #737c00;
+$Orange: #dd8e5a;
+// End Colors
+
 .form-control {
-  background-color: $grey;
-  color: $white;
-  border-color: $grey;
+  background-color: $Ivory;
+  color: $Black;
+  border-color: $Ivory;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .profile-view-title {
   text-align: center;
-  color: $light-grey;
+  color: $Black;
 }
 
 .user-favorites {
-  color: $light-grey;
+  color: $Black;
   text-align: center;
 }
-
 
 .form-control:hover,
 .form-control:active,
 .form-control:focus {
-  background-color: $grey;
-  color: $white;
-  border-color: $grey;
+  background-color: $Ivory;
+  color: $Black;
+  border-color: $Ivory;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .profile-form {
@@ -58,41 +69,42 @@ $white: #fff;
   color: $white;
   border-color: $green;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .return-button {
   margin: 1rem;
-  background-color: $lime;
-  color: $black;
-  border-color: $lime;
+  background-color: $OliveDrab;
+  color: $Ivory;
+  border-color: $OliveDrab;
 }
 
 .return-button:hover,
 .return-button:active,
 .return-button:focus {
-  background-color: $lime;
-  border-color: $lime;
-  color: $black;
+  background-color: $OliveDrab;
+  border-color: $OliveDrab;
+  color: $Ivory;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .favorites-list {
   width: 100%;
   color: $white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .favorite-movies {
-  background-color: $grey;
+  background-color: $Ivory;
   text-align: center;
 }
 
 .delete-button {
   margin: 0.5rem auto;
-  background-color: $lime;
-  border-color: $lime;
-  color: $black;
+  background-color: $OliveDrab;
+  border-color: $OliveDrab;
+  color: $Ivory;
 }
 
 .delete-favorite {
@@ -102,11 +114,15 @@ $white: #fff;
 .delete-button:hover,
 .delete-button:active,
 .delete-button:focus {
-  background-color: $lime;
-  border-color: $lime;
-  color: $black;
+  background-color: $OliveDrab;
+  border-color: $OliveDrab;
+  color: $Ivory;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
+}
+
+.deregister-user {
+  text-align: center;
 }
 
 .deregister-button {
@@ -124,5 +140,5 @@ $white: #fff;
   color: $white;
   border-color: $green;
   opacity: 0.7;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }

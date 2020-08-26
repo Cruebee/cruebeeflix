@@ -1,10 +1,19 @@
 $black: #222629;
-$grey: #474B4F;
-$light-grey: #6B6E70;
-$lime: #86C232;
-$green: #61892F;
+$grey: #474b4f;
+$light-grey: #6b6e70;
+$lime: #86c232;
+$green: #61892f;
 $white: #fff;
 
+// New Colors
+$Black: #000;
+$ErrorRed: #8b0000;
+$Taupe: #8c756a;
+$Purple: #625779;
+
+$Ivory: #fffff0;
+$OliveDrab: #737c00;
+$Orange: #dd8e5a;
 
 .login-view {
   justify-content: center;
@@ -13,13 +22,13 @@ $white: #fff;
 
 .login-label {
   text-align: center;
-  color: $light-grey;
+  color: $Black;
 }
 
 .login-title {
   text-align: center;
   width: 100%;
-  color: $light-grey;
+  color: $Black;
 }
 
 .login-form-space {
@@ -28,7 +37,7 @@ $white: #fff;
 }
 
 .login-group.form-row {
-  justify-content:center;
+  justify-content: center;
 }
 
 .login-submit {
@@ -38,7 +47,7 @@ $white: #fff;
 
 .login-button {
   cursor: pointer;
-  text-align:center;
+  text-align: center;
   background-color: $green;
   color: $white;
   border-color: $green;
@@ -53,7 +62,7 @@ $white: #fff;
   opacity: 0.8;
   color: $white;
   border-color: $green;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }
 
 .registration-group {
@@ -68,19 +77,19 @@ $white: #fff;
 
 .register-button {
   cursor: pointer;
-  background-color: $lime;
-  color: $black;
-  border-color: $lime;
+  background-color: $OliveDrab;
+  color: $Ivory;
+  border-color: $OliveDrab;
   margin: 1rem;
 }
 
 .register-button:hover,
 .register-button:focus,
 .register-button:active {
-  background-color: $lime;
+  background-color: $OliveDrab;
   cursor: pointer;
   opacity: 0.8;
-  color: $black;
-  border-color: $lime;
-  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, .25);
+  color: $Ivory;
+  border-color: $OliveDrab;
+  box-shadow: 0 0 0 0.2rem rgba(0, 200, 100, 0.25);
 }

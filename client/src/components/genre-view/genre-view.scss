@@ -1,19 +1,35 @@
 $black: #222629;
-$grey: #474B4F;
-$light-grey: #6B6E70;
-$lime: #86C232;
-$green: #61892F;
+$grey: #474b4f;
+$light-grey: #6b6e70;
+$lime: #86c232;
+$green: #61892f;
 $white: #fff;
 
+// New Colors
+
+$Black: #000;
+$ErrorRed: #8b0000;
+$Taupe: #8c756a;
+$Purple: #625779;
+
+$Ivory: #fffff0;
+$OliveDrab: #737c00;
+$Orange: #dd8e5a;
+
 .genre-view {
-  background-color: $grey;
+  background-color: $Ivory;
   text-align: center;
   height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .genre-info {
   padding: 1rem;
-  background-color: $grey;
-  color: $white;
+  background-color: $Ivory;
+  color: $Black;
 }
 
+.genre-view,
+.card {
+  margin-top: 10%;
+}
